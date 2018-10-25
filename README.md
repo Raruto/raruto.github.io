@@ -1,5 +1,7 @@
 # My two cents..
 
+My little list of projects I'm involved in..
+
 ## Projects
 
 - [IlMagnifico](https://github.com/Raruto/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
