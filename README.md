@@ -1,3 +1,3 @@
-## Raruto Pages
+## Test Pages
 
 - [/maps](/maps)
