@@ -37,9 +37,7 @@
 			zoomControl: false
 		});
 
-		var zoomControl = new L.Control.Zoom({
-			position: 'topright'
-		});
+		var zoomControl = new L.Control.Zoom({ position: 'topright' });
 
 		var ggl = new L.Google('ROADMAP');
 
@@ -52,11 +50,11 @@
 			});
 
 		var baseLayers = {
-			"Google": ggl,
-			"OpenTopoMap": otm,
+			"Google Map": ggl,
+			"Leaflet Map": otm,
 		};
 
-		var layersControl = L.control.layers(baseLayers);
+		var layersControl = L.control.layers(baseLayers, { collapsed:false });
 
 		layersControl.addTo(map);
 		zoomControl.addTo(map);
