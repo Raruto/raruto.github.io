@@ -4,5 +4,8 @@
 - [wordpress-git](https://github.com/Raruto/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer 
 - [leaflet-google](https://github.com/Raruto/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
 
+## My Sample Pages
+- [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
+
 ## My Test Pages
 - [/maps](/maps)
