@@ -54,7 +54,7 @@
 			"Leaflet Map": otm,
 		};
 
-		var layersControl = L.control.layers(baseLayers, { collapsed:false });
+		var layersControl = L.control.layers(baseLayers, null, { collapsed:false });
 
 		layersControl.addTo(map);
 		zoomControl.addTo(map);
