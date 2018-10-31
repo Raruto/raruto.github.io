@@ -1,4 +1,4 @@
-<p align="center">
+<p align="margin-top: -70px; text-align: right;">
   <a href="https://github.com/Raruto">
     <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/9614886?s=150" />
   </a>
