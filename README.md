@@ -1,7 +1,9 @@
 ## My Projects
 
 <p align="center">
-  <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/9614886?s=150" />
+  <a href="https://github.com/Raruto">
+    <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/9614886?s=150" />
+  </a>
 </p>
 
 - [IlMagnifico](https://github.com/Raruto/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
