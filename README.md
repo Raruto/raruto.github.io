@@ -1,6 +1,6 @@
-<p align="center" style="margin-top: -70px; text-align: right;">
+<p align="right" style="margin-top: -70px; text-align: right;">
   <a href="https://github.com/Raruto">
-    <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/9614886?s=150" />
+    <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/9614886?s=400" height="150" />
   </a>
 </p>
 
