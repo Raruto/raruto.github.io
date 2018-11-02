@@ -58,12 +58,18 @@
 			filter: drop-shadow(0 0 5px #000);
 		}
 	</style>
+	<style>
+	.gpx-summary { font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif; font-size: 12px; }
+	.gpx-summary .summaryvalue { font-weight: bold; }
+	</style>
 </head>
 
 <body>
 
 	<div id="map"></div>
 	<div id="elevation-div" class="leaflet-control elevation"></div>
+	
+	<div id="gpx-summary" class="gpxmaps-summary"><span class="totlen"><span class="summarylabel">Total Length: </span><span class="summaryvalue">0</span></span><br><span class="maxele"><span class="summarylabel">Max Elevation: </span><span class="summaryvalue">0</span></span><br><span class="minele"><span class="summarylabel">Min Elevation: </span><span class="summaryvalue">0</span></span><br></div>
 
 	<script>
 		var opts = {
@@ -118,7 +124,16 @@
 
 		map.addLayer(baseLayers.OTM);
 
-		controlElevation.gpx.on('loaded', function(e) { controlLayer.addOverlay(controlElevation.gpx, controlElevation.gpx.get_name()); });		
+		controlElevation.gpx.on('loaded', function(e) {
+			var gpx = controlElevation.gpx;
+			var q = document.querySelector.bind(document);
+			
+			controlLayer.addOverlay(gpx, gpx.get_name());			
+
+			q('.totlen .summaryvalue').innerHTML = gpx.get_distance_imp().toFixed(2) + " km";
+			q('.maxele .summaryvalue').innerHTML = gpx.get_elevation_max().toFixed(2) + " m";
+			q('.minele .summaryvalue').innerHTML = gpx.get_elevation_max().toFixed(2) + " m";
+		});
 	</script>
 	
 	<a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;" > <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github" width="163"> </a>
