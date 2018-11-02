@@ -14,6 +14,7 @@
 
 ## My Sample Pages
 - [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
+- [LeafletJS and d3js elevation profiles](/examples/leaflet-elevation/leaflet-elevation.html)
 
 ## My Test Pages
 - [/maps](/maps)
