@@ -110,7 +110,7 @@
 
 		var controlZoom = new L.Control.Zoom(opts.zoomControl);
 		var controlElevation = L.control.elevation(opts.elevationControl.options);
-		var controlLayer = L.control.layers(baseLayers, opts.layersControl.options);
+		var controlLayer = L.control.layers(baseLayers, null, opts.layersControl.options);
 
 		controlZoom.addTo(map);
 		controlLayer.addTo(map);
