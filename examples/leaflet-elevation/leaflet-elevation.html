@@ -32,8 +32,8 @@
 
 	<script src="https://raw.githack.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>
 
-	<link rel="stylesheet" href="https://raruto.github.io/cdn/leaflet-elevation/0.0.5/leaflet-elevation.css" />
-	<script src="https://raruto.github.io/cdn/leaflet-elevation/0.0.5/leaflet-elevation.js"></script>
+	<link rel="stylesheet" href="https://raruto.github.io/cdn/leaflet-elevation/0.0.6/leaflet-elevation.css" />
+	<script src="https://raruto.github.io/cdn/leaflet-elevation/0.0.6/leaflet-elevation.js"></script>
 
 	<style>
 		.height-focus.line,
@@ -60,7 +60,7 @@
 
 	<div id="map"></div>
 	<div id="elevation-div" class="leaflet-control elevation"></div>
-	
+
 	<div id="gpx-summary" class="gpx-summary"><span class="totlen"><span class="summarylabel">Total Length: </span><span class="summaryvalue">0</span></span> &mdash; <span class="maxele"><span class="summarylabel">Max Elevation: </span><span class="summaryvalue">0</span></span> &mdash; <span class="minele"><span class="summarylabel">Min Elevation: </span><span class="summaryvalue">0</span></span></div>
 
 	<script>
@@ -119,15 +119,15 @@
 		controlElevation.gpx.on('loaded', function(e) {
 			var gpx = controlElevation.gpx;
 			var q = document.querySelector.bind(document);
-			
-			controlLayer.addOverlay(gpx, gpx.get_name());			
+
+			controlLayer.addOverlay(gpx, gpx.get_name());
 
 			q('.totlen .summaryvalue').innerHTML = (gpx.get_distance()/1000).toFixed(2) + " km";
 			q('.maxele .summaryvalue').innerHTML = gpx.get_elevation_max().toFixed(2) + " m";
 			q('.minele .summaryvalue').innerHTML = gpx.get_elevation_min().toFixed(2) + " m";
 		});
 	</script>
-	
+
 	<a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;" > <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github" width="163"> </a>
 
 </body>
