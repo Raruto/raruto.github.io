@@ -9,13 +9,14 @@
 
 ## My Projects
 - [IlMagnifico](https://github.com/Raruto/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
-- [wordpress-git](https://github.com/Raruto/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer 
+- [wordpress-git](https://github.com/Raruto/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
 - [leaflet-google](https://github.com/Raruto/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
 - [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
 
 ## My Sample Pages
 - [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
 - [LeafletJS and d3js elevation profiles](/examples/leaflet-elevation/leaflet-elevation.html)
+- [(Autohide) LeafletJS map and d3js elevation profile](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
 
 ## My Test Pages
 - [/maps](/maps)
