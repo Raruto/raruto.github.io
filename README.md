@@ -15,8 +15,8 @@
 
 ## My Sample Pages
 - [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
-- [LeafletJS and d3js elevation profiles](/examples/leaflet-elevation/leaflet-elevation.html)
-- [(Autohide) LeafletJS map and d3js elevation profile](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
+- [LeafletJS and d3js elevation profile - Simple Map](/examples/leaflet-elevation/leaflet-elevation.html)
+- [LeafletJS and d3js elevation profile - Hidden Map](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
 
 ## My Test Pages
 - [/maps](/maps)
