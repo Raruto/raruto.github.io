@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>google-geolocate.js</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<script src="https://maps.google.com/maps/api/js?key="></script>
+	<style>
+		html,
+		body,
+		#map {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script src="https://raruto.github.io/cdn/google-geolocate/0.0.1/google-geolocate.js"></script>
+</head>
+
+<body>
+	<div id="map"></div>
+	<script>
+		(function() {
+			var mapOpts = {
+				streetViewControl: false,
+				tilt: 0,
+				center: new google.maps.LatLng(45, 9.5),
+				zoom: 5,
+				MapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+			var map = new google.maps.Map(document.getElementById('map'), mapOpts);
+			var geolocationControl = new GeolocationControl(map, 13);
+		})();
+	</script>
+
+	<a href="https://github.com/Raruto/google-geolocate" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github" width="163"> </a>
+
+</body>
+
+</html>
