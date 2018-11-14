@@ -15,6 +15,22 @@
 			margin: 0;
 			padding: 0;
 		}
+		#geolocationBtn{
+			-webkit-animation: BLINK-ANIMATION 1s linear 4;  /* Safari 4+ */
+			-moz-animation: BLINK-ANIMATION 1s linear 4;  /* Fx 5+ */
+			-o-animation: BLINK-ANIMATION 1s linear 4;  /* Opera 12+ */
+			animation: BLINK-ANIMATION 1s linear 4;  /* IE 10+, Fx 29+ */
+		}
+		@-webkit-keyframes BLINK-ANIMATION {
+			0%, 49% {
+				background-color: #ff0;
+				border-color: #f00;
+			}
+			50%, 100% {
+				background-color: #fff;
+				border-color: #fff;
+			}
+		}
 	</style>
 	<script src="https://raruto.github.io/cdn/google-geolocate/0.0.1/google-geolocate.js"></script>
 </head>
