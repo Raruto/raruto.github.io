@@ -39,16 +39,14 @@
 <body>
 	<div id="map"></div>
 	<script>
-		(function() {
-			var mapOpts = {
-				center: new google.maps.LatLng(45, 9.5),
-				zoom: 5,
-				MapTypeId: google.maps.MapTypeId.ROADMAP
-			};
+		var mapOpts = {
+			center: new google.maps.LatLng(45, 9.5),
+			zoom: 5,
+			MapTypeId: google.maps.MapTypeId.ROADMAP
+		};
 
-			var map = new google.maps.Map(document.getElementById('map'), mapOpts);
-			var geolocationControl = new GeolocationControl(map, 13);
-		})();
+		var map = new google.maps.Map(document.getElementById('map'), mapOpts);
+		var geolocationControl = new GeolocationControl(map, 13);
 	</script>
 
 	<a href="https://github.com/Raruto/google-geolocate" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github" width="163"> </a>
