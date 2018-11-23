@@ -14,6 +14,7 @@
 - [leaflet-pegman](https://github.com/Raruto/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
 - [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
 - [google-geolocate](https://github.com/Raruto/google-geolocate): Google Maps plugin that allows to add a geolocation control
+- [google-transparency](https://github.com/Raruto/google-transparency): Google Maps plugin that allows to add an opacity control
 
 ## My Sample Pages
 - [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
@@ -22,6 +23,7 @@
 - [LeafletJS and d3js elevation profile - Simple Map](/examples/leaflet-elevation/leaflet-elevation.html)
 - [LeafletJS and d3js elevation profile - Hidden Map](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
+- [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
 
 ## My Test Pages
 - [/maps](/maps)
