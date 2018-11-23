@@ -23,7 +23,7 @@
 - [LeafletJS and d3js elevation profile - Simple Map](/examples/leaflet-elevation/leaflet-elevation.html)
 - [LeafletJS and d3js elevation profile - Hidden Map](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
-- [Google Maps Transparency Control](/examples/google-transparency/google-transparency.html)
+- [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
 
 ## My Test Pages
 - [/maps](/maps)
