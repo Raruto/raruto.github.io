@@ -8,13 +8,13 @@
  </p>
 
 ## My Projects
-- [IlMagnifico](https://github.com/Raruto/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
-- [wordpress-git](https://github.com/Raruto/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
-- [leaflet-google](https://github.com/Raruto/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
-- [leaflet-pegman](https://github.com/Raruto/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
-- [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
-- [google-geolocate](https://github.com/Raruto/google-geolocate): Google Maps plugin that allows to add a geolocation control
-- [google-transparency](https://github.com/Raruto/google-transparency): Google Maps plugin that allows to add an opacity control
+- [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
+- [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
+- [leaflet-google](https://raruto.github.io/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
+- [leaflet-pegman](https://raruto.github.io/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
+- [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
+- [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
+- [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
 
 ## My Sample Pages
 - [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
