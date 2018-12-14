@@ -10,6 +10,7 @@
 ## My Projects
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
+- [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
 - [leaflet-google](https://raruto.github.io/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
 - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
 - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
