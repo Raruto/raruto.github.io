@@ -20,8 +20,8 @@
 	<script src="https://unpkg.com/geojson-vt@3.0.0/geojson-vt.js"></script>
 
 	<!-- Leaflet-KMZ -->
-	<script src="https://raruto.github.io/cdn/leaflet-kmz/0.0.3/libs/KMZParser.js"></script>
-	<script src="https://raruto.github.io/cdn/leaflet-kmz/0.0.3/libs/GridLayer.GeoJSON.js"></script>
+	<script src="https://unpkg.com/leaflet-kmz@0.0.4/libs/KMZParser.js"></script>
+	<script src="https://unpkg.com/leaflet-kmz@0.0.4/libs/GridLayer.GeoJSON.js"></script>
 
 	<style>
 		html,
@@ -58,9 +58,10 @@
 			}
 		});
 		// Add remote KMZ files as layers (NB if they are 3rd-party servers, they MUST have CORS enabled)
-		kmzParser.load('regioni.kmz');
-		kmzParser.load('capitali.kmz');
+		kmzParser.load('regions.kmz');
+		kmzParser.load('capitals.kmz');
 		kmzParser.load('globe.kmz');
+		kmzParser.load('multigeometry.kmz');
 
 	  var control = L.control.layers(null, null, { collapsed:false }).addTo(map);
 	</script>
