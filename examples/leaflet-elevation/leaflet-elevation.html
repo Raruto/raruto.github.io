@@ -34,8 +34,8 @@
 	<!-- leaflet-gpx -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.js"></script>
 	<!-- leaflet-elevation -->
-	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.2.0/leaflet-elevation.css" />
-	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.2.0/leaflet-elevation.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.2.1/leaflet-elevation.css" />
+	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.2.1/leaflet-elevation.js"></script>
 
 	<style>
 		.height-focus.line,
@@ -129,14 +129,14 @@
 		map.addLayer(baseLayers.OTM);
 
 		map.on('eledata_loaded', function(e) {
-			var gpx = e.layer;
 			var q = document.querySelector.bind(document);
+			var track = e.track_info;
 
 			controlLayer.addOverlay(e.layer, e.name);
 
-			q('.totlen .summaryvalue').innerHTML = (gpx.get_distance() / 1000).toFixed(2) + " km";
-			q('.maxele .summaryvalue').innerHTML = gpx.get_elevation_max().toFixed(2) + " m";
-			q('.minele .summaryvalue').innerHTML = gpx.get_elevation_min().toFixed(2) + " m";
+			q('.totlen .summaryvalue').innerHTML = track.distance.toFixed(2) + " km";
+			q('.maxele .summaryvalue').innerHTML = track.elevation_max.toFixed(2) + " m";
+			q('.minele .summaryvalue').innerHTML = track.elevation_min.toFixed(2) + " m";
 		});
 	</script>
 

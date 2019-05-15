@@ -34,8 +34,8 @@
   <!-- leaflet-gpx -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.js"></script>
   <!-- leaflet-elevation -->
-  <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.2.0/leaflet-elevation.css" />
-  <script src="https://unpkg.com/@raruto/leaflet-elevation@0.2.0/leaflet-elevation.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.2.1/leaflet-elevation.css" />
+  <script src="https://unpkg.com/@raruto/leaflet-elevation@0.2.1/leaflet-elevation.js"></script>
 
   <style>
     .height-focus.line,
@@ -52,12 +52,28 @@
       filter: drop-shadow(0 0 5px #000);
     }
   </style>
+  <style>
+    .gpx-summary {
+      font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      position: absolute;
+      bottom: 0;
+      left: 45px;
+    }
+
+    .gpx-summary .summaryvalue {
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
 
   <div id="map"></div>
   <div id="elevation-div" class="leaflet-control elevation"></div>
+
+  <div id="gpx-summary" class="gpx-summary"><span class="totlen"><span class="summarylabel">Total Length: </span><span class="summaryvalue">0</span></span> &mdash; <span class="maxele"><span class="summarylabel">Max Elevation: </span><span class="summaryvalue">0</span></span>
+    &mdash; <span class="minele"><span class="summarylabel">Min Elevation: </span><span class="summaryvalue">0</span></span></div>
 
   <script>
     var opts = {
@@ -113,8 +129,15 @@
     map.addLayer(baseLayers.OTM);
 
     map.on('eledata_loaded', function(e) {
-      controlLayer.addOverlay(e.layer, e.name);
-    });
+			var q = document.querySelector.bind(document);
+			var track = e.track_info;
+
+			controlLayer.addOverlay(e.layer, e.name);
+
+			q('.totlen .summaryvalue').innerHTML = track.distance.toFixed(2) + " km";
+			q('.maxele .summaryvalue').innerHTML = track.elevation_max.toFixed(2) + " m";
+			q('.minele .summaryvalue').innerHTML = track.elevation_min.toFixed(2) + " m";
+		});
   </script>
 
   <a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github"
