@@ -14,12 +14,6 @@
 			padding: 0px;
 			margin: 0px;
 		}
-		.leaflet-control-locate a {
-			background-image: url(img/locate.png);
-		}
-		.yellow-theme.leaflet-control.elevation .area {
-			fill: #ff0;
-		}
 	</style>
 
 	<!-- D3.js -->
@@ -33,15 +27,18 @@
 	<script src="https://unpkg.com/leaflet-geometryutil@0.9.1/src/leaflet.geometryutil.js"></script>
 
 	<!-- leaflet-distance-marker -->
-	<link rel="stylesheet" href="lib/leaflet-distance-marker.css" />
-	<script src="lib/leaflet-distance-marker.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.3.0/libs/leaflet-distance-marker.min.css" />
+	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.3.0/libs/leaflet-distance-marker.min.js"></script>
 
 	<!-- leaflet-gpx -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.js"></script>
 
+	<!-- leaflet-gpxgroup -->
+	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.3.0/libs/leaflet-gpxgroup.min.js"></script>
+
 	<!-- leaflet-elevation -->
-	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.2.6/leaflet-elevation.min.css" />
-	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.2.6/leaflet-elevation.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.3.0/leaflet-elevation.min.css" />
+	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.3.0/leaflet-elevation.min.js"></script>
 
 	<!-- leaflet-minimap -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet-minimap@3.6.1/dist/Control.MiniMap.min.css" />
@@ -64,14 +61,17 @@
 	<link rel="stylesheet" href="https://raruto.github.io/cdn/leaflet-pegman/0.0.5/leaflet-pegman.css" />
 	<script src="https://raruto.github.io/cdn/leaflet-pegman/0.0.5/leaflet-pegman.js"></script>
 
-	<!-- leaflet-gpxgroup -->
-	<script src="lib/leaflet-gpxgroup.js"></script>
+	<style>
+	.leaflet-control-locate a {
+		background-image: url(leaflet-elevation/images/elevation-locate.png);
+	}
+	</style>
 
 </head>
 
 <body>
 
-	<div id="map" />
+	<div id="map"></div>
 
 	<script>
 	var opts = {
@@ -149,7 +149,7 @@
 		},
 		pois: {
 			icon: {
-				iconUrl: 'img/poi.png',
+				iconUrl: 'leaflet-elevation/images/elevation-poi.png',
 				iconSize: [12, 12],
 			},
 		},
@@ -220,6 +220,12 @@
 		var routes = L.gpxGroup(tracks, {
 			points: pois,
 			points_options: opts.pois,
+			elevation: true,
+			elevation_options: {
+				detachedView: false,
+				width: 500,
+			},
+			legend: false,
 		});
 
 		controlLayer.addTo(map);
