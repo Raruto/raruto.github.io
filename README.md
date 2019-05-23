@@ -15,18 +15,16 @@
 - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): A KMZ file loader for LeafletJS
 - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
 - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
+- [leaflet-transparency](https://raruto.github.io/leaflet-transparency): Leaflet plugin that allows to add an opacity control
 - [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
 - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
 - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
 
 ## My Sample Pages
 - [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
-- [Leaflet Pegman Control - Google Mutant](/examples/leaflet-pegman/leaflet-pegman.html)
-- [Leaflet Pegman Control - Clickable Layer](/examples/leaflet-pegman/leaflet-pegman-clickableStreetViewLayer.html)
-- [Leaflet KMZ - Sample File](/examples/leaflet-kmz/leaflet-kmz.html)
-- [LeafletJS and d3js elevation profile - Simple Map](/examples/leaflet-elevation/leaflet-elevation.html)
-- [LeafletJS and d3js elevation profile - Hidden Map](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
-- [LeafletJS and d3js elevation profile - GeoJSON Map](/examples/leaflet-elevation/leaflet-elevation_hidden-map.html)
+- [Effective LeafletJS and Google StreetView API integration](/examples/leaflet-pegman/leaflet-pegman-lazyLoaded.html)
+- [Effective LeafletJS and Google KMZ file integration](/examples/leaflet-kmz/leaflet-kmz.html)
+- [Effective LeafletJS and GPX Tracks elevation profiles](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
 - [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
 
