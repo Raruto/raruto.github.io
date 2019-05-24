@@ -21,10 +21,10 @@
 - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
 
 ## My Sample Pages
-- [Effective LeafletJS and Google Maps API integration](/examples/leaflet-google/leaflet-google.html)
-- [Effective LeafletJS and Google StreetView API integration](/examples/leaflet-pegman/leaflet-pegman-lazyLoaded.html)
-- [Effective LeafletJS and Google KMZ file integration](/examples/leaflet-kmz/leaflet-kmz.html)
-- [Effective LeafletJS and GPX Tracks elevation profiles](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
+- [Leaflet.js and Google Maps integration](/examples/leaflet-google/leaflet-google.html)
+- [Leaflet.js and Google StreetView integration](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
+- [Leaflet.js and Google KMZ file integration](/examples/leaflet-kmz/leaflet-kmz.html)
+- [Leaflet.js and GPX Tracks elevation profiles](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
 - [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
 
