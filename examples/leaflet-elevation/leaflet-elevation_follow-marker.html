@@ -38,21 +38,6 @@
 	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.3.9/leaflet-elevation.min.js"></script>
 
 	<style>
-		.height-focus.line,
-		.height-focus-label {
-			display: none;
-		}
-
-		.height-focus.circle-lower {
-			stroke: white;
-			fill: black;
-			/*background: url(https://maps.google.com/mapfiles/kml/pal4/icon25.png);*/
-			stroke-width: 3px;
-			-webkit-filter: drop-shadow(0 0 5px #000);
-			filter: drop-shadow(0 0 5px #000);
-		}
-	</style>
-	<style>
 		.gpx-summary {
 			font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
 			font-size: 12px;
@@ -90,18 +75,17 @@
 				url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
 				options: {
 					attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
-					/*subdomains:"1234"*/
 				},
 			},
 			elevationControl: {
 				url: "https://raruto.github.io/examples/leaflet-elevation/via-emilia.gpx",
 				options: {
-					theme: "magenta-theme", //default: lime-theme
-					useHeightIndicator: true, //if false a marker is drawn at map position
-					interpolation: d3.curveLinear, //see https://github.com/d3/d3/wiki/
-					collapsed: false, //collapsed mode, show chart on click or mouseover
-					elevationDiv: "#elevation-div",
+					theme: "steelblue-theme",
+					useHeightIndicator: true,
+					collapsed: false,
 					detachedView: true,
+					elevationDiv: "#elevation-div",
+					followPositionMarker: true,
 				},
 			},
 			layersControl: {
@@ -122,8 +106,8 @@
 
 		controlZoom.addTo(map);
 		controlLayer.addTo(map);
+		controlElevation.addTo(map);
 
-		controlElevation.loadChart(map);
 		controlElevation.loadData(opts.elevationControl.url);
 
 		map.addLayer(baseLayers.OTM);
