@@ -28,7 +28,7 @@
   <script src="https://unpkg.com/leaflet-kmz@0.0.6/libs/GridLayer.GeoJSON.js"></script>
 
   <!-- Leaflet-Transparency -->
-  <script src="https://unpkg.com/leaflet-transparency@0.0.1/leaflet-transparency.js"></script>
+  <script src="https://unpkg.com/leaflet-transparency@0.0.2/leaflet-transparency.js"></script>
 
   <style>
     html,
@@ -61,22 +61,27 @@
     }
   </style>
   <style>
-    .leaflet-top.leaflet-right:hover {
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-
-    .leaflet-top.leaflet-right {
-      margin: 10px;
+    .leaflet-control.opacity-control {
+      margin-right: 10px;
       background-color: rgba(255, 255, 255, 0.5);
       border-radius: 2.5px;
       border: 1px solid rgba(0, 0, 0, 0.2);
+      -webkit-animation: BLINK-ANIMATION 1s linear 5;
+      -moz-animation: BLINK-ANIMATION 1s linear 5;
+      -o-animation: BLINK-ANIMATION 1s linear 5;
+      animation: BLINK-ANIMATION 1s linear 5;
     }
 
-    .leaflet-top.leaflet-right {
-      -webkit-animation: BLINK-ANIMATION 1s linear 4;
-      -moz-animation: BLINK-ANIMATION 1s linear 4;
-      -o-animation: BLINK-ANIMATION 1s linear 4;
-      animation: BLINK-ANIMATION 1s linear 4;
+    .leaflet-control.opacity-control:hover {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .leaflet-left .leaflet-control.opacity-control {
+      margin-left: 40px;
+    }
+
+    .leaflet-right .leaflet-control.opacity-control {
+      margin-right: 13px;
     }
 
     @-webkit-keyframes BLINK-ANIMATION {
@@ -134,6 +139,12 @@
           position: 'topleft',
         },
       },
+      overlayControl: {
+        options: {
+          collapsed: false,
+          position: 'topright'
+        },
+      },
       pegmanControl: {
         options: {
           position: 'bottomright',
@@ -141,11 +152,19 @@
           theme: "leaflet-pegman-v3-small",
         }
       },
-      opacityControl: {
+      opacityBaseControl: {
         options: {
-          sliderImageUrl: "https://raruto.github.io/cdn/leaflet-transparency/0.0.1/opacity-slider2.png",
+          sliderImageUrl: "https://unpkg.com/leaflet-transparency@0.0.2/images/opacity-slider3d7.png",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          position: 'topleft',
+        },
+      },
+      opacityOverlayControl: {
+        options: {
+          sliderImageUrl: "https://unpkg.com/leaflet-transparency@0.0.2/images/opacity-slider2.png",
           backgroundColor: "rgba(229, 227, 223, 0.9)",
-        }
+          position: 'topright',
+        },
       },
     };
 
@@ -158,21 +177,19 @@
     baseLayers["Esri World Imagery"] = new L.TileLayer(opts.satelliteLayer.url, opts.satelliteLayer.options);
 
     var controlZoom = new L.Control.Zoom(opts.zoomControl);
-    var controlLayer = L.control.layers(baseLayers, null, opts.layersControl.options);
+    var controlLayers = L.control.layers(baseLayers, null, opts.layersControl.options);
+    var controlOverlay = L.control.layers(null, null, opts.overlayControl.options);
     var controlPegman = new L.Control.Pegman(opts.pegmanControl.options);
+    var controlBaseOpacity = new L.Control.OpacitySlider(null, opts.opacityBaseControl.options);
 
     // Instantiate KMZ parser (async)
     var kmzParser = new L.KMZParser({
       onKMZLoaded: function(layer, name) {
-        var controlOpacity = new L.Control.OpacitySlider(this.gridlayer, opts.opacityControl.options);
-        controlOpacity.on('hidden', function(e) {
-          this.layer.remove();
-        }, this);
-        controlOpacity.on('visible', function(e) {
-          this.layer.addTo(map);
-        }, this);
+        var controlOverlayOpacity = new L.Control.OpacitySlider(this.gridlayer, opts.opacityOverlayControl.options);
+        controlOverlayOpacity.addFeatureLayer(this.layer);
+        controlOverlay.addOverlay(layer, "ON / OFF");
         layer.addTo(map);
-        controlOpacity.addTo(map);
+        controlOverlayOpacity.addTo(map);
         map.on("baselayerchange", function(event) {
           layer.bringToFront();
         });
@@ -182,9 +199,11 @@
     // Add remote KMZ files as layers (NB if they are 3rd-party servers, they MUST have CORS enabled)
     kmzParser.load('regions.kmz');
 
-    controlLayer.addTo(map);
+    controlLayers.addTo(map);
+    controlOverlay.addTo(map);
     controlZoom.addTo(map);
     controlPegman.addTo(map);
+    controlBaseOpacity.addTo(map);
 
     baseLayers["OpenTopoMap"].addTo(map);
   </script>
