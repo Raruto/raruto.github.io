@@ -17,6 +17,7 @@
 - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
 - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): Leaflet plugin that allows to interact with semi-transparent tiled overlays
 - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): Leaflet plugin that allows to add an opacity control
+- [leaflet-trails](https://raruto.github.io/leaflet-trails): Leaflet plugin that allows easy integration with Lonvia's Waymarked Trails Site
 - [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
 - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
 - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
@@ -27,6 +28,7 @@
 - [Leaflet.js KMZ files loader](/examples/leaflet-kmz/leaflet-kmz.html)
 - [Leaflet.js elevation charts](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
 - [Leaflet.js interactive tiles](/examples/leaflet-pointable/leaflet-pointable.html)
+- [Leaflet.js Waymarked Trails](/examples/leaflet-trails/leaflet-trails.html)
 - [Leaflet.js Opacity Control](/examples/leaflet-transparency/leaflet-transparency.html)
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
 - [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
