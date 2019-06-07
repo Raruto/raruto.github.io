@@ -12,19 +12,22 @@
 - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
 - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
 - [leaflet-google](https://raruto.github.io/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
+- [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
 - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): A KMZ file loader for LeafletJS
 - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
-- [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
+- [leaflet-pointable](https://raruto.github.io/leaflet-pointable): Leaflet plugin that allows to interact with semi-transparent tiled overlays
 - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): Leaflet plugin that allows to add an opacity control
 - [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
 - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
 - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
 
 ## My Sample Pages
-- [Leaflet.js and Google Maps integration](/examples/leaflet-google/leaflet-google.html)
-- [Leaflet.js and Google StreetView integration](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
-- [Leaflet.js and Google KMZ file integration](/examples/leaflet-kmz/leaflet-kmz.html)
-- [Leaflet.js and GPX Tracks elevation profiles](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
+- [Leaflet.js and Google Maps](/examples/leaflet-google/leaflet-google.html)
+- [Leaflet.js and Google StreetView](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
+- [Leaflet.js KMZ files loader](/examples/leaflet-kmz/leaflet-kmz.html)
+- [Leaflet.js elevation charts](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
+- [Leaflet.js interactive tiles](/examples/leaflet-pointable/leaflet-pointable.html)
+- [Leaflet.js Opacity Control](/examples/leaflet-transparency/leaflet-transparency.html)
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
 - [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
 
