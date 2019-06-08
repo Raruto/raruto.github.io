@@ -11,7 +11,7 @@
 	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
 
 	<!-- Leaflet-Pointable -->
-	<script src="https://unpkg.com/leaflet-pointable@0.0.1/leaflet-pointable.js"></script>
+	<script src="https://unpkg.com/leaflet-pointable@0.0.2/leaflet-pointable.js"></script>
 
 	<style>
 		html,
@@ -51,10 +51,10 @@
 		});
 		Overlay.addTo(map);
 
-		control.addOverlay(Overlay, "Hiking Routes");
+		control.addOverlay(Overlay, "ON / OFF");
 
 		map.on("pointable_mouseclick", function(e) {
-			map.openPopup("Clicked overlay: " + e.latlng.lat + "," + e.latlng.lng, e.latlng);
+			map.openPopup("<b>Clicked overlay</b>: " + e.latlng.lat + "," + e.latlng.lng, e.latlng);
 		});
 	</script>
 
