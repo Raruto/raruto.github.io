@@ -23,8 +23,8 @@
 	<script src="https://unpkg.com/geojson-vt@3.0.0/geojson-vt.js"></script>
 
 	<!-- Leaflet-KMZ -->
-	<script src="https://unpkg.com/leaflet-kmz@0.0.8/libs/KMZParser.js"></script>
-	<script src="https://unpkg.com/leaflet-kmz@0.0.8/libs/GridLayer.GeoJSON.js"></script>
+	<script src="https://unpkg.com/leaflet-kmz@0.0.9/libs/KMZParser.js"></script>
+	<script src="https://unpkg.com/leaflet-kmz@0.0.9/libs/GridLayer.GeoJSON.js"></script>
 
 	<style>
 		html,
@@ -62,15 +62,14 @@
 			interactive: false, // Disable default "leaflet.js" mouse layer interactions.
 			pointable: true,    // Enable optimized "geojson-vt.js" mouse layer interactions.
 		});
-		// You can also override global KMZParser options
+
+		// Here you can also override global KMZParser options
 		kmzParser.load('regions.kmz');
 		kmzParser.load('capitals.kmz', { interactive: true });
-		kmzParser.load('globe.kmz', { bindPopup: false, bindTooltip: false });
+		kmzParser.load('globe.kmz', { ballon: false });
 		kmzParser.load('multigeometry.kmz', { pointable: false });
 
-		var control = L.control.layers(null, null, {
-			collapsed: false
-		}).addTo(map);
+		var control = L.control.layers(null, null, { collapsed: false }).addTo(map);
 	</script>
 
 	<a href="https://github.com/Raruto/leaflet-kmz" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github"
