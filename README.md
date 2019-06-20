@@ -12,6 +12,7 @@
 - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
 - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
 - [leaflet-bundles](https://raruto.github.io/leaflet-bundles): Collection of Leaflet bundles to start building web maps with a proper npm module loader (browserify, rollup or webpack)
+- [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours
 - [leaflet-google](https://raruto.github.io/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
 - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
 - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): A KMZ file loader for LeafletJS
@@ -28,6 +29,7 @@
 - [Leaflet.js and Google StreetView](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
 - [Leaflet.js KMZ files loader](/examples/leaflet-kmz/leaflet-kmz.html)
 - [Leaflet.js elevation charts](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
+- [Leaflet.js gestures handling](/examples/leaflet-pointable/leaflet-gesture-handling.html)
 - [Leaflet.js interactive tiles](/examples/leaflet-pointable/leaflet-pointable.html)
 - [Leaflet.js Waymarked Trails](/examples/leaflet-trails/leaflet-trails.html)
 - [Leaflet.js Opacity Control](/examples/leaflet-transparency/leaflet-transparency.html)
