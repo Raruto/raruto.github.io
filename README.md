@@ -29,6 +29,7 @@
 <hr>
 
 <br>
+
 ## My Sample Pages
 - [Leaflet.js and Google Maps](/examples/leaflet-google/leaflet-google.html)
 - [Leaflet.js and Google StreetView](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
@@ -41,6 +42,5 @@
 - [Google Maps Geolocate Control](/examples/google-geolocate/google-geolocate.html)
 - [Google Maps Opacity Control](/examples/google-transparency/google-transparency.html)
 
-<br>
 ## My Test Pages
 - [/maps](/maps)
