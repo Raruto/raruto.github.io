@@ -33,12 +33,12 @@
   - [geolocate control](/examples/google-geolocate/google-geolocate.html)
   - [opacity control](/examples/google-transparency/google-transparency.html)
 - Leaflet Maps:
-  - [google maps api integration](/examples/leaflet-google/leaflet-google.html)
+  - [google maps layers](/examples/leaflet-google/leaflet-google.html)
   - [opacity control](/examples/leaflet-transparency/leaflet-transparency.html)
-  - [elevation chart](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
-  - [kml/kmz file loader](/examples/leaflet-kmz/leaflet-kmz.html)
-  - [scroll/touch gesture handling](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
-  - [pegman control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
+  - [elevation chart control](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
+  - [kml/kmz layers](/examples/leaflet-kmz/leaflet-kmz.html)
+  - [scroll/touch to zoom](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
+  - [streetview control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
   - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
   - [waymarked trails](/examples/leaflet-trails/leaflet-trails.html)
 
