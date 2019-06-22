@@ -41,6 +41,6 @@
 
 <br>
 
-<hr>
+<hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
-<hr>
+<hr style="background: #ccc;">
