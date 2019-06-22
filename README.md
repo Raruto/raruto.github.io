@@ -8,9 +8,9 @@
  </p>
 
 ## My Projects
+- [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 - [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
 - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
-- [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
 - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours
 - [leaflet-google](https://raruto.github.io/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
