@@ -24,6 +24,10 @@
 - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
 - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
 
+<hr style="background: #ccc;">
+<p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
+<hr style="background: #ccc;">
+
 ## My Sample Pages
 - [Leaflet.js and Google Maps](/examples/leaflet-google/leaflet-google.html)
 - [Leaflet.js and Google StreetView](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
@@ -38,9 +42,3 @@
 
 ## My Test Pages
 - [/maps](/maps)
-
-<br>
-
-<hr style="background: #ccc;">
-<p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
-<hr style="background: #ccc;">
