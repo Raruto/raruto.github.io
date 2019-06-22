@@ -28,8 +28,6 @@
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
 <hr>
 
-<br>
-
 ## My Sample Pages
 - [Leaflet.js and Google Maps](/examples/leaflet-google/leaflet-google.html)
 - [Leaflet.js and Google StreetView](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
