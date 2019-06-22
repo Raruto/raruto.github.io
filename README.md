@@ -41,5 +41,6 @@
   - [streetview control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
   - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
   - [waymarked trails](/examples/leaflet-trails/leaflet-trails.html)
-- **Test Pages**
-  - [/maps](/maps)
+
+## My Test Pages
+- [/maps](/maps)
