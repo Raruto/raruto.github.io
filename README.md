@@ -29,10 +29,10 @@
 <hr style="background: #ccc;">
 
 ## My Sample Pages
-- Google Maps:
+- **Google Maps**:
   - [geolocate control](/examples/google-geolocate/google-geolocate.html)
   - [opacity control](/examples/google-transparency/google-transparency.html)
-- Leaflet Maps:
+- **Leaflet Maps**:
   - [google maps layers](/examples/leaflet-google/leaflet-google.html)
   - [opacity control](/examples/leaflet-transparency/leaflet-transparency.html)
   - [elevation chart control](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
@@ -41,6 +41,5 @@
   - [streetview control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
   - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
   - [waymarked trails](/examples/leaflet-trails/leaflet-trails.html)
-
-## My Test Pages
-- [/maps](/maps)
+- **Test Pages**
+  - [/maps](/maps)
