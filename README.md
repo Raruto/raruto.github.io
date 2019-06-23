@@ -9,6 +9,7 @@
 
 ## My Projects
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
+- [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
 - **Google**:
   - [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
   - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
@@ -26,7 +27,6 @@
 - **Wordpress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
   - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
-- [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
 
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
@@ -37,7 +37,7 @@
   - [geolocate control](/examples/google-geolocate/google-geolocate.html)
   - [opacity control](/examples/google-transparency/google-transparency.html)
 - **Leaflet Maps**:
-  - [control layers inline](/examples/control-layers-inline/control-layers-inline.html)
+  - [control layers inline](/examples/leaflet-control-layers-inline/leaflet-control-layers-inline.html)
   - [google maps layers](/examples/leaflet-google/leaflet-google.html)
   - [opacity control](/examples/leaflet-transparency/leaflet-transparency.html)
   - [elevation chart control](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
