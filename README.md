@@ -24,6 +24,7 @@
   - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): Leaflet plugin that allows to interact with semi-transparent tiled overlays
   - [leaflet-trails](https://raruto.github.io/leaflet-trails): Leaflet plugin that allows easy integration with Lonvia's Waymarked Trails Site
   - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): Leaflet plugin that allows to add an opacity control
+  - [leaflet-ui](https://raruto.github.io/leaflet-ui): Leaflet maps bundle for common user interface customizations
 - **Wordpress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
   - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
@@ -37,10 +38,11 @@
   - [geolocate control](/examples/google-geolocate/google-geolocate.html)
   - [opacity control](/examples/google-transparency/google-transparency.html)
 - **Leaflet Maps**:
-  - [control layers inline](/examples/leaflet-control-layers-inline/leaflet-control-layers-inline.html)
+  - [custom default-ui](/examples/leaflet-ui/leaflet-ui.html)
   - [google maps layers](/examples/leaflet-google/leaflet-google.html)
   - [opacity control](/examples/leaflet-transparency/leaflet-transparency.html)
   - [elevation chart control](/examples/leaflet-elevation/leaflet-elevation_hoverable-tracks.html)
+  - [inline control-layers](/examples/leaflet-control-layers-inline/leaflet-control-layers-inline.html)
   - [kml/kmz layers](/examples/leaflet-kmz/leaflet-kmz.html)
   - [scroll/touch to zoom](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
   - [streetview control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
