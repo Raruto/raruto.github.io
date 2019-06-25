@@ -24,7 +24,7 @@
   - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): Leaflet plugin that allows to interact with semi-transparent tiled overlays
   - [leaflet-trails](https://raruto.github.io/leaflet-trails): Leaflet plugin that allows easy integration with Lonvia's Waymarked Trails Site
   - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): Leaflet plugin that allows to add an opacity control
-  - [leaflet-ui](https://raruto.github.io/leaflet-ui): Leaflet maps bundle for common user interface customizations
+  - [leaflet-ui](https://raruto.github.io/leaflet-ui): Leaflet bundle for common user interface customizations
 - **Wordpress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
   - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
