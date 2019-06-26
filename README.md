@@ -9,11 +9,9 @@
 
 ## My Projects
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
-- [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
-- **Google Maps Plugins**:
+- **GIS Plugins**:
   - [google-geolocate](https://raruto.github.io/google-geolocate): geolocation control
-  - [google-transparency](https://raruto.github.io/google-transparency): opacity control
-- **Leaflet Plugins**:
+  - [google-transparency](https://raruto.github.io/google-transparency): opacity slider control
   - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): inline layers control
   - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): display elevation profiles using d3js
   - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): prevent default map scroll/touch behaviours
@@ -22,14 +20,13 @@
   - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): easy integration with the Google StreetView Service API
   - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): interact with semi-transparent tiled overlays
   - [leaflet-trails](https://raruto.github.io/leaflet-trails): easy integration with Lonvia's Waymarked Trails Site
-  - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity control
+  - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity slider control
   - [leaflet-ui](https://raruto.github.io/leaflet-ui): pre-compiled bundle for common user interface customizations
-- **Wordpress**:
-  - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
-  - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
-
-  - [leaflet-npm](https://raruto.github.io/leaflet-npm): Collection of Leaflet bundles to start building web maps with a proper npm module loader (browserify, rollup or webpack)
-
+  - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): caching-Proxy for WMTS Servers
+- **Dev Tools**:
+  - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
+  - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WP Sites
+  - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
