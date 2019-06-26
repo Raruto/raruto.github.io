@@ -10,24 +10,26 @@
 ## My Projects
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): Simple caching-Proxy for WMTS Servers
-- **Google**:
-  - [google-geolocate](https://raruto.github.io/google-geolocate): Google Maps plugin that allows to add a geolocation control
-  - [google-transparency](https://raruto.github.io/google-transparency): Google Maps plugin that allows to add an opacity control
-- **Leaflet**:
-  - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): Leaflet plugin that allows to display inline layers control
-  - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): Leaflet plugin that allows to add elevation profiles using d3js
-  - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): Leaflet plugin that allows to prevent default map scroll/touch behaviours
-  - [leaflet-google](https://raruto.github.io/leaflet-google): Leaflet plugin that allows easy integration with the Google Maps API
-  - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): A KMZ file loader for LeafletJS
-  - [leaflet-npm](https://raruto.github.io/leaflet-npm): Collection of Leaflet bundles to start building web maps with a proper npm module loader (browserify, rollup or webpack)
-  - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): Leaflet plugin that allows easy integration with the Google StreetView Service API
-  - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): Leaflet plugin that allows to interact with semi-transparent tiled overlays
-  - [leaflet-trails](https://raruto.github.io/leaflet-trails): Leaflet plugin that allows easy integration with Lonvia's Waymarked Trails Site
-  - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): Leaflet plugin that allows to add an opacity control
-  - [leaflet-ui](https://raruto.github.io/leaflet-ui): Leaflet bundle for common user interface customizations
+- **Google Maps Plugins**:
+  - [google-geolocate](https://raruto.github.io/google-geolocate): geolocation control
+  - [google-transparency](https://raruto.github.io/google-transparency): opacity control
+- **Leaflet Plugins**:
+  - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): inline layers control
+  - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): display elevation profiles using d3js
+  - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): prevent default map scroll/touch behaviours
+  - [leaflet-google](https://raruto.github.io/leaflet-google): easy integration with the Google Maps API
+  - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): KML/KMZ file loader
+  - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): easy integration with the Google StreetView Service API
+  - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): interact with semi-transparent tiled overlays
+  - [leaflet-trails](https://raruto.github.io/leaflet-trails): easy integration with Lonvia's Waymarked Trails Site
+  - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity control
+  - [leaflet-ui](https://raruto.github.io/leaflet-ui): pre-compiled bundle for common user interface customizations
 - **Wordpress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): A simple skeleton repo for managing a WordPress site using: wp-cli, git, composer
   - [wp-devops](https://raruto.github.io/wp-devops): A useful helper plugin for every wordpress developer
+
+  - [leaflet-npm](https://raruto.github.io/leaflet-npm): Collection of Leaflet bundles to start building web maps with a proper npm module loader (browserify, rollup or webpack)
+
 
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
