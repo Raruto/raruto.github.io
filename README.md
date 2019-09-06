@@ -49,4 +49,5 @@
   - [waymarked trails](/examples/leaflet-trails/leaflet-trails.html)
 
 ## My Test Pages
+- [/3d](/3d)
 - [/maps](/maps)
