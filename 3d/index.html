@@ -1,0 +1,163 @@
+<html>
+
+<head>
+  <title>three.js</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://unpkg.com/three@0.108.0/build/three.js"></script>
+  <script>
+    var scene, camera, light, renderer;
+    var mesh, cube, edges, line;
+
+    init();
+    animate();
+
+    function init() {
+
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: false
+      });
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.autoClear = true;
+      document.body.appendChild(renderer.domElement);
+
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      light = new THREE.PointLight(0xffffff, 5, 100);
+
+      scene.background = new THREE.Color(0xdddddd);
+
+      // create a red Cube
+      var cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+      var cubeMaterial = new THREE.MeshBasicMaterial({
+        color: 0xf00000
+      });
+      cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+
+      // create a blue Line
+      var lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x0000ff,
+        linewidth: 100
+      });
+      var lineGeometry = new THREE.Geometry();
+      lineGeometry.vertices.push(new THREE.Vector3(-5, 0, 0));
+      lineGeometry.vertices.push(new THREE.Vector3(0, -2, 0));
+      lineGeometry.vertices.push(new THREE.Vector3(5, 0, 0));
+      line = new THREE.Line(lineGeometry, lineMaterial);
+
+      // add black edges to cube
+      var edgesGeometry = new THREE.EdgesGeometry(cubeGeometry);
+      edges = new THREE.LineSegments(edgesGeometry, new THREE.LineBasicMaterial({
+        color: 0x000000
+      }));
+
+
+
+      var geometry = new THREE.SphereGeometry(0.75, 20, 20);
+      var material = new THREE.MeshLambertMaterial({
+        color: 0xffffff
+      });
+
+      mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(0, 3, 0);
+      scene.add(mesh);
+      var edgesG = new THREE.EdgesGeometry(geometry);
+      var lineS = new THREE.LineSegments(edgesG, new THREE.LineBasicMaterial({
+        color: 0xffffff
+      }));
+      mesh.add(lineS);
+
+
+      scene.add(light);
+      scene.add(edges);
+      scene.add(cube);
+      scene.add(line);
+      scene.add(edges);
+
+      addHelpers();
+
+      camera.position.set(0, 0, 5);
+      camera.lookAt(0, 0, 0);
+
+      window.addEventListener('resize', onWindowResize, false);
+      document.addEventListener('mousemove', onMouseMove, false);
+
+    }
+
+    var gridHelper, pointLightHelper;
+
+    function addHelpers() {
+      // create a grid plane
+      gridHelper = new THREE.GridHelper(10, 10, 0xff0000, 0x808080);
+      gridHelper.position.y = -2;
+      gridHelper.position.x = 0;
+      gridHelper.position.z = 0;
+
+      // create a point sphere
+      pointLightHelper = new THREE.PointLightHelper(light, 1);
+
+      scene.add(gridHelper);
+      scene.add(pointLightHelper);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      var time = -performance.now() * 0.0003;
+
+      camera.position.x = 10 * Math.cos(time);
+      camera.position.z = 10 * Math.sin(time);
+      camera.lookAt(scene.position);
+
+      light.position.x = Math.sin(time * 1.7) * 5;
+      light.position.y = Math.cos(time * 1.5) * 10;
+      light.position.z = Math.cos(time * 1.3) * 5;
+
+      cube.rotation.x += 0.005;
+      cube.rotation.y += 0.005;
+
+      edges.rotation.x += 0.005;
+      edges.rotation.y += 0.005;
+
+      mesh.rotation.y += 0.01;
+
+      renderer.render(scene, camera);
+    };
+
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function onMouseMove(event) {
+      mouseX = event.clientX - window.innerWidth / 2;
+      mouseY = event.clientY - window.innerHeight / 2;
+      camera.position.x += (mouseX - camera.position.x) * 0.005;
+      camera.position.y += (mouseY - camera.position.y) * 0.005;
+      camera.lookAt(scene.position);
+    }
+  </script>
+</body>
+
+</html>
