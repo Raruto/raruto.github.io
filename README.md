@@ -21,7 +21,7 @@
   - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): interact with semi-transparent tiled overlays
   - [leaflet-trails](https://raruto.github.io/leaflet-trails): easy integration with Lonvia's Waymarked Trails Site
   - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity slider control
-  - [leaflet-ui](https://raruto.github.io/leaflet-ui): pre-compiled bundle for common user interface customizations
+  - [leaflet-ui](https://raruto.github.io/leaflet-ui): presets for common user interface customizations
   - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): caching-Proxy for WMTS Servers
 - **Dev Tools**:
   - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
