@@ -99,6 +99,8 @@
 			},
 		});
 
+		fileLayer.addTo(map);
+
 		fileLayer.loader.on('data:loading', function(e) {
 			controlElevation.clear();
 		});
@@ -109,8 +111,6 @@
 			layer = e.layer;
 			if (!controlElevation._map) controlElevation.addTo(map);
 		});
-
-		fileLayer.addTo(map);
 	</script>
 
 	<a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github"
