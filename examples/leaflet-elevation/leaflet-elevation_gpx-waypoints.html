@@ -19,14 +19,15 @@
 	<style>
 		html,
 		body,
-		#map,
+		.leaflet-map,
 		.elevation-div {
 			padding: 0px;
 			margin: 0px;
 		}
 
-		#map {
+		.leaflet-map {
 			height: 55vh;
+			max-height: 100vh;
 		}
 
 		.elevation-div {
@@ -93,7 +94,7 @@
 
 <body>
 
-	<div id="map"></div>
+	<div id="map" class="leaflet-map"></div>
 
 	<script>
 		var opts = {
