@@ -21,73 +21,6 @@
 		}
 	</style>
 
-	<!-- Custom leaflet-button -->
-	<style>
-		.leaflet-button {
-			padding: 0;
-		}
-
-		.leaflet-button .leaflet-control-layers-overlays label {
-			padding: 5px;
-			cursor: pointer;
-			max-width: 20px;
-			overflow: visible;
-			white-space: nowrap;
-		}
-
-		.leaflet-button .leaflet-control-layers-overlays label>div {
-			display: inline-block;
-			border-radius: 0 3px 3px 0;
-			pointer-events: none;
-		}
-
-		.leaflet-button .leaflet-control-layers-overlays label:hover>div>span {
-			font-size: inherit;
-			padding-left: 5px;
-			padding-right: 5px;
-			margin: 0 8px;
-			border: 1px solid #666;
-		}
-
-		.leaflet-left .leaflet-button label:before,
-		.leaflet-right .leaflet-button label:after {
-			background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAE9klEQVRIib3XbUxTVxwG8GcgIGamIqibMcBKEGgAsSWGCIq89PW2t7QlpC1IV1JYeRuIGM0wW9QRlyXLsn1wCTgzzSI6cRmInUJBJoLZ1DCcG9PFQDA655gzLL5EhWcfAIPfHO38Jyc35344v/yfe+/JucCLV6Bk4cIPhJiY38SYmGvyFSv6l4aE7A8KDHSGAKsBBAB45T+s98K1vl6huPVPXR1ZX09WV/N3l4vtJhMrU1KeJkdE9IaFhLiXhoauArDAn3DKng0bRi/k53PYZuP98nJOVlaSNTVkfT0fVVbyuCiyID7+doxE0rg4ODgeQKA/4ICEsLCjZ0TxSZtSyRa1mj8UFHDc5eKDsjKyvJzcsoXcupVnCgq4WSYbjVy82AFAAj88AqkmOnr0e4uFbUolD2Rm8vOsLHbm5XHYbudtp5P3Sks5WVvLB7W13JOe/njZokXvA1jiKxxenZZ29XZZGdtVKnao1fSo1WzJzubBrCweVirZIQg8bzbzpsPBLzUaJkVEeABE+gpv9tjtEw/KynjOYOBxpZKtublsU6t5Qq1mu1rNY7m5PJiVxb3r1jFn5cqBQEAHINgndaVEcmDM7X48YrOxWxB4Rq9ntyDQo9XyG5WKHq2WX2RmPsmTSi+mhIc3AlD42ikAhJcoFJcnKio4ZLGwU6djlyCwWxDYo9ez12Bgnyjy3dTUMQAF/gBnS99iMv1xz+Viv9HITp2OXkGgVxDYJQjsNRjYodFQiIz0Agj3m7ogOLhxqKTk4Y2iIvbMYN45o89gYNPGjfcDAgLe84cXCEALYG+pQjHyl9vNK/n57JrTrXdO1LVJSdcBrPcVjZdHRXXst9snhqurH92pqpq663RyQBSfi9k785J5tFomR0ScgI+bRaxZLu/5aedOsrGRD2tqOO5yccxuZ69e/1zM3YLAPlHkx2lp4wAcvqBLcuLjP/m2spJsbJzeBmtq+LfLxQGjkR6N5hk4e/3OYGCZTPYnAJsvsKwmI+MKd+0i6+rIqipOlZeTbjfvlZRw0GxmlyDQo9HwlE7H0zodT2o0vGK18i2Z7BoA+fzYoKA1W9PTx7h9O1lRwSelpZxwOjleXMy7DgcnnE7eKS7mdauVl/Pz+aPFwhGbjTcLC9mmUk29IZE0z7fj18TY2MNDDgefut28U1TEEZuNwwUFHLJYeNFk4iWzmYMWC4csFg5aLBwwGp9F/3Zy8iCAxPniG99MSLj2i9XK61YrL5lM7BNFds9skZ0zEZ/Sap/F3S0IPGswcE9q6igAw3xhANDro6OHjubmcsBoZL8osnvmM+qaM2bnPXo9z4oiG+TyXwFs8AUGgLUJYWGH3pHLb7VkZ0+eVqnYL4o8n5fHc6LIPlHkWVHkOVHkBZOJHq2WJqm0G8DrvsIAEAJAzFi9eujwjh38NCdn6rOMDH6lVLJdreZJjYbHlEo2ZWayVCb7GYDdH+hsBReWlHgPtbZyTWJiZ9KSJbuNUmlrYWxshyMu7rRJKv167fLlHwHIgp9PmtqmpqYbOxsauCoqyjxzbwWmTxZSTEcb5E8QABAdHf1Ba2vrpFarHQsNDfX5GPOitayiosLb3NxMhULRBODVlwVr9+3bN7pt2zbKZDIjpv8Y/v9KTExsOHLkyJTZbL4KIOaloAAQFRW1e9OmTYyLi9sNYNFLgwHYAwICPgSwyp+L/gujVIy6s7VoOQAAAABJRU5ErkJggg==) no-repeat;
-			background-size: auto;
-			width: 20px;
-			height: 20px;
-			display: inline-block;
-			content: "";
-			background-size: contain;
-			vertical-align: middle;
-			width: 20px;
-		}
-
-		.leaflet-button .leaflet-control-layers-overlays input[type="checkbox"] {
-			display: none;
-		}
-
-		.leaflet-button .leaflet-control-layers-overlays label>div>span {
-			font-size: 0;
-			background-color: #fff;
-			user-select: none;
-		}
-
-		.leaflet-button .leaflet-control-layers-overlays input[type="checkbox"]:checked+span:after {
-			background-color: rgb(178, 216, 121);
-			border-radius: 3px;
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			content: "";
-			display: inline-block;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			z-index: -1;
-		}
-	</style>
-
 	<style>
 		.leaflet-container {
 			max-height: 100vh;
@@ -97,40 +30,10 @@
 			clear: none;
 		}
 
-		.leaflet-button {
+		.leaflet-trails-button {
 			clear: none;
 			margin-top: 40px;
 			float: right;
-		}
-
-		.leaflet-left .hiking-control label:before,
-		.leaflet-right .hiking-control label:after {
-			background-image: url(https://static.waymarkedtrails.org/img/map_hiking.png);
-		}
-
-		.leaflet-left .cycling-control label:before,
-		.leaflet-right .cycling-control label:after {
-			background-image: url(https://static.waymarkedtrails.org/img/map_cycling.png);
-		}
-
-		.leaflet-left .mtb-control label:before,
-		.leaflet-right .mtb-control label:after {
-			background-image: url(https://static.waymarkedtrails.org/img/map_mtb.png);
-		}
-
-		.leaflet-left .skating-control label:before,
-		.leaflet-right .skating-control label:after {
-			background-image: url(https://static.waymarkedtrails.org/img/map_skating.png);
-		}
-
-		.leaflet-left .riding-control label:before,
-		.leaflet-right .riding-control label:after {
-			background-image: url(https://static.waymarkedtrails.org/img/map_riding.png);
-		}
-
-		.leaflet-left .slopes-control label:before,
-		.leaflet-right .slopes-control label:after {
-			background-image: url(https://static.waymarkedtrails.org/img/map_slopes.png);
 		}
 	</style>
 </head>
@@ -146,8 +49,8 @@
 			gestureHandling: false,
 			resizerControl: true,
 			plugins: [
-				"leaflet-trails@0.0.1/leaflet-trails.js",
-				"leaflet-trails@0.0.1/leaflet-trails.css",
+				"leaflet-trails@0.0.2/leaflet-trails.js",
+				"leaflet-trails@0.0.2/leaflet-trails.css",
 				"leaflet-pointable@0.0.2/leaflet-pointable.js",
 			],
 		});
@@ -172,7 +75,7 @@
 					position: "bottomleft",
 					collapsed: false,
 					// inline: true,
-					className: 'leaflet-button ' + id + '-control',
+					className: 'leaflet-trails-button ' + id + '-control',
 				});
 
 				controls[id].addOverlay(overlays[id], id.charAt(0).toUpperCase() + id.slice(1));
