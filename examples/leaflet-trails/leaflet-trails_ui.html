@@ -8,7 +8,7 @@
 
 	<!-- Leaflet-UI -->
 	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
-	<script src="https://unpkg.com/leaflet-ui@0.3.1/dist/leaflet-ui.js"></script>
+	<script src="https://unpkg.com/leaflet-ui@0.3.2/dist/leaflet-ui.js"></script>
 
 	<style>
 		html,
@@ -51,30 +51,11 @@
 				},
 			},
 			plugins: [
-				"leaflet-trails@0.0.5/leaflet-trails.js",
-				"leaflet-trails@0.0.5/leaflet-trails.css",
+				"leaflet-trails@0.1.1/leaflet-trails.js",
+				"leaflet-trails@0.1.1/leaflet-trails.css",
 				"leaflet-pointable@0.0.2/leaflet-pointable.js",
 			],
 		});
-
-		// map.on('zoomend', function(e) {
-		// 	var zoom = map.getZoom();
-		// 	console.log(zoom);
-		// 	if (zoom > 18) {
-		// 		var layers = map.controls.layers;
-		// 		for (var i in layers._layers) {
-		// 			var layer = layers._layers[i].layer;
-		// 			if (layer.mapTypeId && layer.mapTypeId == "satellite" && !layer._map) {
-		// 				for (var j in layers._layerControlInputs) {
-		// 					var input = layers._layerControlInputs[j];
-		// 					if (input.layerId == layer._leaflet_id) {
-		// 						input.click();
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// });
 	</script>
 
 	<a href="https://github.com/Raruto/leaflet-trails" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github"
