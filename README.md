@@ -14,7 +14,7 @@
   - [google-transparency](https://raruto.github.io/google-transparency): opacity slider control
   - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): inline layers control
   - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): display elevation profiles using d3js
-  - [leaflet-edit-osm](https://raruto.github.io/leaflet-edit-osm): edit in osm control
+  - [leaflet-edit-osm](https://raruto.github.io/leaflet-edit-osm): unobtrusive edit in osm control
   - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): prevent default map scroll/touch behaviours
   - [leaflet-google](https://raruto.github.io/leaflet-google): easy integration with the Google Maps API
   - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): KML/KMZ file loader
