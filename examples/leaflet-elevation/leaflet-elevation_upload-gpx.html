@@ -13,8 +13,8 @@
 	<script src="https://unpkg.com/leaflet-ui@0.3.5/dist/leaflet-ui.js"></script>
 
 	<!-- leaflet-elevation -->
-	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.7.8/leaflet-elevation.css" />
-	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.7.8/leaflet-elevation.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@0.7.9/leaflet-elevation.css" />
+	<script src="https://unpkg.com/@raruto/leaflet-elevation@0.7.9/leaflet-elevation.js"></script>
 
 	<!-- leaflet-filelayer -->
 	<script src="https://unpkg.com/@tmcw/togeojson@3.0.1/dist/togeojsons.min.js"></script>
@@ -110,11 +110,12 @@
 			if (layer) layer.remove()
 			layer = e.layer;
 			if (!controlElevation._map) controlElevation.addTo(map);
+			else controlElevation.redraw();
 		});
 	</script>
 
 	<a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github"
-		  width="163"> </a>
+		 width="163"> </a>
 
 </body>
 
