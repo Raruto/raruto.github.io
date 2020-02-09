@@ -45,7 +45,7 @@
   - [inline control-layers](/examples/leaflet-control-layers-inline/leaflet-control-layers-inline.html)
   - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
   - [scroll/touch to zoom](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
-  - [streetview control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
+  - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
   - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
   - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
 
