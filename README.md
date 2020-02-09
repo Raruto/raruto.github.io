@@ -42,7 +42,7 @@
   - [google maps layers](/examples/leaflet-google/leaflet-google.html)
   - [opacity control](/leaflet-transparency/examples/leaflet-transparency.html)
   - [elevation chart control](/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html)
-  - [inline control-layers](/examples/leaflet-control-layers-inline/leaflet-control-layers-inline.html)
+  - [inline control-layers](/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html)
   - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
   - [scroll/touch to zoom](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
   - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
