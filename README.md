@@ -46,7 +46,7 @@
   - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
   - [scroll/touch to zoom](/leaflet-gesture-handling/examples/leaflet-gesture-handling.html)
   - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
-  - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
+  - [pointable tiles](/leaflet-pointable/examples/leaflet-pointable.html)
   - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
 
 ## My Test Pages
