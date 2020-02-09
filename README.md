@@ -47,7 +47,7 @@
   - [scroll/touch to zoom](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
   - [streetview control](/examples/leaflet-pegman/leaflet-pegman-lazyLoading.html)
   - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
-  - [waymarked trails](/examples/leaflet-trails/leaflet-trails.html)
+  - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
 
 ## My Test Pages
 - [/3d](/3d)
