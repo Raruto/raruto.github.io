@@ -38,7 +38,7 @@
   - [geolocate control](/examples/google-geolocate/google-geolocate.html)
   - [opacity control](/examples/google-transparency/google-transparency.html)
 - **Leaflet Maps**:
-  - [custom default-ui](/examples/leaflet-ui/leaflet-ui.html)
+  - [custom default-ui](/leaflet-ui/examples/leaflet-ui.html)
   - [google maps layers](/examples/leaflet-google/leaflet-google.html)
   - [opacity control](/examples/leaflet-transparency/leaflet-transparency.html)
   - [elevation chart control](/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html)
