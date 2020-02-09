@@ -44,7 +44,7 @@
   - [elevation chart control](/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html)
   - [inline control-layers](/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html)
   - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
-  - [scroll/touch to zoom](/examples/leaflet-gesture-handling/leaflet-gesture-handling.html)
+  - [scroll/touch to zoom](/leaflet-gesture-handling/examples/leaflet-gesture-handling.html)
   - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
   - [pointable tiles](/examples/leaflet-pointable/leaflet-pointable.html)
   - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
