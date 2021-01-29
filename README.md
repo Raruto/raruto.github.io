@@ -45,6 +45,7 @@
 ## Active contributor:
 
 - [Cockpit CMS](https://github.com/agentejo/cockpit): self-hosted headless and api-driven CMS
+- [CpMultiplane](https://github.com/raffaelj/CpMultiplane): small PHP frontend for Cockpit CMS 
 - [WP Dependency Installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
 - [Local Development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
 - [Github Updater](https://github.com/afragen/github-updater): automatically update installed WordPress Git hosted themes and plugins
@@ -61,6 +62,7 @@
 - [bbPress](https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/)
 - [BuddyPress](https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/)
 - [Cockpit CMS](https://github.com/Raruto/cockpit-i18n)
+- [CpMultiplane](https://github.com/raffaelj/CpMultiplane-i18n)
 - [Events Manager](https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/)
 - [Featured image by URL](https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/)
 - [Horos](https://github.com/horosproject/horos): DICOM medical image viewer
