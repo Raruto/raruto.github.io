@@ -32,6 +32,7 @@
   - [cockpit-blog](https://github.com/Raruto/cockpit-blog): skeleton repo to start building Cockpit Sites
   - [cockpit-native-lazy-loading](https://github.com/Raruto/cockpit-native-lazy-loading): native lazy loading addon for Cockpit CMS 
   - [cockpit-extended-forms](https://github.com/Raruto/cockpit-extended-forms): improved core Forms module for Cockpit CMS 
+  - [cockpit-honeypot](https://github.com/Raruto/cockpit-honeypot): honeypot addon for Cockpit CMS 
 
 - **WordPress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WordPress Sites
