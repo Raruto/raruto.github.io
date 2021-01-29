@@ -60,8 +60,10 @@
 
 - [bbPress](https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/)
 - [BuddyPress](https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/)
+- [Cockpit CMS](https://github.com/Raruto/cockpit-i18n)
 - [Events Manager](https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/)
 - [Featured image by URL](https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/)
+- [Horos](https://github.com/horosproject/horos): DICOM medical image viewer
 - [Simple History](https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/)
 - [User Submitted Posts](https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/)
 - [User Post Gallery](https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/)
