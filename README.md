@@ -44,14 +44,14 @@
 
 ## Active contributor:
 
-- [Cockpit CMS](https://github.com/agentejo/cockpit): self-hosted headless and api-driven CMS
-- [CpMultiplane](https://github.com/raffaelj/CpMultiplane): small PHP frontend for Cockpit CMS 
-- [WP Dependency Installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
-- [Local Development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
-- [Github Updater](https://github.com/afragen/github-updater): automatically update installed WordPress Git hosted themes and plugins
-- [Composerpress](https://github.com/tomjn/composerpress): retroactively creates a composer.json for a WordPress site.
-- [Events Manager](https://plugins.trac.wordpress.org/browser/events-manager/): handle WordPress Events Registration, Bookings, Calendars and Locations with ease
-- [Send PDF for Contact Form 7](https://github.com/Florent73/send-pdf-for-contact-form-7): automatically generate PDF files from Contact Form 7 submissions
+- [Cockpit CMS](https://github.com/agentejo/cockpit): _self-hosted headless and api-driven CMS_
+- [CpMultiplane](https://github.com/raffaelj/CpMultiplane): _small PHP frontend for Cockpit CMS_
+- [WP Dependency Installer](https://github.com/afragen/wp-dependency-installer): _lightweight class to automatically install WordPress plugins dependencies_
+- [Local Development](https://wordpress.org/plugins/local-development/): _improved local development with just a WordPress plugin_
+- [Github Updater](https://github.com/afragen/github-updater): _automatically update installed WordPress Git hosted themes and plugins_
+- [Composerpress](https://github.com/tomjn/composerpress): _retroactively creates a composer.json for a WordPress site_
+- [Events Manager](https://plugins.trac.wordpress.org/browser/events-manager/): _handle WordPress Events Registration, Bookings, Calendars and Locations with ease_
+- [Send PDF for Contact Form 7](https://github.com/Florent73/send-pdf-for-contact-form-7): _automatically generate PDF files from Contact Form 7 submissions_
 
 ## Translated projects:
 
@@ -61,7 +61,7 @@
 - [CpMultiplane](https://github.com/raffaelj/CpMultiplane-i18n)
 - [Events Manager](https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/)
 - [Featured image by URL](https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/)
-- [Horos](https://github.com/horosproject/horos): DICOM medical image viewer
+- [Horos](https://github.com/horosproject/horos): _DICOM medical image viewer_
 - [Simple History](https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/)
 - [User Submitted Posts](https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/)
 - [User Post Gallery](https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/)
