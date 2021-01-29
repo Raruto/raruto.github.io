@@ -38,6 +38,10 @@
   - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API 
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
+<hr style="background: #ccc;">
+<p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
+<hr style="background: #ccc;">
+
 ## Active contributor:
 
 - [Cockpit CMS](https://github.com/agentejo/cockpit): self-hosted headless and api-driven CMS
@@ -46,11 +50,23 @@
 - [Github Updater](https://github.com/afragen/github-updater): automatically update installed WordPress Git hosted themes and plugins
 - [Composerpress](https://github.com/tomjn/composerpress): retroactively creates a composer.json for a WordPress site.
 - [Events Manager](https://plugins.trac.wordpress.org/browser/events-manager/): handle WordPress Events Registration, Bookings, Calendars and Locations with ease
-- [Send PDF for Contact Form-7](https://github.com/Florent73/send-pdf-for-contact-form-7): automatically generate PDF files from Contact Form 7 submissions
+- [Send PDF for Contact Form 7](https://github.com/Florent73/send-pdf-for-contact-form-7): automatically generate PDF files from Contact Form 7 submissions
 
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
 <hr style="background: #ccc;">
+
+## Translated projects:
+
+- [bbPress](https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/)
+- [BuddyPress](https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/)
+- [Events Manager](https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/)
+- [Featured image by URL](https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/)
+- [Simple History](https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/)
+- [User Submitted Posts](https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/)
+- [User Post Gallery](https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/)
+- [WooCommerce Email Inquiry & Cart Options](https://translate.wordpress.org/locale/it/default/wp-plugins/woocommerce-email-inquiry-cart-options/)
+- [Radcliffe](https://translate.wordpress.org/locale/it/default/wp-themes/radcliffe/)
 
 ## My Sample Pages
 - **Google Maps**:
