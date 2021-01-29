@@ -8,8 +8,11 @@
  </p>
 
 ## My Projects
+
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
+
 - **GIS Plugins**:
+  - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
   - [google-geolocate](https://raruto.github.io/google-geolocate): geolocation control
   - [google-transparency](https://raruto.github.io/google-transparency): opacity slider control
   - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): inline layers control
@@ -24,14 +27,14 @@
   - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity slider control
   - [leaflet-ui](https://raruto.github.io/leaflet-ui): presets for common user interface customizations
   - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): caching-Proxy for WMTS Servers
-- **Cockpit Plugins**:
+
+- **Cockpit CMS**:
+  - [cockpit-blog](https://github.com/Raruto/cockpit-blog): skeleton repo to start building Cockpit Sites
   - [cockpit-native-lazy-loading](https://github.com/Raruto/cockpit-native-lazy-loading): native lazy loading addon for Cockpit CMS 
   - [cockpit-extended-forms](https://github.com/Raruto/cockpit-extended-forms): improved core Forms module for Cockpit CMS 
-- **Starter Projects**:
-  - [cockpit-blog](https://github.com/Raruto/cockpit-blog): skeleton repo to start building Cockpit Sites
+
+- **WordPress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WordPress Sites
-  - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
-- **WordPress Plugins**:
   - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API 
   - [local-development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
