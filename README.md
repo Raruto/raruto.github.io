@@ -24,10 +24,18 @@
   - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity slider control
   - [leaflet-ui](https://raruto.github.io/leaflet-ui): presets for common user interface customizations
   - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): caching-Proxy for WMTS Servers
-- **Dev Tools**:
+- **Cockpit Plugins**:
+  - [cockpit-native-lazy-loading](https://github.com/Raruto/cockpit-native-lazy-loading): native lazy loading addon for Cockpit CMS 
+  - [cockpit-extended-forms](https://github.com/Raruto/cockpit-extended-forms): improved core Forms module for Cockpit CMS 
+- **Starter Projects**:
+  - [cockpit-blog](https://github.com/Raruto/cockpit-blog): skeleton repo to start building Cockpit Sites
+  - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WordPress Sites
   - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
-  - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WP Sites
+- **WordPress Plugins**:
+  - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API 
+  - [local-development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
+  - [wp-dependency-installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
 
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
