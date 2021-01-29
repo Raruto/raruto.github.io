@@ -40,12 +40,13 @@
 
 ## Active contributor:
 
-- [wp-dependency-installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
-- [local-development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
-- [github-updater](https://github.com/afragen/github-updater): WordPress plugin to automatically update installed Git hosted themes / plugins
-- [composerpress](https://github.com/tomjn/composerpress): WordPress plugin to retroactively creates a composer.json for a WordPress site.
-- [events-manager](https://plugins.trac.wordpress.org/browser/events-manager/): WordPress plugin to handle Events Registration, Bookings, Calendars and Locations
-- [send-pdf-for-contact-form-7](https://github.com/Florent73/send-pdf-for-contact-form-7): WordPress plugin to automatically generate PDF files from Contact Form 7 submissions
+- [Cockpit CMS](https://github.com/agentejo/cockpit): self-hosted headless and api-driven CMS
+- [WP Dependency Installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
+- [Local Development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
+- [Github Updater](https://github.com/afragen/github-updater): automatically update installed WordPress Git hosted themes and plugins
+- [Composerpress](https://github.com/tomjn/composerpress): retroactively creates a composer.json for a WordPress site.
+- [Events Manager](https://plugins.trac.wordpress.org/browser/events-manager/): handle WordPress Events Registration, Bookings, Calendars and Locations with ease
+- [Send PDF for Contact Form-7](https://github.com/Florent73/send-pdf-for-contact-form-7): automatically generate PDF files from Contact Form 7 submissions
 
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
