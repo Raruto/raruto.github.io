@@ -36,12 +36,19 @@
 - **WordPress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WordPress Sites
   - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API 
-  - [local-development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
-  - [wp-dependency-installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
+
+## Active contributor:
+
+- [wp-dependency-installer](https://github.com/afragen/wp-dependency-installer): lightweight class to automatically install WordPress plugins dependencies.
+- [local-development](https://wordpress.org/plugins/local-development/): improved local development with just a WordPress plugin
+- [github-updater](https://github.com/afragen/github-updater): WordPress plugin to automatically update installed Git hosted themes / plugins
+- [composerpress](https://github.com/tomjn/composerpress): WordPress plugin to retroactively creates a composer.json for a WordPress site.
+- [events-manager](https://plugins.trac.wordpress.org/browser/events-manager/): WordPress plugin to handle Events Registration, Bookings, Calendars and Locations
+- [send-pdf-for-contact-form-7](https://github.com/Florent73/send-pdf-for-contact-form-7): WordPress plugin to automatically generate PDF files from Contact Form 7 submissions
 
 <hr style="background: #ccc;">
-<p><em>Related: <a href="https://www.npmjs.com/~raruto">npm packages</a></em></p>
+<p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
 <hr style="background: #ccc;">
 
 ## My Sample Pages
