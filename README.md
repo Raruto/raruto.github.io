@@ -53,10 +53,6 @@
 - [Events Manager](https://plugins.trac.wordpress.org/browser/events-manager/): handle WordPress Events Registration, Bookings, Calendars and Locations with ease
 - [Send PDF for Contact Form 7](https://github.com/Florent73/send-pdf-for-contact-form-7): automatically generate PDF files from Contact Form 7 submissions
 
-<hr style="background: #ccc;">
-<p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
-<hr style="background: #ccc;">
-
 ## Translated projects:
 
 - [bbPress](https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/)
