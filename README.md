@@ -23,6 +23,7 @@
   - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): KML/KMZ file loader
   - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): easy integration with the Google StreetView Service API
   - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): interact with semi-transparent tiled overlays
+  - [leaflet-rotate](https://raruto.github.io/leaflet-rotate): add rotation functionality to map tiles
   - [leaflet-trails](https://raruto.github.io/leaflet-trails): easy integration with Lonvia's Waymarked Trails Site
   - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity slider control
   - [leaflet-ui](https://raruto.github.io/leaflet-ui): presets for common user interface customizations
