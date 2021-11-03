@@ -90,23 +90,22 @@
 - [/3d](/3d)
 - [/maps](/maps)
 
-<div id="contact-me">
-  <div id="tripetto"></div>
-  <script src="https://unpkg.com/tripetto-runner-foundation"></script>
-  <script src="https://unpkg.com/tripetto-runner-classic"></script>
-  <script src="https://unpkg.com/tripetto-services"></script>
-  <script>
-  var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiS1JWUytRZmhQUnJxSkJ0eWZTZU82UldNTkhCOEx1NVRVYTVTQWplZno5MD0iLCJkZWZpbml0aW9uIjoibVRqVjJtckQ0ZWJCbWR5NWlNUnptVGJZZTRaVXlQQzJpSVZLWDZiTGlSOD0iLCJ0eXBlIjoiY29sbGVjdCJ9.33H9DigsyOEJpOrDa6OcEscng3fPiMKnohXGAvVoF1c" });
+## Contact me
+<div id="tripetto"></div>
+<script src="https://unpkg.com/tripetto-runner-foundation"></script>
+<script src="https://unpkg.com/tripetto-runner-classic"></script>
+<script src="https://unpkg.com/tripetto-services"></script>
+<script>
+var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiS1JWUytRZmhQUnJxSkJ0eWZTZU82UldNTkhCOEx1NVRVYTVTQWplZno5MD0iLCJkZWZpbml0aW9uIjoibVRqVjJtckQ0ZWJCbWR5NWlNUnptVGJZZTRaVXlQQzJpSVZLWDZiTGlSOD0iLCJ0eXBlIjoiY29sbGVjdCJ9.33H9DigsyOEJpOrDa6OcEscng3fPiMKnohXGAvVoF1c" });
 
-  TripettoClassic.run({
-      element: document.getElementById("tripetto"),
-      definition: tripetto.definition,
-      styles: tripetto.styles,
-      l10n: tripetto.l10n,
-      locale: tripetto.locale,
-      translations: tripetto.translations,
-      attachments: tripetto.attachments,
-      onSubmit: tripetto.onSubmit
-  });
-  </script>
-</div>
+TripettoClassic.run({
+    element: document.getElementById("tripetto"),
+    definition: tripetto.definition,
+    styles: tripetto.styles,
+    l10n: tripetto.l10n,
+    locale: tripetto.locale,
+    translations: tripetto.translations,
+    attachments: tripetto.attachments,
+    onSubmit: tripetto.onSubmit
+});
+</script>
