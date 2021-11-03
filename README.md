@@ -41,7 +41,7 @@
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
 ## Contact me
-<div id="tripetto"></div>
+<div id="tripetto" style="min-height: 322px;"></div>
 <script src="https://unpkg.com/tripetto-runner-foundation"></script>
 <script src="https://unpkg.com/tripetto-runner-classic"></script>
 <script src="https://unpkg.com/tripetto-services"></script>
