@@ -70,25 +70,33 @@
 - [WooCommerce Email Inquiry & Cart Options](https://translate.wordpress.org/locale/it/default/wp-plugins/woocommerce-email-inquiry-cart-options/)
 - [Radcliffe](https://translate.wordpress.org/locale/it/default/wp-themes/radcliffe/)
 
-## My Sample Pages
-- **Google Maps**:
-  - [geolocate control](/examples/google-geolocate/google-geolocate.html)
-  - [opacity control](/examples/google-transparency/google-transparency.html)
-- **Leaflet Maps**:
-  - [custom default-ui](/leaflet-ui/examples/leaflet-ui.html)
-  - [google maps layers](/examples/leaflet-google/leaflet-google.html)
-  - [opacity control](/leaflet-transparency/examples/leaflet-transparency.html)
-  - [elevation chart control](/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html)
-  - [inline control-layers](/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html)
-  - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
-  - [scroll/touch to zoom](/leaflet-gesture-handling/examples/leaflet-gesture-handling.html)
-  - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
-  - [pointable tiles](/leaflet-pointable/examples/leaflet-pointable.html)
-  - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
+<details>
+<summary><b>My Sample Pages</b></summary>
 
-## My Test Pages
-- [/3d](/3d)
-- [/maps](/maps)
+  - **Google Maps**:
+    - [geolocate control](/examples/google-geolocate/google-geolocate.html)
+    - [opacity control](/examples/google-transparency/google-transparency.html)
+  - **Leaflet Maps**:
+    - [custom default-ui](/leaflet-ui/examples/leaflet-ui.html)
+    - [google maps layers](/examples/leaflet-google/leaflet-google.html)
+    - [opacity control](/leaflet-transparency/examples/leaflet-transparency.html)
+    - [elevation chart control](/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html)
+    - [inline control-layers](/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html)
+    - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
+    - [scroll/touch to zoom](/leaflet-gesture-handling/examples/leaflet-gesture-handling.html)
+    - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
+    - [pointable tiles](/leaflet-pointable/examples/leaflet-pointable.html)
+    - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
+
+</details>
+
+<details>
+  <summary><b>My Test Pages</b></summary>
+  
+  - [/3d](/3d)
+  - [/maps](/maps)
+  
+</details>
 
 ## Contact me
 <div id="tripetto"></div>
