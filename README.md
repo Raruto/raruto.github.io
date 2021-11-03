@@ -44,57 +44,70 @@
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
 <hr style="background: #ccc;">
 
-### Contributor:
-
-- [Cockpit CMS](https://github.com/agentejo/cockpit): _self-hosted headless and api-driven CMS_
-- [CpMultiplane](https://github.com/raffaelj/CpMultiplane): _small PHP frontend for Cockpit CMS_
-- [WP Dependency Installer](https://github.com/afragen/wp-dependency-installer): _lightweight class to automatically install WordPress plugins dependencies_
-- [Local Development](https://wordpress.org/plugins/local-development/): _improved local development with just a WordPress plugin_
-- [Github Updater](https://github.com/afragen/github-updater): _automatically update installed WordPress Git hosted themes and plugins_
-- [Composerpress](https://github.com/tomjn/composerpress): _retroactively creates a composer.json for a WordPress site_
-- [Events Manager](https://plugins.trac.wordpress.org/browser/events-manager/): _handle WordPress Events Registration, Bookings, Calendars and Locations with ease_
-- [Send PDF for Contact Form 7](https://github.com/Florent73/send-pdf-for-contact-form-7): _automatically generate PDF files from Contact Form 7 submissions_
-
-### Translator:
-
-- [bbPress](https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/)
-- [BuddyPress](https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/)
-- [Cockpit CMS](https://github.com/Raruto/cockpit-i18n)
-- [CpMultiplane](https://github.com/raffaelj/CpMultiplane-i18n)
-- [Events Manager](https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/)
-- [Featured image by URL](https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/)
-- [Horos](https://github.com/horosproject/horos): _DICOM medical image viewer_
-- [Simple History](https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/)
-- [User Submitted Posts](https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/)
-- [User Post Gallery](https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/)
-- [WooCommerce Email Inquiry & Cart Options](https://translate.wordpress.org/locale/it/default/wp-plugins/woocommerce-email-inquiry-cart-options/)
-- [Radcliffe](https://translate.wordpress.org/locale/it/default/wp-themes/radcliffe/)
+<details>
+  <summary><b>Contributor</b></summary>
+  <ul>
+    <li><a href="https://github.com/agentejo/cockpit">Cockpit CMS</a>: <em>self-hosted headless and api-driven CMS</em></li>
+    <li><a href="https://github.com/raffaelj/CpMultiplane">CpMultiplane</a>: <em>small PHP frontend for Cockpit CMS</em></li>
+    <li><a href="https://github.com/afragen/wp-dependency-installer">WP Dependency Installer</a>: <em>lightweight class to automatically install WordPress plugins dependencies</em></li>
+    <li><a href="https://wordpress.org/plugins/local-development/" rel="nofollow">Local Development</a>: <em>improved local development with just a WordPress plugin</em></li>
+    <li><a href="https://github.com/afragen/github-updater">Github Updater</a>: <em>automatically update installed WordPress Git hosted themes and plugins</em></li>
+    <li><a href="https://github.com/tomjn/composerpress">Composerpress</a>: <em>retroactively creates a composer.json for a WordPress site</em></li>
+    <li><a href="https://plugins.trac.wordpress.org/browser/events-manager/" rel="nofollow">Events Manager</a>: <em>handle WordPress Events Registration, Bookings, Calendars and Locations with ease</em></li>
+    <li><a href="https://github.com/Florent73/send-pdf-for-contact-form-7">Send PDF for Contact Form 7</a>: <em>automatically generate PDF files from Contact Form 7 submissions</em></li>
+  </ul>
+</details>
 
 <details>
-<summary><b>My Sample Pages</b></summary>
-
-  - **Google Maps**:
-    - [geolocate control](/examples/google-geolocate/google-geolocate.html)
-    - [opacity control](/examples/google-transparency/google-transparency.html)
-  - **Leaflet Maps**:
-    - [custom default-ui](/leaflet-ui/examples/leaflet-ui.html)
-    - [google maps layers](/examples/leaflet-google/leaflet-google.html)
-    - [opacity control](/leaflet-transparency/examples/leaflet-transparency.html)
-    - [elevation chart control](/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html)
-    - [inline control-layers](/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html)
-    - [kml/kmz layers](/leaflet-kmz/examples/leaflet-kmz.html)
-    - [scroll/touch to zoom](/leaflet-gesture-handling/examples/leaflet-gesture-handling.html)
-    - [streetview control](/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html)
-    - [pointable tiles](/leaflet-pointable/examples/leaflet-pointable.html)
-    - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
-
+  <summary><b>Translator</b></summary>
+  <ul>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/" rel="nofollow">bbPress</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/" rel="nofollow">BuddyPress</a></li>
+    <li><a href="https://github.com/Raruto/cockpit-i18n">Cockpit CMS</a></li>
+    <li><a href="https://github.com/raffaelj/CpMultiplane-i18n">CpMultiplane</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/" rel="nofollow">Events Manager</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/" rel="nofollow">Featured image by URL</a></li>
+    <li><a href="https://github.com/horosproject/horos">Horos</a>: <em>DICOM medical image viewer</em></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/" rel="nofollow">Simple History</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/" rel="nofollow">User Submitted Posts</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/" rel="nofollow">User Post Gallery</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/woocommerce-email-inquiry-cart-options/" rel="nofollow">WooCommerce Email Inquiry &amp; Cart Options</a></li>
+    <li><a href="https://translate.wordpress.org/locale/it/default/wp-themes/radcliffe/" rel="nofollow">Radcliffe</a></li>
+  </ul>
 </details>
+
+<details>
+  <summary><b>My Sample Pages</b></summary>
+  <ul>
+    <li><strong>Google Maps</strong>:
+      <ul>
+        <li><a href="/Raruto/raruto.github.io/blob/master/examples/google-geolocate/google-geolocate.html">geolocate control</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/examples/google-transparency/google-transparency.html">opacity control</a></li>
+      </ul>
+    </li>
+    <li><strong>Leaflet Maps</strong>:
+      <ul>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-ui/examples/leaflet-ui.html">custom default-ui</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/examples/leaflet-google/leaflet-google.html">google maps layers</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-transparency/examples/leaflet-transparency.html">opacity control</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html">elevation chart control</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html">inline control-layers</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-kmz/examples/leaflet-kmz.html">kml/kmz layers</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-gesture-handling/examples/leaflet-gesture-handling.html">scroll/touch to zoom</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html">streetview control</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-pointable/examples/leaflet-pointable.html">pointable tiles</a></li>
+        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-trails/examples/leaflet-trails.html">waymarked trails</a></li>
+       </ul>
+    </li>
+  </ul>
+</details>
+
 <details>
   <summary><b>My Test Pages</b></summary>
-  
-  - [/3d](/3d)
-  - [/maps](/maps)
-  
+  <ul>
+    <li><a href="/Raruto/raruto.github.io/blob/master/3d">/3d</a></li>
+    <li><a href="/Raruto/raruto.github.io/blob/master/maps">/maps</a></li>
+  </ul>
 </details>
 
 ## Contact me
