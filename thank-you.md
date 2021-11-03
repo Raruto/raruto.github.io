@@ -10,5 +10,5 @@
 ## Message delivered!
 I'll try to answer you in the next few days
 
-❤️ [Sponsor me on github](https://github.com/sponsors/Raruto)
+<!-- ❤️ [Sponsor me on github](https://github.com/sponsors/Raruto) -->
 
