@@ -65,8 +65,7 @@ TripettoClassic.run({
 <hr style="background: #ccc;">
 
 <details>
-  <summary><b>Contributor</b></summary>
-  <br>
+  <summary><b style="font-weight:bold;cursor:pointer;">Contributor</b></summary>
   <ul>
     <li><a href="https://github.com/agentejo/cockpit">Cockpit CMS</a>: <em>self-hosted headless and api-driven CMS</em></li>
     <li><a href="https://github.com/raffaelj/CpMultiplane">CpMultiplane</a>: <em>small PHP frontend for Cockpit CMS</em></li>
@@ -80,8 +79,7 @@ TripettoClassic.run({
 </details>
 
 <details>
-  <summary><b>Translator</b></summary>
-  <br>
+  <summary><b style="font-weight:bold;cursor:pointer;">Translator</b></summary>
   <ul>
     <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/" rel="nofollow">bbPress</a></li>
     <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/" rel="nofollow">BuddyPress</a></li>
@@ -99,8 +97,7 @@ TripettoClassic.run({
 </details>
 
 <details>
-  <summary><b>My Sample Pages</b></summary>
-  <br>
+  <summary><b style="font-weight:bold;cursor:pointer;">My Sample Pages</b></summary>
   <ul>
     <li><strong>Google Maps</strong>:
       <ul>
@@ -126,8 +123,7 @@ TripettoClassic.run({
 </details>
 
 <details>
-  <summary><b>My Test Pages</b></summary>
-  <br>
+  <summary><b style="font-weight:bold;cursor:pointer;">My Test Pages</b></summary>
   <ul>
     <li><a href="/Raruto/raruto.github.io/blob/master/3d">/3d</a></li>
     <li><a href="/Raruto/raruto.github.io/blob/master/maps">/maps</a></li>
