@@ -5,7 +5,7 @@
 </p>
 <p align="center" style="display:none;">
   <a href="https://raruto.github.io/">View at raruto.github.io</a>
- </p>
+</p>
 
 ## My Projects
 
@@ -31,13 +31,13 @@
 
 - **Cockpit CMS**:
   - [cockpit-blog](https://github.com/Raruto/cockpit-blog): skeleton repo to start building Cockpit Sites
-  - [cockpit-native-lazy-loading](https://github.com/Raruto/cockpit-native-lazy-loading): native lazy loading addon for Cockpit CMS 
-  - [cockpit-extended-forms](https://github.com/Raruto/cockpit-extended-forms): improved core Forms module for Cockpit CMS 
-  - [cockpit-honeypot](https://github.com/Raruto/cockpit-honeypot): honeypot addon for Cockpit CMS 
+  - [cockpit-native-lazy-loading](https://github.com/Raruto/cockpit-native-lazy-loading): native lazy loading addon for Cockpit CMS
+  - [cockpit-extended-forms](https://github.com/Raruto/cockpit-extended-forms): improved core Forms module for Cockpit CMS
+  - [cockpit-honeypot](https://github.com/Raruto/cockpit-honeypot): honeypot addon for Cockpit CMS
 
 - **WordPress**:
   - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WordPress Sites
-  - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API 
+  - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
 <hr style="background: #ccc;">
@@ -89,3 +89,24 @@
 ## My Test Pages
 - [/3d](/3d)
 - [/maps](/maps)
+
+<div id="contact-me">
+  <div id="tripetto"></div>
+  <script src="https://unpkg.com/tripetto-runner-foundation"></script>
+  <script src="https://unpkg.com/tripetto-runner-classic"></script>
+  <script src="https://unpkg.com/tripetto-services"></script>
+  <script>
+  var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiS1JWUytRZmhQUnJxSkJ0eWZTZU82UldNTkhCOEx1NVRVYTVTQWplZno5MD0iLCJkZWZpbml0aW9uIjoibVRqVjJtckQ0ZWJCbWR5NWlNUnptVGJZZTRaVXlQQzJpSVZLWDZiTGlSOD0iLCJ0eXBlIjoiY29sbGVjdCJ9.33H9DigsyOEJpOrDa6OcEscng3fPiMKnohXGAvVoF1c" });
+
+  TripettoClassic.run({
+      element: document.getElementById("tripetto"),
+      definition: tripetto.definition,
+      styles: tripetto.styles,
+      l10n: tripetto.l10n,
+      locale: tripetto.locale,
+      translations: tripetto.translations,
+      attachments: tripetto.attachments,
+      onSubmit: tripetto.onSubmit
+  });
+  </script>
+</div>
