@@ -40,12 +40,33 @@
   - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
+## Contact me
+<div id="tripetto"></div>
+<script src="https://unpkg.com/tripetto-runner-foundation"></script>
+<script src="https://unpkg.com/tripetto-runner-classic"></script>
+<script src="https://unpkg.com/tripetto-services"></script>
+<script>
+var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiS1JWUytRZmhQUnJxSkJ0eWZTZU82UldNTkhCOEx1NVRVYTVTQWplZno5MD0iLCJkZWZpbml0aW9uIjoibVRqVjJtckQ0ZWJCbWR5NWlNUnptVGJZZTRaVXlQQzJpSVZLWDZiTGlSOD0iLCJ0eXBlIjoiY29sbGVjdCJ9.33H9DigsyOEJpOrDa6OcEscng3fPiMKnohXGAvVoF1c" });
+
+TripettoClassic.run({
+    element: document.getElementById("tripetto"),
+    definition: tripetto.definition,
+    styles: tripetto.styles,
+    l10n: tripetto.l10n,
+    locale: tripetto.locale,
+    translations: tripetto.translations,
+    attachments: tripetto.attachments,
+    onSubmit: tripetto.onSubmit
+});
+</script>
+
 <hr style="background: #ccc;">
 <p><em>Related: <a href="https://www.npmjs.com/~raruto">npm</a>, <a href="https://packagist.org/users/raruto/">composer</a> packages</em></p>
 <hr style="background: #ccc;">
 
 <details>
   <summary><b>Contributor</b></summary>
+  <br>
   <ul>
     <li><a href="https://github.com/agentejo/cockpit">Cockpit CMS</a>: <em>self-hosted headless and api-driven CMS</em></li>
     <li><a href="https://github.com/raffaelj/CpMultiplane">CpMultiplane</a>: <em>small PHP frontend for Cockpit CMS</em></li>
@@ -60,6 +81,7 @@
 
 <details>
   <summary><b>Translator</b></summary>
+  <br>
   <ul>
     <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/" rel="nofollow">bbPress</a></li>
     <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/" rel="nofollow">BuddyPress</a></li>
@@ -78,6 +100,7 @@
 
 <details>
   <summary><b>My Sample Pages</b></summary>
+  <br>
   <ul>
     <li><strong>Google Maps</strong>:
       <ul>
@@ -104,28 +127,9 @@
 
 <details>
   <summary><b>My Test Pages</b></summary>
+  <br>
   <ul>
     <li><a href="/Raruto/raruto.github.io/blob/master/3d">/3d</a></li>
     <li><a href="/Raruto/raruto.github.io/blob/master/maps">/maps</a></li>
   </ul>
 </details>
-
-## Contact me
-<div id="tripetto"></div>
-<script src="https://unpkg.com/tripetto-runner-foundation"></script>
-<script src="https://unpkg.com/tripetto-runner-classic"></script>
-<script src="https://unpkg.com/tripetto-services"></script>
-<script>
-var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiS1JWUytRZmhQUnJxSkJ0eWZTZU82UldNTkhCOEx1NVRVYTVTQWplZno5MD0iLCJkZWZpbml0aW9uIjoibVRqVjJtckQ0ZWJCbWR5NWlNUnptVGJZZTRaVXlQQzJpSVZLWDZiTGlSOD0iLCJ0eXBlIjoiY29sbGVjdCJ9.33H9DigsyOEJpOrDa6OcEscng3fPiMKnohXGAvVoF1c" });
-
-TripettoClassic.run({
-    element: document.getElementById("tripetto"),
-    definition: tripetto.definition,
-    styles: tripetto.styles,
-    l10n: tripetto.l10n,
-    locale: tripetto.locale,
-    translations: tripetto.translations,
-    attachments: tripetto.attachments,
-    onSubmit: tripetto.onSubmit
-});
-</script>
