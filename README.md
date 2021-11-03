@@ -89,7 +89,6 @@
     - [waymarked trails](/leaflet-trails/examples/leaflet-trails.html)
 
 </details>
-
 <details>
   <summary><b>My Test Pages</b></summary>
   
