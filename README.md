@@ -40,7 +40,7 @@
   - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
-## Contact me
+## Contact me privately
 <div id="tripetto" style="min-height: 322px;"></div>
 <script src="https://unpkg.com/tripetto-runner-foundation"></script>
 <script src="https://unpkg.com/tripetto-runner-classic"></script>
