@@ -43,11 +43,11 @@
 ## Contacts
 
 
-- linkedin: https://www.linkedin.com/in/raruto
-- github: https://github.com/Raruto
-- npm: https://www.npmjs.com/~raruto
-- wordpress: https://profiles.wordpress.org/raruto
-- packagist: https://packagist.org/packages/raruto
+- linkedin: [https://www.linkedin.com/in/raruto](https://www.linkedin.com/in/raruto)
+- github: [https://github.com/Raruto](https://github.com/Raruto)
+- npm: [https://www.npmjs.com/~raruto](https://www.npmjs.com/~raruto)
+- wordpress: [https://profiles.wordpress.org/raruto](https://profiles.wordpress.org/raruto)
+- packagist: [https://packagist.org/packages/raruto](https://packagist.org/packages/raruto)
 
 <!-- <div id="tripetto" style="min-height: 322px;"></div>
 <script src="https://unpkg.com/tripetto-runner-foundation"></script>
