@@ -7,7 +7,7 @@
   <a href="https://raruto.github.io/">View at raruto.github.io</a>
 </p>
 
-## My Projects
+## My Launchpad
 
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 
