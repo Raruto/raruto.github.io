@@ -7,10 +7,6 @@
   <a href="https://raruto.github.io/">View at raruto.github.io</a>
 </p>
 
-## My Job
-
-Software Engineer @ [G3W-SUITE](https://github.com/g3w-suite)
-
 ## My Projects
 
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
@@ -53,6 +49,12 @@ Software Engineer @ [G3W-SUITE](https://github.com/g3w-suite)
 - wordpress: [https://profiles.wordpress.org/raruto](https://profiles.wordpress.org/raruto)
 - packagist: [https://packagist.org/packages/raruto](https://packagist.org/packages/raruto)
 
+<hr style="background: #ccc;">
+
+<p align="right">Software Engineer @ <a href="https://github.com/g3w-suite">G3W-SUITE</a></p>
+
+<hr style="background: #ccc;">
+
 <!-- <div id="tripetto" style="min-height: 322px;"></div>
 <script src="https://unpkg.com/tripetto-runner-foundation"></script>
 <script src="https://unpkg.com/tripetto-runner-classic"></script>
@@ -72,70 +74,48 @@ TripettoClassic.run({
 });
 </script> -->
 
-<hr style="background: #ccc;">
-
-<details>
-  <summary><b style="font-weight:bold;cursor:pointer;">Contributor</b></summary>
-  <ul>
-    <li><a href="https://github.com/agentejo/cockpit">Cockpit CMS</a>: <em>self-hosted headless and api-driven CMS</em></li>
-    <li><a href="https://github.com/raffaelj/CpMultiplane">CpMultiplane</a>: <em>small PHP frontend for Cockpit CMS</em></li>
-    <li><a href="https://github.com/afragen/wp-dependency-installer">WP Dependency Installer</a>: <em>lightweight class to automatically install WordPress plugins dependencies</em></li>
-    <li><a href="https://wordpress.org/plugins/local-development/" rel="nofollow">Local Development</a>: <em>improved local development with just a WordPress plugin</em></li>
-    <li><a href="https://github.com/afragen/github-updater">Github Updater</a>: <em>automatically update installed WordPress Git hosted themes and plugins</em></li>
-    <li><a href="https://github.com/tomjn/composerpress">Composerpress</a>: <em>retroactively creates a composer.json for a WordPress site</em></li>
-    <li><a href="https://plugins.trac.wordpress.org/browser/events-manager/" rel="nofollow">Events Manager</a>: <em>handle WordPress Events Registration, Bookings, Calendars and Locations with ease</em></li>
-    <li><a href="https://github.com/Florent73/send-pdf-for-contact-form-7">Send PDF for Contact Form 7</a>: <em>automatically generate PDF files from Contact Form 7 submissions</em></li>
-  </ul>
-</details>
-
-<details>
-  <summary><b style="font-weight:bold;cursor:pointer;">Translator</b></summary>
-  <ul>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/" rel="nofollow">bbPress</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/" rel="nofollow">BuddyPress</a></li>
-    <li><a href="https://github.com/Raruto/cockpit-i18n">Cockpit CMS</a></li>
-    <li><a href="https://github.com/raffaelj/CpMultiplane-i18n">CpMultiplane</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/" rel="nofollow">Events Manager</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/" rel="nofollow">Featured image by URL</a></li>
-    <li><a href="https://github.com/horosproject/horos">Horos</a>: <em>DICOM medical image viewer</em></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/" rel="nofollow">Simple History</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/" rel="nofollow">User Submitted Posts</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/" rel="nofollow">User Post Gallery</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/woocommerce-email-inquiry-cart-options/" rel="nofollow">WooCommerce Email Inquiry &amp; Cart Options</a></li>
-    <li><a href="https://translate.wordpress.org/locale/it/default/wp-themes/radcliffe/" rel="nofollow">Radcliffe</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary><b style="font-weight:bold;cursor:pointer;">My Sample Pages</b></summary>
-  <ul>
-    <li><strong>Google Maps</strong>:
+<!-- <details>
+  <summary><b style="font-weight:bold;cursor:pointer;">My contributions</b></summary>
+  <dl style="margin: 1em;">
+    <dt>As developer</dt>
+    <dd>
       <ul>
-        <li><a href="/Raruto/raruto.github.io/blob/master/examples/google-geolocate/google-geolocate.html">geolocate control</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/examples/google-transparency/google-transparency.html">opacity control</a></li>
+        <li><a href="https://github.com/agentejo/cockpit">Cockpit CMS</a>: <em>self-hosted headless and api-driven CMS</em></li>
+        <li><a href="https://github.com/raffaelj/CpMultiplane">CpMultiplane</a>: <em>small PHP frontend for Cockpit CMS</em></li>
+        <li><a href="https://github.com/afragen/wp-dependency-installer">WP Dependency Installer</a>: <em>lightweight class to automatically install WordPress plugins dependencies</em></li>
+        <li><a href="https://wordpress.org/plugins/local-development/" rel="nofollow">Local Development</a>: <em>improved local development with just a WordPress plugin</em></li>
+        <li><a href="https://github.com/afragen/github-updater">Github Updater</a>: <em>automatically update installed WordPress Git hosted themes and plugins</em></li>
+        <li><a href="https://github.com/tomjn/composerpress">Composerpress</a>: <em>retroactively creates a composer.json for a WordPress site</em></li>
+        <li><a href="https://plugins.trac.wordpress.org/browser/events-manager/" rel="nofollow">Events Manager</a>: <em>handle WordPress Events Registration, Bookings, Calendars and Locations with ease</em></li>
+        <li><a href="https://github.com/Florent73/send-pdf-for-contact-form-7">Send PDF for Contact Form 7</a>: <em>automatically generate PDF files from Contact Form 7 submissions</em></li>
       </ul>
-    </li>
-    <li><strong>Leaflet Maps</strong>:
+    </dd>
+    <dt>As translator</dt>
+    <dd>
       <ul>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-ui/examples/leaflet-ui.html">custom default-ui</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/examples/leaflet-google/leaflet-google.html">google maps layers</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-transparency/examples/leaflet-transparency.html">opacity control</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html">elevation chart control</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-control-layers-inline/examples/leaflet-control-layers-inline.html">inline control-layers</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-kmz/examples/leaflet-kmz.html">kml/kmz layers</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-gesture-handling/examples/leaflet-gesture-handling.html">scroll/touch to zoom</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-pegman/examples/leaflet-pegman-lazyLoading.html">streetview control</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-pointable/examples/leaflet-pointable.html">pointable tiles</a></li>
-        <li><a href="/Raruto/raruto.github.io/blob/master/leaflet-trails/examples/leaflet-trails.html">waymarked trails</a></li>
-       </ul>
-    </li>
-  </ul>
-</details>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/bbpress/" rel="nofollow">bbPress</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/buddypress/" rel="nofollow">BuddyPress</a></li>
+        <li><a href="https://github.com/Raruto/cockpit-i18n">Cockpit CMS</a></li>
+        <li><a href="https://github.com/raffaelj/CpMultiplane-i18n">CpMultiplane</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/" rel="nofollow">Events Manager</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/featured-image-by-url/" rel="nofollow">Featured image by URL</a></li>
+        <li><a href="https://github.com/horosproject/horos">Horos</a>: <em>DICOM medical image viewer</em></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/simple-history/" rel="nofollow">Simple History</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/user-submitted-posts/" rel="nofollow">User Submitted Posts</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/wp-upg/" rel="nofollow">User Post Gallery</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-plugins/woocommerce-email-inquiry-cart-options/" rel="nofollow">WooCommerce Email Inquiry &amp; Cart Options</a></li>
+        <li><a href="https://translate.wordpress.org/locale/it/default/wp-themes/radcliffe/" rel="nofollow">Radcliffe</a></li>
+      </ul>
+    </dd>
 
-<details>
-  <summary><b style="font-weight:bold;cursor:pointer;">My Test Pages</b></summary>
-  <ul>
-    <li><a href="/Raruto/raruto.github.io/blob/master/3d">/3d</a></li>
-    <li><a href="/Raruto/raruto.github.io/blob/master/maps">/maps</a></li>
-  </ul>
-</details>
+    <dt>As hobbyist</dt>
+    <dd>
+      <ul>
+        <li><a href="https://raruto.github.io/3d">/3d</a></li>
+        <li><a href="https://raruto.github.io/maps">/maps</a></li>
+      </ul>
+
+    </dd>
+  </dl>
+
+</details> -->
