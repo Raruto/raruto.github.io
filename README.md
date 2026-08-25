@@ -40,8 +40,12 @@
   - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API
   - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
 
-## Contacts
+## Highlights
 
+- [Stop wrestling with Docker and get back to coding!](https://www.linkedin.com/pulse/stop-wrestling-docker-get-back-coding-matteo-tosi-e36jf/)
+- [How to start Frontend Testing on a Legacy Stack (without losing your mind)](https://www.linkedin.com/pulse/how-start-frontend-testing-legacy-stack-without-losing-matteo-tosi-dve4e/)
+
+## Contacts
 
 - linkedin: [https://www.linkedin.com/in/raruto](https://www.linkedin.com/in/raruto)
 - github: [https://github.com/Raruto](https://github.com/Raruto)
