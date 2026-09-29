@@ -9,7 +9,7 @@
 
 ## It's me: Raruto
 
-Just another human who happens to code.
+Just another [human](https://github.com/Raruto) who happens to code.
 
 Peace, love, and clean code. ✌️
 
