@@ -11,7 +11,7 @@
 
 Just another human who happens to code.
 
-KISS 💋
+Peace, love, and clean code. ✌️
 
 ## My Footprints
 
