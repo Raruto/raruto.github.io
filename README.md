@@ -11,12 +11,6 @@
 
 Just another human who happens to code.
 
-Over a decade focused only on writing what matters.
-
-My code? It may look too simple for your budget.
-
-Judge for yourself.
-
 KISS 💋
 
 ## My Footprints
