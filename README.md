@@ -7,6 +7,18 @@
   <a href="https://raruto.github.io/">View at raruto.github.io</a>
 </p>
 
+## It's me: Raruto
+
+Just another human who happens to code.
+
+Over a decade focused only on writing what matters.
+
+My code? It may look too simple for your budget.
+
+Judge for yourself.
+
+KISS 💋
+
 ## My Footprints
 
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
