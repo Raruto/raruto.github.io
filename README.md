@@ -7,7 +7,7 @@
   <a href="https://raruto.github.io/">View at raruto.github.io</a>
 </p>
 
-## It's me: Raruto
+## This is Raruto.
 
 Just another [human](https://github.com/Raruto) who happens to code.
 
