@@ -9,9 +9,9 @@
 
 ## This is Raruto.
 
-Just another [human](https://www.linkedin.com/in/raruto) who happens to code.
+Just another [human](https://github.com/Raruto) who happens to code.
 
-Pretending to understand [code](https://github.com/Raruto) for over a decade.
+Pretending to understand [code](https://www.linkedin.com/in/raruto) for over a decade.
 
 Peace, love, and clean code. ✌️
 
