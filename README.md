@@ -11,6 +11,8 @@
 
 Just another [human](https://github.com/Raruto) who happens to code.
 
+Pretending to understand code for over a decade.
+
 Peace, love, and clean code. ✌️
 
 ## My Footprints
