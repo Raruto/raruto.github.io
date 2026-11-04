@@ -22,7 +22,7 @@ Peace, love, and lean code. ✌️
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 
 - **GIS Plugins**:
-  - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
+- - [leaflet-city-mapper](https://raruto.github.io/leaflet-city-mapper): a small 3D rendering engine for leaflet
   - [google-geolocate](https://raruto.github.io/google-geolocate): geolocation control
   - [google-transparency](https://raruto.github.io/google-transparency): opacity slider control
   - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): inline layers control
@@ -30,6 +30,7 @@ Peace, love, and lean code. ✌️
   - [leaflet-edit-osm](https://raruto.github.io/leaflet-edit-osm): unobtrusive edit in osm control
   - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): prevent default map scroll/touch behaviours
   - [leaflet-google](https://raruto.github.io/leaflet-google): easy integration with the Google Maps API
+  - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
   - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): KML/KMZ file loader
   - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): easy integration with the Google StreetView Service API
   - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): interact with semi-transparent tiled overlays
