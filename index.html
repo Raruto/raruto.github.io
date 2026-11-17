@@ -10,6 +10,10 @@ layout: default
   .latest-posts__list li { border-bottom: 1px solid #d5d5d5; }
   .latest-posts__list a { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; font-weight: bold; }
   .latest-posts__list a span { color: #666; font-weight: normal; }
+  .payloads { margin-top: 1.25rem; border-top: 1px solid #d5d5d5; }
+  .payloads details { border-bottom: 1px solid #d5d5d5; }
+  .payloads summary { cursor: pointer; padding: .8rem 0; font-weight: bold; }
+  .payloads details > :not(summary) { margin: 0 0 1rem 1.25rem; }
 </style>
 <h2>My weekly blips</h2>
 <p>Notes from the workbench: devlogs, experiments, and the occasional playground.</p>
@@ -22,40 +26,45 @@ layout: default
 <p><a href="{{ '/blog/' | relative_url }}">Scan the archive &rarr;</a></p>
 <h2>My space junk</h2>
 <p>Things I launched into the void that somehow still work.</p>
-
-{% capture payloads %}
-- [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
-
-- **GIS Plugins**:
-  - [leaflet-city-mapper](https://raruto.github.io/leaflet-city-mapper): a small 3D rendering engine for leaflet
-  - [google-geolocate](https://raruto.github.io/google-geolocate): geolocation control
-  - [google-transparency](https://raruto.github.io/google-transparency): opacity slider control
-  - [leaflet-control-layers-inline](https://raruto.github.io/leaflet-control-layers-inline): inline layers control
-  - [leaflet-elevation](https://raruto.github.io/leaflet-elevation): display elevation profiles using d3js
-  - [leaflet-edit-osm](https://raruto.github.io/leaflet-edit-osm): unobtrusive edit in osm control
-  - [leaflet-gesture-handling](https://raruto.github.io/leaflet-gesture-handling): prevent default map scroll/touch behaviours
-  - [leaflet-google](https://raruto.github.io/leaflet-google): easy integration with the Google Maps API
-  - [leaflet-npm](https://raruto.github.io/leaflet-npm): skeleton repo to start bundling Leaflet Maps
-  - [leaflet-kmz](https://raruto.github.io/leaflet-kmz): KML/KMZ file loader
-  - [leaflet-pegman](https://raruto.github.io/leaflet-pegman): easy integration with the Google StreetView Service API
-  - [leaflet-pointable](https://raruto.github.io/leaflet-pointable): interact with semi-transparent tiled overlays
-  - [leaflet-rotate](https://raruto.github.io/leaflet-rotate): add rotation functionality to map tiles
-  - [leaflet-trails](https://raruto.github.io/leaflet-trails): easy integration with Lonvia's Waymarked Trails Site
-  - [leaflet-transparency](https://raruto.github.io/leaflet-transparency): opacity slider control
-  - [leaflet-ui](https://raruto.github.io/leaflet-ui): presets for common user interface customizations
-  - [tile-proxy-php](https://raruto.github.io/tile-proxy-php): caching-Proxy for WMTS Servers
-
-- **Cockpit CMS**:
-  - [cockpit-blog](https://github.com/Raruto/cockpit-blog): skeleton repo to start building Cockpit Sites
-  - [cockpit-native-lazy-loading](https://github.com/Raruto/cockpit-native-lazy-loading): native lazy loading addon for Cockpit CMS
-  - [cockpit-extended-forms](https://github.com/Raruto/cockpit-extended-forms): improved core Forms module for Cockpit CMS
-  - [cockpit-honeypot](https://github.com/Raruto/cockpit-honeypot): honeypot addon for Cockpit CMS
-
-- **WordPress**:
-  - [wordpress-git](https://raruto.github.io/wordpress-git): skeleton repo to start building WordPress Sites
-  - [iubenda-for-wp](https://github.com/Raruto/iubenda-for-wp): WordPress plugin to allow non-JavaScript use of Iubenda's policy API
-  - [wp-devops](https://raruto.github.io/wp-devops): helper plugin for every WP Developer
-{% endcapture %}
-{{ payloads | markdownify }}
+<div class="payloads">
+  <details>
+    <summary>GIS</summary>
+    <ul>
+      <li><a href="https://raruto.github.io/leaflet-city-mapper">leaflet-city-mapper</a>: a small 3D rendering engine for leaflet</li>
+      <li><a href="https://raruto.github.io/google-geolocate">google-geolocate</a>: geolocation control</li>
+      <li><a href="https://raruto.github.io/google-transparency">google-transparency</a>: opacity slider control</li>
+      <li><a href="https://raruto.github.io/leaflet-control-layers-inline">leaflet-control-layers-inline</a>: inline layers control</li>
+      <li><a href="https://raruto.github.io/leaflet-elevation">leaflet-elevation</a>: display elevation profiles using d3js</li>
+      <li><a href="https://raruto.github.io/leaflet-edit-osm">leaflet-edit-osm</a>: unobtrusive edit in osm control</li>
+      <li><a href="https://raruto.github.io/leaflet-gesture-handling">leaflet-gesture-handling</a>: prevent default map scroll/touch behaviours</li>
+      <li><a href="https://raruto.github.io/leaflet-google">leaflet-google</a>: easy integration with the Google Maps API</li>
+      <li><a href="https://raruto.github.io/leaflet-npm">leaflet-npm</a>: skeleton repo to start bundling Leaflet Maps</li>
+      <li><a href="https://raruto.github.io/leaflet-kmz">leaflet-kmz</a>: KML/KMZ file loader</li>
+      <li><a href="https://raruto.github.io/leaflet-pegman">leaflet-pegman</a>: easy integration with the Google StreetView Service API</li>
+      <li><a href="https://raruto.github.io/leaflet-pointable">leaflet-pointable</a>: interact with semi-transparent tiled overlays</li>
+      <li><a href="https://raruto.github.io/leaflet-rotate">leaflet-rotate</a>: add rotation functionality to map tiles</li>
+      <li><a href="https://raruto.github.io/leaflet-trails">leaflet-trails</a>: easy integration with Lonvia's Waymarked Trails Site</li>
+      <li><a href="https://raruto.github.io/leaflet-transparency">leaflet-transparency</a>: opacity slider control</li>
+      <li><a href="https://raruto.github.io/leaflet-ui">leaflet-ui</a>: presets for common user interface customizations</li>
+      <li><a href="https://raruto.github.io/tile-proxy-php">tile-proxy-php</a>: caching-Proxy for WMTS Servers</li>
+    </ul>
+  </details>
+  <details>
+    <summary>PHP</summary>
+    <ul>
+      <li><a href="https://github.com/Raruto/cockpit-blog">cockpit-blog</a>: skeleton repo to start building Cockpit Sites</li>
+      <li><a href="https://github.com/Raruto/cockpit-native-lazy-loading">cockpit-native-lazy-loading</a>: native lazy loading addon for Cockpit CMS</li>
+      <li><a href="https://github.com/Raruto/cockpit-extended-forms">cockpit-extended-forms</a>: improved core Forms module for Cockpit CMS</li>
+      <li><a href="https://github.com/Raruto/cockpit-honeypot">cockpit-honeypot</a>: honeypot addon for Cockpit CMS</li>
+      <li><a href="https://raruto.github.io/wordpress-git">wordpress-git</a>: skeleton repo to start building WordPress Sites</li>
+      <li><a href="https://github.com/Raruto/iubenda-for-wp">iubenda-for-wp</a>: WordPress plugin to allow non-JavaScript use of Iubenda's policy API</li>
+      <li><a href="https://raruto.github.io/wp-devops">wp-devops</a>: helper plugin for every WP Developer</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Java</summary>
+    <p><a href="https://raruto.github.io/IlMagnifico">IlMagnifico</a>: Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)</p>
+  </details>
+</div>
 <h2>Contacts</h2>
 {{ homepage_parts[1] | markdownify }}
