@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% capture homepage %}{% include_relative README.md %}{% endcapture %}
+{{ homepage | markdownify }}
+
+<section>
+  <h2>Latest posts</h2>
+  {% assign entries = site.pages | where_exp: "item", "item.dir == '/blog/'" | where_exp: "item", "item.name != 'index.md'" | sort: "name" | reverse %}
+  <ul>
+    {% for entry in entries limit: 5 %}
+    <li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ '/blog/' | relative_url }}">All posts</a></p>
+</section>
