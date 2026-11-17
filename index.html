@@ -12,6 +12,7 @@ layout: default
   .latest-posts__list a span { color: #666; font-weight: normal; }
 </style>
 <h2>My weekly blips</h2>
+<p>Notes from the workbench: devlogs, experiments, and the occasional playground.</p>
 {% assign entries = site.pages | where_exp: "item", "item.dir == '/blog/'" | where_exp: "item", "item.name != 'index.md'" | sort: "name" | reverse %}
 <ul class="latest-posts__list">
   {% for entry in entries limit: 5 %}
@@ -20,6 +21,8 @@ layout: default
 </ul>
 <p><a href="{{ '/blog/' | relative_url }}">Scan the archive &rarr;</a></p>
 <h2>My space junk</h2>
+<p>Things I launched into the void that somehow still work.</p>
+
 {% capture payloads %}
 - [IlMagnifico](https://raruto.github.io/IlMagnifico): Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)
 
