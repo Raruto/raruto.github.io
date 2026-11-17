@@ -169,6 +169,7 @@ test('rewrites generated monthly posts but protects edited posts and drafts', ()
     fs.writeFileSync(draft, fs.readFileSync(draft, 'utf8').replace('layout: blog', 'layout: default').replace(/\n/g, '\r\n'));
     saveMonth(start, metadata, dir);
     const file = publishMonth(start, post, dir);
+    assert.equal(file, path.join(dir, 'blog', '2026', '2026-10.md'));
     assert.equal(fs.existsSync(draft), false);
     assert.deepEqual(readMonth(start, dir).data.contributions, metadata.contributions);
     assert.match(fs.readFileSync(file, 'utf8'), /^layout: blog$/m);
@@ -192,7 +193,7 @@ test('rewrites generated monthly posts but protects edited posts and drafts', ()
     fs.appendFileSync(edited, '\nMy own article\n');
     assert.throws(() => publishMonth(next, post, dir), /manual edits/);
     assert.match(fs.readFileSync(edited, 'utf8'), /My own article/);
-    assert.equal(fs.existsSync(path.join(dir, 'blog', '2026-11.md')), false);
+    assert.equal(fs.existsSync(path.join(dir, 'blog', '2026', '2026-11.md')), false);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -217,11 +218,13 @@ test('weekly update splits month boundaries and uses only completed activity', (
     assert.match(reports[0], /2026-12-01/);
     assert.match(reports[1], /2027-01-01/);
     assert.doesNotMatch(reports[1], /2027-01-04/);
-    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog')).sort(), ['2026-12.md', '2027-01.md']);
+    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog')).sort(), ['2026', '2027']);
+    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog', '2026')), ['2026-12.md']);
+    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog', '2027')), ['2027-01.md']);
     updateMonths(start, end, 'token', dir, () => '# Updated title\n\n[updated](https://github.com/owner/repo)');
-    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /\[updated\]/);
-    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /title: "Updated title"/);
-    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /^layout: blog$/m);
+    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027', '2027-01.md'), 'utf8'), /\[updated\]/);
+    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027', '2027-01.md'), 'utf8'), /title: "Updated title"/);
+    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027', '2027-01.md'), 'utf8'), /^layout: blog$/m);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }

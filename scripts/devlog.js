@@ -68,7 +68,7 @@ function monthsBetween(start, end) {
 
 function monthPaths(start, root = '.') {
   const date = new Date(start).toISOString().slice(0, 7);
-  return { published: path.join(root, 'blog', `${date}.md`), draft: path.join(root, '_drafts', `${date}.md`) };
+  return { published: path.join(root, 'blog', date.slice(0, 4), `${date}.md`), draft: path.join(root, '_drafts', `${date}.md`) };
 }
 
 function readMonth(start, root = '.') {

@@ -2,6 +2,12 @@ theme: jekyll-theme-slate
 title: Matteo Tosi
 github:
   is_project_page: false
+defaults:
+  - scope:
+      path: "blog"
+      type: pages
+    values:
+      permalink: "/blog/:basename.html"
 exclude:
   - scripts
   - test

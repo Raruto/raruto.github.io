@@ -1,6 +1,7 @@
 ---
 layout: blog
 title: "3D Playground: A Cube Takes a Spin"
+category: Playground
 ---
 
 # 3D Playground: A Cube Takes a Spin

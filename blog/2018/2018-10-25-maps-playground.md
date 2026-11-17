@@ -1,6 +1,7 @@
 ---
 layout: blog
 title: "Maps Playground: Click, Drag, Repeat"
+category: Playground
 ---
 
 # Maps Playground: Click, Drag, Repeat
