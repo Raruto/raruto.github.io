@@ -1,7 +1,7 @@
 # Repository guidance
 
 - `README.md` is the public site's homepage. Treat changes to it as public-facing content; do not add technical documentation or make incidental edits.
-- `3d/`, `cdn/`, `examples/`, `img/`, and `maps/` are used by external repositories. Do not modify, add, remove, or move their contents.
+- `cdn/`, `examples/`, and `img/` are used by external repositories. Do not modify, add, remove, or move their contents.
 - The devlog workflow updates monthly articles in `blog/` every week, and requires GitHub Pages to use GitHub Actions as its source and Actions to have contents write access.
 - Run `npm ci` and `npm test` to check the devlog generator. Locally, `npm run devlog` uses `GITHUB_TOKEN` and `COPILOT_GITHUB_TOKEN` when set, otherwise it gets the missing tokens from an authenticated `gh` CLI. The Copilot token must have Copilot access. For Actions, add a fine-grained token with Copilot Requests permission as the `COPILOT_GITHUB_TOKEN` secret. Copilot requests may incur charges.
 - The GitHub public events feed contains at most 300 events; the workflow logs a warning if activity may be incomplete.
@@ -9,5 +9,6 @@
 - Run `npm run devlog:backfill -- 2026 3` to cache activity through the previous complete week and generate up to three missing monthly articles, or omit `3` to generate all missing articles for the year. Existing article text is not overwritten by backfill. Historical GitHub contributions cover commits, opened issues and pull requests, and reviews; they do not include every activity type. Event metadata records normalized activity rather than raw event payloads.
 - Historical months containing only commit counts use a short factual summary; other months use Copilot and retry invalid source links up to three times.
 - Monthly posts start with a descriptive title and a dated `Devlog: YYYY-MM` opening. The generator may illustrate repositories mentioned in the text using existing images from `img/`, without modifying those shared files.
+- Write blog articles in English, with a concise, approachable first-person voice: conversational, lightly playful when natural, and grounded in verified details. Do not invent motivations or outcomes. Label retrospective dates clearly.
 - The blog layout nests the Slate theme's default layout and adds breadcrumbs to the archive and articles; keep navigation independent of generated post bodies.
 - To preview the site locally, install Ruby, Bundler, and the dependencies with `bundle install`, then run `npm run dev` and open `http://127.0.0.1:4000/`. Jekyll rebuilds changed files automatically; restart it after changing `_config.yml`. Set `JEKYLL_GITHUB_TOKEN` if GitHub metadata is unavailable locally. On Windows, RubyInstaller with MSYS2/Devkit may be required to install native gems.

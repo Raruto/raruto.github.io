@@ -121,8 +121,8 @@ TripettoClassic.run({
     <dt>As hobbyist</dt>
     <dd>
       <ul>
-        <li><a href="https://raruto.github.io/3d">/3d</a></li>
-        <li><a href="https://raruto.github.io/maps">/maps</a></li>
+        <li><a href="https://raruto.github.io/blog/2019-09-06-3d-playground.html">3D playground</a></li>
+        <li><a href="https://raruto.github.io/blog/2018-10-25-maps-playground.html">Maps playground</a></li>
       </ul>
 
     </dd>
