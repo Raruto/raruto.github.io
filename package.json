@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "test": "node --test test/devlog.test.js",
+    "dev": "bundle exec jekyll serve --host 127.0.0.1",
     "devlog": "node scripts/devlog.js",
     "devlog:backfill": "node scripts/backfill.js"
   },
