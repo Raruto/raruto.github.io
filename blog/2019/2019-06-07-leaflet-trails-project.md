@@ -13,6 +13,8 @@ My [leaflet-trails](https://github.com/Raruto/leaflet-trails) repository dates b
 
 The project's examples include [different overlay arrangements](https://raruto.github.io/leaflet-trails/examples/leaflet-trails_overlays.html) and an integration with Leaflet UI. The README also uses [leaflet-pointable]({{ '/blog/2019-06-07-leaflet-pointable-project.html' | relative_url }}) in its example, connecting route imagery with map interaction.
 
+The example combines hiking and cycling overlays with a topographic base map. That separation lets the route information sit on top of the geographic context instead of replacing it.
+
 ![Waymarked trails on a Leaflet map]({{ '/img/leaflet-trails.png' | relative_url }})
 
 *An illustration of the trails overlay.*

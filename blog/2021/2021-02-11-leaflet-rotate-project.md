@@ -13,6 +13,8 @@ North doesn't always need to be at the top. My [leaflet-rotate](https://github.c
 
 The project was initially based on [Iván Sánchez Ortega's work](https://github.com/Leaflet/Leaflet/tree/rotate). The current README documents bearing, pitch and interaction options, while the [demo](https://raruto.github.io/leaflet-rotate/examples/leaflet-rotate.html) puts the controls on a map.
 
+Bearing changes the map's orientation; pitch changes the viewing angle. The controls and gestures documented today offer different ways to explore those two adjustments.
+
 ![A rotated Leaflet map]({{ '/img/leaflet-rotate.png' | relative_url }})
 
 *A current illustration of leaflet-rotate.*

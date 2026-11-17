@@ -10,6 +10,8 @@ category: Playground
 
 Sometimes a map just needs a place to play. This little [Leaflet](https://leafletjs.com/) experiment starts with [OpenTopoMap](https://opentopomap.org/) tiles: click anywhere to drop a marker, then drag it around to see its coordinates change.
 
+Each click adds another marker, so the map can hold more than one point at a time. The popup shows the latitude and longitude and updates when a marker is dragged. It's a small interactive sketch from 2018, kept here as a working piece of the site's history.
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" crossorigin=""></script>
 <style>

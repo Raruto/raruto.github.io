@@ -305,6 +305,7 @@ function summarize(report, token, run = spawnSync) {
   try {
     const prompt = `Write a short, engaging English developer blog post in first person based only on the public activity below.
 Use one to three natural paragraphs with an approachable, conversational tone, lightly playful when natural, not a chronological activity log.
+Aim for at least 60 words of meaningful prose when the activity supports it; keep sparse months shorter rather than inventing details or padding.
 Include a few Markdown links directly in the prose, using only exact URLs from the activity below.
 Do not invent accomplishments, motivations, feelings, outcomes, or details absent from the data.
 Do not infer time spent, inactivity, or the completion of a pull request from its title.

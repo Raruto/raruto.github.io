@@ -10,6 +10,8 @@ category: Playground
 
 A red cube, a sphere, a blue line and a camera going for a spin. This [three.js](https://threejs.org/) playground puts a few shapes, a moving light and a grid together in a small animated scene.
 
+The camera circles the scene while the cube rotates and the light changes position. Move the pointer over the canvas to nudge the view vertically. It's a compact experiment in geometry, animation and perspective, preserved from the site's 2019 history rather than a full 3D application.
+
 <div id="playground-3d" style="width: 100%; height: 400px;"></div>
 <script src="https://unpkg.com/three@0.108.0/build/three.js"></script>
 <script>
