@@ -86,6 +86,9 @@ test('publishes linked prose and a factual release timeline without internal det
     assert.ok(args.includes('--available-tools=none'));
     assert.ok(options.input.includes('public event'));
     assert.ok(options.input.includes('Never discuss missing information'));
+    const guidelines = fs.readFileSync(path.join(__dirname, '..', '.github', 'instructions', 'blog.instructions.md'), 'utf8')
+      .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
+    assert.ok(options.input.includes(guidelines));
     return { status: 0, stdout: '# A pair of releases\n\nI shipped [v1](https://github.com/owner/repo/releases/tag/v1).\n\n<script>{% raw %}</script>' };
   });
   const output = render(entries, start, start + 7 * 86400000, summary);
