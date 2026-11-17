@@ -6,6 +6,8 @@ permalink: /blog/
 
 # Blog
 
+<!-- Weekly blips on code, maps, and side projects. -->
+
 Notes from the workbench: devlogs, experiments, and the occasional playground.
 
 {% assign entries = site.pages | where_exp: "page", "page.dir == '/blog/'" | where_exp: "page", "page.name != 'index.md'" | sort: "name" | reverse %}
