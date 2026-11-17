@@ -4,13 +4,22 @@ layout: default
 {% capture homepage %}{% include_relative README.md %}{% endcapture %}
 {{ homepage | markdownify }}
 
-<section>
-  <h2>Latest posts</h2>
+<style>
+  .latest-posts { margin: 2.5rem 0; }
+  .latest-posts__intro { color: #555; }
+  .latest-posts__list { list-style: none; margin: 1.25rem 0; padding: 0; border-top: 1px solid #d5d5d5; }
+  .latest-posts__list li { border-bottom: 1px solid #d5d5d5; }
+  .latest-posts__list a { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; font-weight: bold; }
+  .latest-posts__list a span { color: #666; font-weight: normal; }
+</style>
+<section class="latest-posts" aria-labelledby="latest-posts-title">
+  <h2 id="latest-posts-title">Latest posts</h2>
+  <p class="latest-posts__intro">A weekly look at what I've been working on.</p>
   {% assign entries = site.pages | where_exp: "item", "item.dir == '/blog/'" | where_exp: "item", "item.name != 'index.md'" | sort: "name" | reverse %}
-  <ul>
+  <ul class="latest-posts__list">
     {% for entry in entries limit: 5 %}
-    <li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></li>
+    <li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }} <span aria-hidden="true">&rarr;</span></a></li>
     {% endfor %}
   </ul>
-  <p><a href="{{ '/blog/' | relative_url }}">All posts</a></p>
+  <p><a href="{{ '/blog/' | relative_url }}">Explore the blog &rarr;</a></p>
 </section>
