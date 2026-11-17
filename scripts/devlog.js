@@ -118,10 +118,18 @@ function publishMonth(start, text, root = '.') {
   }
   const frontMatter = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.exec(text);
   if (!frontMatter) throw new Error('Generated post has no front matter');
+  const generatedTitle = /^title: [^\r\n]+$/m.exec(frontMatter[0]);
+  const header = current.text.slice(0, current.text.length - current.body.length);
+  const titles = header.match(/^title: [^\r\n]+$/gm) || [];
+  if (!generatedTitle || titles.length !== 1) throw new Error('Post must have exactly one title');
+  const date = new Date(start).toISOString().slice(0, 7);
+  if (data.titleHash ? data.titleHash !== bodyHash(titles[0]) : titles[0] !== `title: "Devlog ${date}"`) {
+    throw new Error(`Post title has manual edits; refusing to overwrite: ${current.file}`);
+  }
   const body = text.slice(frontMatter[0].length);
   data.bodyHash = bodyHash(body);
-  const header = current.text.slice(0, current.text.length - current.body.length);
-  const output = `${withActivity(header, data)}${body}`;
+  data.titleHash = bodyHash(generatedTitle[0]);
+  const output = `${withActivity(header.replace(/^title: [^\r\n]+$/m, () => generatedTitle[0]), data)}${body}`;
   if (fs.existsSync(published)) {
     writeFile(published, output);
   } else {
@@ -233,11 +241,43 @@ function activity(events, start, end) {
   });
 }
 
+function illustrate(paragraphs) {
+  const images = {
+    'leaflet-city-mapper': 'leaflet-city-mapper.png',
+    'leaflet-control-layers-inline': 'leaflet-control-layers-inline.png',
+    'leaflet-elevation': 'leaflet-elevation.png',
+    'leaflet-gesture-handling': 'leaflet-gesture-handling.png',
+    'leaflet-google': 'leaflet-google.jpg',
+    'leaflet-rotate': 'leaflet-rotate.png',
+    'leaflet-trails': 'leaflet-trails.png',
+    'leaflet-transparency': 'leaflet-transparency.png',
+    'leaflet-ui': 'leaflet-ui.png',
+    'wp-devops': 'wp-devops-plugins-page.png',
+    'wordpress-git': 'wordpress-git-composer.jpg'
+  };
+  for (let i = 0; i < paragraphs.length; i++) {
+    const links = paragraphs[i].matchAll(/\]\(https:\/\/github\.com\/Raruto\/([\w.-]+)(?:[\/#][^)]*)?\)/gi);
+    for (const link of links) {
+      const repo = link[1].toLowerCase();
+      if (Object.hasOwn(images, repo)) {
+        if (!fs.existsSync(path.join(__dirname, '..', 'img', images[repo]))) throw new Error(`Missing illustration: ${images[repo]}`);
+        return [...paragraphs.slice(0, i + 1), `![Illustration of ${repo}](../img/${images[repo]})\n\n*A current illustration of ${repo}.*`, ...paragraphs.slice(i + 1)];
+      }
+    }
+  }
+  return paragraphs;
+}
+
 function render(entries, start, end, summary) {
   const date = time => new Date(time).toISOString().slice(0, 10);
+  const heading = /^# ([^\r\n]+)\r?\n\s*\r?\n([\s\S]+)$/.exec(summary.trim());
+  if (!heading || !heading[1].trim() || heading[1].length > 120 || /[<>\\{}\[\]#`*_]/.test(heading[1])) {
+    throw new SummaryValidationError('Copilot returned an invalid devlog title');
+  }
+  const title = heading[1].trim();
   const allowed = new Set(entries.flatMap(entry => [entry.base, entry.url, entry.url.split('#')[0]]));
   let linkCount = 0;
-  const paragraphs = summary.split(/\n\s*\n/).map(paragraph =>
+  const paragraphs = heading[2].split(/\n\s*\n/).map(paragraph =>
     paragraph.split(/(\[[^\]\n]+\]\([^)\n]+\))/g).map(part => {
       const link = /^\[([^\]\n]+)\]\(([^)\n]+)\)$/.exec(part);
       if (!link) return escapeText(part);
@@ -245,7 +285,7 @@ function render(entries, start, end, summary) {
       linkCount++;
       return `[${escapeText(link[1])}](${link[2]})`;
     }).join('')
-  ).join('\n\n');
+  );
   if (!linkCount) throw new SummaryValidationError('Copilot returned a devlog without source links');
   const releases = entries.filter(entry => entry.type === 'ReleaseEvent' && entry.action === 'published'
     && /^[\w.-]+$/.test(entry.tag || '')).reverse();
@@ -254,7 +294,7 @@ function render(entries, start, end, summary) {
     const timeline = releases.map(entry => `    ${entry.date} : ${entry.repo} ${entry.tag}`).join('\n');
     diagram = `\n\n<pre class="mermaid" aria-label="Timeline of releases">\ntimeline\n    title Releases this month\n${timeline}\n</pre>\n\n<script type="module">\nimport mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';\nmermaid.initialize({ startOnLoad: true, securityLevel: 'strict' });\n</script>`;
   }
-  return `---\nlayout: default\ntitle: "Devlog ${date(start).slice(0, 7)}"\n---\n\n# Devlog: ${date(start).slice(0, 7)}\n\n${paragraphs}${diagram}\n`;
+  return `---\nlayout: default\ntitle: ${JSON.stringify(title)}\n---\n\n# ${escapeText(title)}\n\n*Devlog: ${date(start).slice(0, 7)}*\n\n${illustrate(paragraphs).join('\n\n')}${diagram}\n`;
 }
 
 function summarize(report, token, run = spawnSync) {
@@ -274,7 +314,10 @@ Never discuss missing information or data limitations. Do not describe the pace,
 Do not invent personal opinions or intentions. Avoid filler, commentary about the act of contributing, and chronological lists.
 Use short, readable link labels rather than reproducing long issue or pull request titles.
 Keep sparse months short rather than padding them. Avoid relative dates such as "today", inline code, and HTML entities.
-Return only the paragraphs, with no heading, lists, diagram, or technical disclaimers.
+Begin with a concise, engaging, factual title as a Markdown H1 followed by a blank line and the paragraphs.
+Use only plain text in the title; don't include markup, links, or a date.
+Do not claim a pull request was merged or an issue was fixed unless the activity says so.
+Return no lists, diagram, or technical disclaimers.
 
 ${report}`;
     const result = run(process.execPath, [
@@ -333,4 +376,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { SummaryValidationError, previousWeek, monthStart, nextMonth, monthsBetween, publicEvents, activity, render, summarize, resolveTokens, escapeText, monthPaths, readMonth, saveMonth, publishMonth, monthEntries, updateMonths, archiveEvents, archiveAllEvents };
+module.exports = { SummaryValidationError, previousWeek, monthStart, nextMonth, monthsBetween, publicEvents, activity, render, summarize, resolveTokens, escapeText, illustrate, monthPaths, readMonth, saveMonth, publishMonth, monthEntries, updateMonths, archiveEvents, archiveAllEvents };

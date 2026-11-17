@@ -86,9 +86,10 @@ test('publishes linked prose and a factual release timeline without internal det
     assert.ok(args.includes('--available-tools=none'));
     assert.ok(options.input.includes('public event'));
     assert.ok(options.input.includes('Never discuss missing information'));
-    return { status: 0, stdout: 'I shipped [v1](https://github.com/owner/repo/releases/tag/v1).\n\n<script>{% raw %}</script>' };
+    return { status: 0, stdout: '# A pair of releases\n\nI shipped [v1](https://github.com/owner/repo/releases/tag/v1).\n\n<script>{% raw %}</script>' };
   });
   const output = render(entries, start, start + 7 * 86400000, summary);
+  assert.match(output, /title: "A pair of releases"[\s\S]*# A pair of releases\n\n\*Devlog: 2026-11\*/);
   assert.match(output, /\[v1\]\(https:\/\/github.com\/owner\/repo\/releases\/tag\/v1\)/);
   assert.match(output, /&lt;script&gt;&#123;% raw %&#125;&lt;\/script&gt;/);
   assert.match(output, /<pre class="mermaid"[\s\S]*2026-11-09 : owner\/repo v1[\s\S]*2026-11-10 : owner\/repo v2/);
@@ -98,13 +99,25 @@ test('publishes linked prose and a factual release timeline without internal det
     repo: { name: 'owner/repo' },
     payload: { review: { html_url: 'https://github.com/owner/repo/pull/42#pullrequestreview-1' } }
   }], start, start + 7 * 86400000);
-  assert.match(render(review, start, start + 7 * 86400000, '[review](https://github.com/owner/repo/pull/42)'), /\[review\]/);
-  assert.throws(() => render(entries, start, start + 7 * 86400000, '[bad](https://example.com)'), /outside the public activity/);
-  assert.throws(() => render(entries, start, start + 7 * 86400000, 'No links'), /without source links/);
-  assert.doesNotMatch(render(entries.slice(0, 1), start, start + 7 * 86400000, '[repo](https://github.com/owner/repo)'), /class="mermaid"/);
+  assert.match(render(review, start, start + 7 * 86400000, '# Review\n\n[review](https://github.com/owner/repo/pull/42)'), /\[review\]/);
+  assert.throws(() => render(entries, start, start + 7 * 86400000, '# Title\n\n[bad](https://example.com)'), /outside the public activity/);
+  assert.throws(() => render(entries, start, start + 7 * 86400000, '# Title\n\nNo links'), /without source links/);
+  assert.throws(() => render(entries, start, start + 7 * 86400000, '# {% bad %}\n\n[repo](https://github.com/owner/repo)'), /invalid devlog title/);
+  assert.doesNotMatch(render(entries.slice(0, 1), start, start + 7 * 86400000, '# Title\n\n[repo](https://github.com/owner/repo)'), /class="mermaid"/);
   assert.throws(() => summarize('public event', ''), /COPILOT_GITHUB_TOKEN/);
   assert.throws(() => summarize('public event', 'token', () => ({ status: 1, stderr: 'failed' })), /Copilot failed/);
   assert.throws(() => summarize('public event', 'token', () => ({ status: 0, stdout: '' })), /empty summary/);
+});
+
+test('illustrates only a cited project with an existing local image', () => {
+  const start = Date.parse('2026-11-01T00:00:00Z');
+  const base = 'https://github.com/Raruto/leaflet-city-mapper';
+  const entries = [{ base, url: `${base}/issues/1` }];
+  const output = render(entries, start, start + 86400000, `# Mapping the city\n\n[The project](${base}/issues/1) explores maps.`);
+  assert.match(output, /!\[Illustration of leaflet-city-mapper\]\(\.\.\/img\/leaflet-city-mapper\.png\)/);
+  assert.match(output, /current illustration/);
+  const other = 'https://github.com/other/leaflet-city-mapper';
+  assert.doesNotMatch(render([{ base: other, url: other }], start, start + 86400000, `# Another project\n\n[Project](${other})`), /!\[/);
 });
 
 test('stores only public events in monthly metadata and retains earlier observations', () => {
@@ -164,6 +177,10 @@ test('rewrites generated monthly posts but protects edited posts and drafts', ()
     assert.match(fs.readFileSync(file, 'utf8'), /Post body/);
     publishMonth(start, post.replace('Post body', 'Updated body'), dir);
     assert.match(fs.readFileSync(file, 'utf8'), /Updated body/);
+    const generated = fs.readFileSync(file, 'utf8');
+    fs.writeFileSync(file, generated.replace('title: "Example"', 'title: "Manual title"'));
+    assert.throws(() => publishMonth(start, post, dir), /title has manual edits/);
+    fs.writeFileSync(file, generated);
     fs.appendFileSync(file, 'Manual edit\n');
     assert.throws(() => publishMonth(start, post, dir), /manual edits/);
     assert.match(fs.readFileSync(file, 'utf8'), /Manual edit/);
@@ -194,14 +211,15 @@ test('weekly update splits month boundaries and uses only completed activity', (
     const reports = [];
     updateMonths(start, end, 'token', dir, report => {
       reports.push(report);
-      return '[repo](https://github.com/owner/repo)';
+      return '# A month of work\n\n[repo](https://github.com/owner/repo)';
     });
     assert.match(reports[0], /2026-12-01/);
     assert.match(reports[1], /2027-01-01/);
     assert.doesNotMatch(reports[1], /2027-01-04/);
     assert.deepEqual(fs.readdirSync(path.join(dir, 'blog')).sort(), ['2026-12.md', '2027-01.md']);
-    updateMonths(start, end, 'token', dir, () => '[updated](https://github.com/owner/repo)');
+    updateMonths(start, end, 'token', dir, () => '# Updated title\n\n[updated](https://github.com/owner/repo)');
     assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /\[updated\]/);
+    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /title: "Updated title"/);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -301,7 +319,7 @@ test('commit-only months avoid invented details and other activity still uses Co
     line: '- 2017-05-10 · [owner/repo](https://github.com/owner/repo) · [Authored 6 commits](https://github.com/owner/repo)'
   };
   assert.equal(monthSummary([entry, entry], start, '', () => { throw new Error('unexpected Copilot call'); }),
-    'In May, I contributed commits to [owner/repo](https://github.com/owner/repo).');
+    '# Commits to repo\n\nIn May, I contributed commits to [owner/repo](https://github.com/owner/repo).');
   const issue = { ...entry, line: entry.line.replace('Authored 6 commits', 'Opened issue') };
   assert.equal(monthSummary([issue], start, 'token', (report, token) => {
     assert.equal(report, issue.line);
@@ -319,13 +337,13 @@ test('historical generation retries invalid summaries but never publishes unveri
   };
   let calls = 0;
   const output = renderMonth([entry], start, Date.parse('2020-02-01T00:00:00Z'), 'token', () =>
-    ++calls === 1 ? '[bad](https://example.com)' : '[issue](https://github.com/owner/repo/issues/1)');
+    ++calls === 1 ? '# Title\n\n[bad](https://example.com)' : '# Title\n\n[issue](https://github.com/owner/repo/issues/1)');
   assert.equal(calls, 2);
   assert.match(output, /\[issue\]/);
   calls = 0;
   assert.throws(() => renderMonth([entry], start, Date.parse('2020-02-01T00:00:00Z'), 'token', () => {
     calls++;
-    return 'No links';
+    return '# Title\n\nNo links';
   }), /without source links/);
   assert.equal(calls, 3);
 });

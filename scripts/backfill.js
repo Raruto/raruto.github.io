@@ -142,7 +142,9 @@ function monthSummary(entries, start, token, generate = summarize) {
     const links = repos.slice(0, 3).map(([repo, url]) => `[${repo}](${url})`);
     const list = links.length === 1 ? links[0] : `${links.slice(0, -1).join(', ')} and ${links[links.length - 1]}`;
     const month = new Date(start).toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
-    return `In ${month}, I contributed commits to ${repos.length > 3 ? 'repositories including ' : ''}${list}.`;
+    const names = repos.slice(0, 2).map(([repo]) => repo.split('/')[1].replace(/_/g, ' '));
+    const title = names.length === 1 ? `Commits to ${names[0]}` : `Commits to ${names.join(' and ')}${repos.length > 2 ? ' and more' : ''}`;
+    return `# ${title}\n\nIn ${month}, I contributed commits to ${repos.length > 3 ? 'repositories including ' : ''}${list}.`;
   }
   return generate(entries.map(item => item.line).join('\n'), token);
 }
