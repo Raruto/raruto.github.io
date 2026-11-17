@@ -89,7 +89,7 @@ test('publishes linked prose and a factual release timeline without internal det
     return { status: 0, stdout: '# A pair of releases\n\nI shipped [v1](https://github.com/owner/repo/releases/tag/v1).\n\n<script>{% raw %}</script>' };
   });
   const output = render(entries, start, start + 7 * 86400000, summary);
-  assert.match(output, /title: "A pair of releases"[\s\S]*# A pair of releases\n\n\*Devlog: 2026-11\*/);
+  assert.match(output, /layout: blog\ntitle: "A pair of releases"[\s\S]*# A pair of releases\n\n\*Devlog: 2026-11\*/);
   assert.match(output, /\[v1\]\(https:\/\/github.com\/owner\/repo\/releases\/tag\/v1\)/);
   assert.match(output, /&lt;script&gt;&#123;% raw %&#125;&lt;\/script&gt;/);
   assert.match(output, /<pre class="mermaid"[\s\S]*2026-11-09 : owner\/repo v1[\s\S]*2026-11-10 : owner\/repo v2/);
@@ -162,15 +162,16 @@ test('rewrites generated monthly posts but protects edited posts and drafts', ()
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
   try {
     const start = Date.parse('2026-10-01T00:00:00Z');
-    const post = '---\nlayout: default\ntitle: "Example"\n---\n\nPost body\n';
+    const post = '---\nlayout: blog\ntitle: "Example"\n---\n\nPost body\n';
     const metadata = { contributions: { entries: [{ line: 'Literal $& and $1' }] } };
     saveMonth(start, metadata, dir);
     const draft = path.join(dir, '_drafts', '2026-10.md');
-    fs.writeFileSync(draft, fs.readFileSync(draft, 'utf8').replace(/\n/g, '\r\n'));
+    fs.writeFileSync(draft, fs.readFileSync(draft, 'utf8').replace('layout: blog', 'layout: default').replace(/\n/g, '\r\n'));
     saveMonth(start, metadata, dir);
     const file = publishMonth(start, post, dir);
     assert.equal(fs.existsSync(draft), false);
     assert.deepEqual(readMonth(start, dir).data.contributions, metadata.contributions);
+    assert.match(fs.readFileSync(file, 'utf8'), /^layout: blog$/m);
     assert.match(fs.readFileSync(file, 'utf8'), /Post body/);
     const saved = readMonth(start, dir).data;
     saveMonth(start, { ...saved, other: 'new' }, dir);
@@ -220,6 +221,7 @@ test('weekly update splits month boundaries and uses only completed activity', (
     updateMonths(start, end, 'token', dir, () => '# Updated title\n\n[updated](https://github.com/owner/repo)');
     assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /\[updated\]/);
     assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /title: "Updated title"/);
+    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027-01.md'), 'utf8'), /^layout: blog$/m);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }

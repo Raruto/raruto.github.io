@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<style>
+  .breadcrumbs { margin-bottom: 1.5rem; font-size: .9em; }
+  .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .25rem .5rem; list-style: none; margin: 0; padding: 0; }
+  .breadcrumbs li { overflow-wrap: anywhere; }
+  .breadcrumbs li + li::before { content: "/"; margin-right: .5rem; color: #666; }
+  .breadcrumbs [aria-current] { color: #555; }
+</style>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+    {% unless page.url == '/blog/' %}
+      <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+    {% endunless %}
+    <li aria-current="page">{{ page.title | default: page.name | escape }}</li>
+  </ol>
+</nav>
+{{ content }}

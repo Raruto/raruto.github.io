@@ -76,7 +76,7 @@ function readMonth(start, root = '.') {
   const date = new Date(start).toISOString().slice(0, 7);
   if (fs.existsSync(published) && fs.existsSync(draft)) throw new Error(`Both draft and post exist for ${date}`);
   const file = fs.existsSync(published) ? published : draft;
-  const text = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : `---\nlayout: default\ntitle: "Devlog ${date}"\n---\n`;
+  const text = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : `---\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
   const frontMatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(text);
   if (!frontMatter) throw new Error(`Invalid post front matter: ${file}`);
   const lines = frontMatter[1].split(/\r?\n/).filter(line => /^activity:/.test(line));
@@ -108,8 +108,9 @@ function publishMonth(start, text, root = '.') {
   const { data } = current;
   if (fs.existsSync(draft)) {
     const date = new Date(start).toISOString().slice(0, 7);
-    const expected = `---\nactivity: ${JSON.stringify(data)}\nlayout: default\ntitle: "Devlog ${date}"\n---\n`;
-    if (fs.readFileSync(draft, 'utf8').replace(/\r\n/g, '\n') !== expected) {
+    const expected = `---\nactivity: ${JSON.stringify(data)}\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
+    const contents = fs.readFileSync(draft, 'utf8').replace(/\r\n/g, '\n');
+    if (contents !== expected && contents !== expected.replace('layout: blog', 'layout: default')) {
       throw new Error(`Draft has manual edits; publish it manually: ${draft}`);
     }
   }
@@ -119,7 +120,8 @@ function publishMonth(start, text, root = '.') {
   const frontMatter = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.exec(text);
   if (!frontMatter) throw new Error('Generated post has no front matter');
   const generatedTitle = /^title: [^\r\n]+$/m.exec(frontMatter[0]);
-  const header = current.text.slice(0, current.text.length - current.body.length);
+  let header = current.text.slice(0, current.text.length - current.body.length);
+  if (fs.existsSync(draft)) header = header.replace(/^layout: default$/m, 'layout: blog');
   const titles = header.match(/^title: [^\r\n]+$/gm) || [];
   if (!generatedTitle || titles.length !== 1) throw new Error('Post must have exactly one title');
   const date = new Date(start).toISOString().slice(0, 7);
@@ -294,7 +296,7 @@ function render(entries, start, end, summary) {
     const timeline = releases.map(entry => `    ${entry.date} : ${entry.repo} ${entry.tag}`).join('\n');
     diagram = `\n\n<pre class="mermaid" aria-label="Timeline of releases">\ntimeline\n    title Releases this month\n${timeline}\n</pre>\n\n<script type="module">\nimport mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';\nmermaid.initialize({ startOnLoad: true, securityLevel: 'strict' });\n</script>`;
   }
-  return `---\nlayout: default\ntitle: ${JSON.stringify(title)}\n---\n\n# ${escapeText(title)}\n\n*Devlog: ${date(start).slice(0, 7)}*\n\n${illustrate(paragraphs).join('\n\n')}${diagram}\n`;
+  return `---\nlayout: blog\ntitle: ${JSON.stringify(title)}\n---\n\n# ${escapeText(title)}\n\n*Devlog: ${date(start).slice(0, 7)}*\n\n${illustrate(paragraphs).join('\n\n')}${diagram}\n`;
 }
 
 function summarize(report, token, run = spawnSync) {
