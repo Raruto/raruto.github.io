@@ -13,13 +13,13 @@ layout: default
   .latest-posts__list a span { color: #666; font-weight: normal; }
 </style>
 <section class="latest-posts" aria-labelledby="latest-posts-title">
-  <h2 id="latest-posts-title">Latest posts</h2>
-  <p class="latest-posts__intro">A weekly look at what I've been working on.</p>
+  <h2 id="latest-posts-title">Latest pings</h2>
+  <p class="latest-posts__intro">Weekly blips on code, maps, and side projects.</p>
   {% assign entries = site.pages | where_exp: "item", "item.dir == '/blog/'" | where_exp: "item", "item.name != 'index.md'" | sort: "name" | reverse %}
   <ul class="latest-posts__list">
     {% for entry in entries limit: 5 %}
     <li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }} <span aria-hidden="true">&rarr;</span></a></li>
     {% endfor %}
   </ul>
-  <p><a href="{{ '/blog/' | relative_url }}">Explore the blog &rarr;</a></p>
+  <p><a href="{{ '/blog/' | relative_url }}">Scan the archive &rarr;</a></p>
 </section>

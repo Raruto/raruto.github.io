@@ -1,4 +1,4 @@
-name: Weekly devlog and Pages
+name: Monthly devlog and Pages
 
 on:
   push:
@@ -25,20 +25,23 @@ jobs:
       - run: npm ci
       - name: Check devlog generator
         run: npm test
-      - name: Generate the previous week's devlog
+      - name: Update monthly devlogs with the previous week's activity
         if: github.event_name != 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
         run: |
-          npm run devlog
+          result=0
+          npm run devlog || result=$?
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add blog
+          if [ -d _drafts ]; then git add _drafts; fi
           if ! git diff --cached --quiet; then
-            git commit -m "Update weekly devlog"
+            git commit -m "Update monthly devlog"
             git push
           fi
+          if [ "$result" -ne 0 ]; then exit "$result"; fi
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1
       - uses: actions/upload-pages-artifact@v3

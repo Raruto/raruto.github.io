@@ -1,6 +1,7 @@
 theme: jekyll-theme-slate
 exclude:
   - scripts
+  - test
   - Gemfile
   - Gemfile.lock
   - node_modules

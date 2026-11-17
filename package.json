@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "test": "node --test scripts/devlog.test.js",
-    "devlog": "node scripts/devlog.js"
+    "test": "node --test test/devlog.test.js",
+    "devlog": "node scripts/devlog.js",
+    "devlog:backfill": "node scripts/backfill.js"
   },
   "devDependencies": {
     "@github/copilot": "1.0.112"

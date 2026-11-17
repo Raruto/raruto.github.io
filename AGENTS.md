@@ -2,6 +2,9 @@
 
 - `README.md` is the public site's homepage. Treat changes to it as public-facing content; do not add technical documentation or make incidental edits.
 - `3d/`, `cdn/`, `examples/`, `img/`, and `maps/` are used by external repositories. Do not modify, add, remove, or move their contents.
-- The weekly devlog workflow writes articles to `blog/`, and requires GitHub Pages to use GitHub Actions as its source and Actions to have contents write access.
+- The devlog workflow updates monthly articles in `blog/` every week, and requires GitHub Pages to use GitHub Actions as its source and Actions to have contents write access.
 - Run `npm ci` and `npm test` to check the devlog generator. Locally, `npm run devlog` uses `GITHUB_TOKEN` and `COPILOT_GITHUB_TOKEN` when set, otherwise it gets the missing tokens from an authenticated `gh` CLI. The Copilot token must have Copilot access. For Actions, add a fine-grained token with Copilot Requests permission as the `COPILOT_GITHUB_TOKEN` secret. Copilot requests may incur charges.
 - The GitHub public events feed contains at most 300 events; the workflow logs a warning if activity may be incomplete.
+- Public activity is saved in each monthly post's `activity` front matter; months without posts are stored in `_drafts/`. Drafts are excluded from normal Jekyll builds, but both drafts and metadata are public in this repository. Weekly updates regenerate the monthly text and refuse to overwrite manually edited articles or drafts.
+- Run `npm run devlog:backfill -- 2026 3` to cache activity through the previous complete week and generate up to three missing monthly articles, or omit `3` to generate all missing articles for the year. Existing article text is not overwritten by backfill. Historical GitHub contributions cover commits, opened issues and pull requests, and reviews; they do not include every activity type. Event metadata records normalized activity rather than raw event payloads.
+- Historical months containing only commit counts use a short factual summary; other months use Copilot and retry invalid source links up to three times.
