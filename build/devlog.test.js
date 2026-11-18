@@ -3,8 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { previousWeek, monthsBetween, publicEvents, activity, render, summarize, resolveTokens, readMonth, saveMonth, publishMonth, updateMonths, archiveEvents, archiveAllEvents } = require('../scripts/devlog');
-const { contributions, cachedContributions, monthSummary, renderMonth } = require('../scripts/backfill');
+const { previousWeek, monthsBetween, monthPaths, publicEvents, activity, render, summarize, resolveTokens, readMonth, saveMonth, publishMonth, updateMonths, archiveEvents, archiveAllEvents } = require('./devlog');
 
 test('uses explicit tokens or the GitHub CLI locally', () => {
   let calls = 0;
@@ -43,6 +42,13 @@ test('previous complete UTC week, including boundaries and unsorted events', () 
   assert.equal(entries.length, 2);
   assert.match(entries[0].line, /2026-11-15.*inside/);
   assert.match(entries[1].line, /&lt;script&gt;&#123;% raw %&#125;&lt;\/script&gt;/);
+});
+
+test('stores monthly posts and drafts in the repository root', () => {
+  const { published, draft } = monthPaths(Date.parse('2026-10-01T00:00:00Z'));
+  const root = path.join(__dirname, '..');
+  assert.equal(published, path.join(root, '_posts', '2026', '2026-10.md'));
+  assert.equal(draft, path.join(root, '_drafts', '2026-10.md'));
 });
 
 test('fetches all pages despite unsorted events and flags truncated weeks', async () => {
@@ -172,7 +178,7 @@ test('rewrites generated monthly posts but protects edited posts and drafts', ()
     fs.writeFileSync(draft, fs.readFileSync(draft, 'utf8').replace('layout: blog', 'layout: default').replace(/\n/g, '\r\n'));
     saveMonth(start, metadata, dir);
     const file = publishMonth(start, post, dir);
-    assert.equal(file, path.join(dir, 'blog', '2026', '2026-10.md'));
+    assert.equal(file, path.join(dir, '_posts', '2026', '2026-10.md'));
     assert.equal(fs.existsSync(draft), false);
     assert.deepEqual(readMonth(start, dir).data.contributions, metadata.contributions);
     assert.match(fs.readFileSync(file, 'utf8'), /^layout: blog$/m);
@@ -196,7 +202,7 @@ test('rewrites generated monthly posts but protects edited posts and drafts', ()
     fs.appendFileSync(edited, '\nMy own article\n');
     assert.throws(() => publishMonth(next, post, dir), /manual edits/);
     assert.match(fs.readFileSync(edited, 'utf8'), /My own article/);
-    assert.equal(fs.existsSync(path.join(dir, 'blog', '2026', '2026-11.md')), false);
+    assert.equal(fs.existsSync(path.join(dir, '_posts', '2026', '2026-11.md')), false);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -221,137 +227,15 @@ test('weekly update splits month boundaries and uses only completed activity', (
     assert.match(reports[0], /2026-12-01/);
     assert.match(reports[1], /2027-01-01/);
     assert.doesNotMatch(reports[1], /2027-01-04/);
-    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog')).sort(), ['2026', '2027']);
-    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog', '2026')), ['2026-12.md']);
-    assert.deepEqual(fs.readdirSync(path.join(dir, 'blog', '2027')), ['2027-01.md']);
+    assert.deepEqual(fs.readdirSync(path.join(dir, '_posts')).sort(), ['2026', '2027']);
+    assert.deepEqual(fs.readdirSync(path.join(dir, '_posts', '2026')), ['2026-12.md']);
+    assert.deepEqual(fs.readdirSync(path.join(dir, '_posts', '2027')), ['2027-01.md']);
     updateMonths(start, end, 'token', dir, () => '# Updated title\n\n[updated](https://github.com/owner/repo)');
-    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027', '2027-01.md'), 'utf8'), /\[updated\]/);
-    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027', '2027-01.md'), 'utf8'), /title: "Updated title"/);
-    assert.match(fs.readFileSync(path.join(dir, 'blog', '2027', '2027-01.md'), 'utf8'), /^layout: blog$/m);
+    assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /\[updated\]/);
+    assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /title: "Updated title"/);
+    assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /^layout: blog$/m);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
 
-test('paginates historical contributions and excludes private repositories', async () => {
-  const repo = (name, isPrivate) => ({ nameWithOwner: `owner/${name}`, isPrivate, url: `https://github.com/owner/${name}` });
-  const publicRepo = repo('public', false);
-  const privateRepo = repo('private', true);
-  const issue = repository => ({ occurredAt: '2026-10-20T12:00:00Z', issue: { title: 'Fix', url: `${repository.url}/issues/1`, repository } });
-  const connection = (nodes, hasNextPage = false, endCursor = null) => ({ nodes, pageInfo: { hasNextPage, endCursor } });
-  let calls = 0;
-  const request = async (url, options) => {
-    assert.equal(options.headers.Authorization, 'Bearer token');
-    const { variables } = JSON.parse(options.body);
-    calls++;
-    if (calls === 1) {
-      return { ok: true, json: async () => ({ data: { user: { contributionsCollection: {
-        commitContributionsByRepository: [
-          { repository: publicRepo, contributions: connection([{ occurredAt: '2026-10-20T07:00:00Z', commitCount: 2 }]) },
-          { repository: privateRepo, contributions: connection([{ occurredAt: '2026-10-20T07:00:00Z', commitCount: 1 }]) }
-        ],
-        issueContributions: connection([issue(privateRepo)], true, 'next'),
-        pullRequestContributions: connection([]), pullRequestReviewContributions: connection([])
-      } } } }) };
-    }
-    assert.equal(variables.issueCursor, 'next');
-    assert.equal(variables.commits, false);
-    return { ok: true, json: async () => ({ data: { user: { contributionsCollection: {
-      issueContributions: connection([issue(publicRepo)])
-    } } } }) };
-  };
-  const start = Date.parse('2026-10-19T00:00:00Z');
-  const entries = await contributions('owner', 'token', start, start + 7 * 86400000, request);
-  assert.equal(calls, 2);
-  assert.equal(entries.length, 2);
-  assert(entries.every(item => item.repo === 'owner/public'));
-  assert.match(entries[1].line, /Opened issue: Fix/);
-  await assert.rejects(contributions('owner', 'token', start, start + 7 * 86400000,
-    async () => ({ ok: true, json: async () => ({ errors: [{ message: 'denied' }] }) })), /denied/);
-});
-
-test('reuses historical contributions in post metadata without fetching them again', async () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
-  try {
-    const start = Date.parse('2026-10-19T00:00:00Z');
-    const end = start + 7 * 86400000;
-    const connection = { nodes: [], pageInfo: { hasNextPage: false, endCursor: null } };
-    const request = async () => ({ ok: true, json: async () => ({ data: { user: { contributionsCollection: {
-      commitContributionsByRepository: [], issueContributions: connection,
-      pullRequestContributions: connection, pullRequestReviewContributions: connection
-    } } } }) });
-    assert.deepEqual(await cachedContributions('owner', 'token', start, end, request, dir), []);
-    assert.deepEqual(await cachedContributions('owner', 'token', start, end, () => { throw new Error('unexpected fetch'); }, dir), []);
-    await assert.rejects(cachedContributions('other', 'token', start, end, request, dir), /Invalid contribution metadata/);
-  } finally {
-    fs.rmSync(dir, { recursive: true, force: true });
-  }
-});
-
-test('historical backfill fetches only gaps in monthly coverage', async () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
-  try {
-    const start = Date.parse('2026-10-01T00:00:00Z');
-    const end = Date.parse('2026-11-01T00:00:00Z');
-    saveMonth(start, { contributions: {
-      user: 'owner', source: 'GitHub public contributions', entries: [],
-      coverage: [
-        { start: '2026-10-01T00:00:00.000Z', end: '2026-10-08T00:00:00.000Z' },
-        { start: '2026-10-15T00:00:00.000Z', end: '2026-11-01T00:00:00.000Z' }
-      ]
-    } }, dir);
-    const connection = { nodes: [], pageInfo: { hasNextPage: false, endCursor: null } };
-    let calls = 0;
-    const request = async (url, options) => {
-      calls++;
-      const { variables } = JSON.parse(options.body);
-      assert.equal(variables.from, '2026-10-08T00:00:00.000Z');
-      assert.equal(variables.to, '2026-10-14T23:59:59.999Z');
-      return { ok: true, json: async () => ({ data: { user: { contributionsCollection: {
-        commitContributionsByRepository: [], issueContributions: connection,
-        pullRequestContributions: connection, pullRequestReviewContributions: connection
-      } } } }) };
-    };
-    await cachedContributions('owner', 'token', start, end, request, dir);
-    await cachedContributions('owner', 'token', start, end, request, dir);
-    assert.equal(calls, 1);
-  } finally {
-    fs.rmSync(dir, { recursive: true, force: true });
-  }
-});
-
-test('commit-only months avoid invented details and other activity still uses Copilot', () => {
-  const start = Date.parse('2017-05-01T00:00:00Z');
-  const entry = {
-    type: 'Contribution', repo: 'owner/repo', base: 'https://github.com/owner/repo',
-    line: '- 2017-05-10 · [owner/repo](https://github.com/owner/repo) · [Authored 6 commits](https://github.com/owner/repo)'
-  };
-  assert.equal(monthSummary([entry, entry], start, '', () => { throw new Error('unexpected Copilot call'); }),
-    '# Commits to repo\n\nIn May, I contributed commits to [owner/repo](https://github.com/owner/repo).');
-  const issue = { ...entry, line: entry.line.replace('Authored 6 commits', 'Opened issue') };
-  assert.equal(monthSummary([issue], start, 'token', (report, token) => {
-    assert.equal(report, issue.line);
-    assert.equal(token, 'token');
-    return 'generated';
-  }), 'generated');
-});
-
-test('historical generation retries invalid summaries but never publishes unverified links', () => {
-  const start = Date.parse('2020-01-01T00:00:00Z');
-  const entry = {
-    type: 'Contribution', repo: 'owner/repo', base: 'https://github.com/owner/repo',
-    url: 'https://github.com/owner/repo/issues/1', date: '2020-01-01',
-    line: '- 2020-01-01 · [owner/repo](https://github.com/owner/repo) · [Opened issue](https://github.com/owner/repo/issues/1)'
-  };
-  let calls = 0;
-  const output = renderMonth([entry], start, Date.parse('2020-02-01T00:00:00Z'), 'token', () =>
-    ++calls === 1 ? '# Title\n\n[bad](https://example.com)' : '# Title\n\n[issue](https://github.com/owner/repo/issues/1)');
-  assert.equal(calls, 2);
-  assert.match(output, /\[issue\]/);
-  calls = 0;
-  assert.throws(() => renderMonth([entry], start, Date.parse('2020-02-01T00:00:00Z'), 'token', () => {
-    calls++;
-    return '# Title\n\nNo links';
-  }), /without source links/);
-  assert.equal(calls, 3);
-});

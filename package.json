@@ -1,12 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "test": "node --test test/devlog.test.js",
-    "dev": "bundle exec jekyll serve --host 127.0.0.1",
-    "devlog": "node scripts/devlog.js",
-    "devlog:backfill": "node scripts/backfill.js"
+    "build": "node build/build.js",
+    "test": "node --test",
+    "dev": "node build/dev.js",
+    "devlog": "node build/devlog.js",
+    "devlog:backfill": "node build/backfill.js"
   },
   "devDependencies": {
-    "@github/copilot": "1.0.112"
+    "@github/copilot": "1.0.112",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.12.0",
+    "markdown-it": "^15.0.3"
   }
 }

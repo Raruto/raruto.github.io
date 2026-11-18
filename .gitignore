@@ -1,5 +1,5 @@
 node_modules/
-_site/
-.jekyll-cache/
-.bundle/
-vendor/bundle/
+/static/*
+!static/assets/
+!static/img/
+!static/examples/

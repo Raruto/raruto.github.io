@@ -22,8 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
       - run: npm ci
-      - name: Check devlog generator
+      - name: Check site and devlog generators
         run: npm test
       - name: Update monthly devlogs with the previous week's activity
         if: github.event_name != 'push'
@@ -35,7 +39,7 @@ jobs:
           npm run devlog || result=$?
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add blog
+          git add _posts
           if [ -d _drafts ]; then git add _drafts; fi
           if ! git diff --cached --quiet; then
             git commit -m "Update monthly devlog"
@@ -43,8 +47,10 @@ jobs:
           fi
           if [ "$result" -ne 0 ]; then exit "$result"; fi
       - uses: actions/configure-pages@v5
-      - uses: actions/jekyll-build-pages@v1
+      - run: npm run build
       - uses: actions/upload-pages-artifact@v3
+        with:
+          path: static
 
   deploy:
     needs: build

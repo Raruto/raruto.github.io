@@ -1,5 +1,5 @@
 ---
-applyTo: "blog/**"
+applyTo: "_posts/**"
 ---
 
 # Blog writing

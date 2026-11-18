@@ -1,29 +1,18 @@
----
-layout: default
----
-{% capture homepage %}{% include_relative README.md %}{% endcapture %}
-{% assign homepage_parts = homepage | split: '## Contacts' %}
-{{ homepage_parts[0] | markdownify }}
+<!-- homepage:readme-intro -->
 <style>
   .latest-posts__intro { color: #555; }
   .latest-posts__list { list-style: none; margin: 1.25rem 0; padding: 0; border-top: 1px solid #d5d5d5; }
   .latest-posts__list li { border-bottom: 1px solid #d5d5d5; }
   .latest-posts__list a { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; font-weight: bold; }
   .latest-posts__list a span { color: #666; font-weight: normal; }
-  .payloads { margin-top: 1.25rem; border-top: 1px solid #d5d5d5; }
-  .payloads details { border-bottom: 1px solid #d5d5d5; }
-  .payloads summary { cursor: pointer; padding: .8rem 0; font-weight: bold; }
-  .payloads details > :not(summary) { margin: 0 0 1rem 1.25rem; }
+  .space-trails h3 { margin-top: 1.5rem; }
+  .space-trails li { margin-bottom: .75rem; }
+  .space-trails code { white-space: nowrap; }
 </style>
 <h2>My weekly blips</h2>
 <p>Notes from the workbench: devlogs, experiments, and the occasional playground.</p>
-{% assign entries = site.pages | where_exp: "item", "item.dir == '/blog/'" | where_exp: "item", "item.name != 'index.md'" | sort: "name" | reverse %}
-<ul class="latest-posts__list">
-  {% for entry in entries limit: 5 %}
-  <li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }} <span aria-hidden="true">&rarr;</span></a></li>
-  {% endfor %}
-</ul>
-<p><a href="{{ '/blog/' | relative_url }}">Scan the archive &rarr;</a></p>
+<!-- homepage:latest-posts -->
+<p><a href="/blog/">Scan the archive &rarr;</a></p>
 <h2>My space trails</h2>
 <p>Things I launched into the void before moving to the next orbit.</p>
 <div class="payloads">
@@ -79,5 +68,27 @@ layout: default
     <p>2017 | <a href="https://raruto.github.io/IlMagnifico">IlMagnifico</a>: Porting Java of the board game "Lorenzo il Magnifico" (developed during the "Software Engineering" course held at the Politecnico di Milano - a.a. 2016-2017)</p>
   </details>
 </div>
+<!-- <h2>My space trails</h2>
+<p><em>Things I launched into the void. Some are still orbiting, others are happy space junk.</em></p>
+<div class="space-trails">
+  <h3>🛸 Active Orbits (Main Missions)</h3>
+  <ul>
+    <li><strong><a href="https://github.com/g3w-suite">g3w-suite</a></strong> <code>(2012–now)</code> — Enterprise WebGIS ecosystem: client, server, Docker, and plugins to bring QGIS to the web. <a href="https://github.com/g3w-suite/g3w-suite.github.io">Website</a>.</li>
+    <li><strong><a href="https://raruto.github.io/leaflet-city-mapper">leaflet-city-mapper</a></strong> <code>(2026)</code> — Giving Leaflet a 3D dimension without the bloat.</li>
+    <li><strong><a href="https://raruto.github.io/leaflet-elevation">leaflet-elevation</a></strong> &amp; <strong><a href="https://raruto.github.io/leaflet-rotate">leaflet-rotate</a></strong> — Making flat maps climb mountains and spin around.</li>
+  </ul>
+  <h3>🛰️ Satellites &amp; Toolkits</h3>
+  <ul>
+    <li><strong>The <a href="https://github.com/Raruto?tab=repositories">Leaflet Swarm</a> <code>(15+ plugins)</code></strong> — Everything missing from core Leaflet: <a href="https://raruto.github.io/leaflet-kmz">kmz</a>, <a href="https://raruto.github.io/leaflet-pegman">pegman</a>, <a href="https://raruto.github.io/leaflet-gesture-handling">gesture-handling</a>, <a href="https://raruto.github.io/leaflet-transparency">transparency</a>, <a href="https://raruto.github.io/leaflet-ui">ui</a>, <a href="https://raruto.github.io/leaflet-edit-osm">edit-osm</a>, <a href="https://raruto.github.io/leaflet-control-layers-inline">layers-inline</a>, <a href="https://raruto.github.io/leaflet-trails">trails</a>, <a href="https://raruto.github.io/leaflet-pointable">pointable</a>, <a href="https://raruto.github.io/leaflet-npm">npm</a>, <a href="https://raruto.github.io/leaflet-google">google</a>, and <a href="https://raruto.github.io/google-transparency">Google Maps tools</a>.</li>
+    <li><strong>CMS &amp; Web Bits <code>(2018–2021)</code></strong> — Cockpit CMS addons: <a href="https://github.com/Raruto/cockpit-honeypot">honeypot</a>, <a href="https://github.com/Raruto/cockpit-native-lazy-loading">lazy-load</a>, <a href="https://github.com/Raruto/cockpit-extended-forms">forms</a>, <a href="https://github.com/Raruto/cockpit-blog">blog</a>; WordPress tools: <a href="https://raruto.github.io/wp-devops">wp-devops</a>, <a href="https://raruto.github.io/wordpress-git">wordpress-git</a>, <a href="https://github.com/Raruto/iubenda-for-wp">iubenda-for-wp</a>.</li>
+    <li><strong>Other Geo bits</strong> — <a href="https://github.com/g3w-suite/g3w-admin-panoramax">Panoramax</a>, <a href="https://github.com/g3w-suite/g3w-admin-cdu">urban planning</a>, <a href="https://github.com/g3w-suite/g3w-admin-pdnd">PDND integration</a>, <a href="https://github.com/g3w-suite/g3w-admin-portal">frontend portal</a>, <a href="https://github.com/g3w-suite/g3w-admin-ps-timeseries">timeseries</a>, <a href="https://github.com/g3w-suite/g3w-admin-processing">processing</a>, <a href="https://github.com/g3w-suite/g3w-admin-sentry-monitor">Sentry monitoring</a>, <a href="https://github.com/g3w-suite/g3w-admin-authjwt">JWT auth</a>, <a href="https://github.com/g3w-suite/g3w-suite-demo-projects">demo projects</a>, <a href="https://github.com/g3w-suite/g3w-suite-docker">Docker</a>, <a href="https://github.com/g3w-suite/g3w-admin">server</a>, and <a href="https://github.com/g3w-suite/g3w-client">map viewer</a>.</li>
+    <li><strong>More map tools</strong> — <a href="https://raruto.github.io/google-geolocate">Google geolocate</a> and <a href="https://raruto.github.io/tile-proxy-php">tile-proxy-php</a>.</li>
+  </ul>
+  <h3>🪐 Deep Space (Archived)</h3>
+  <ul>
+    <li><strong><a href="https://raruto.github.io/IlMagnifico">IlMagnifico</a> <code>(2017)</code></strong> — Java port of the board game <em>Lorenzo il Magnifico</em> (PoliMi survival test).</li>
+  </ul>
+  <p><strong><a href="https://github.com/Raruto?tab=repositories">🔭 Scan the full radar (all 35+ repos) &rarr;</a></strong></p>
+</div> -->
 <h2>Contacts</h2>
-{{ homepage_parts[1] | markdownify }}
+<!-- homepage:readme-contacts -->

@@ -4,6 +4,7 @@ const path = require('node:path');
 const { createHash } = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 
+const ROOT = path.join(__dirname, '..');
 const DAY = 24 * 60 * 60 * 1000;
 
 class SummaryValidationError extends Error {}
@@ -66,12 +67,12 @@ function monthsBetween(start, end) {
   return months;
 }
 
-function monthPaths(start, root = '.') {
+function monthPaths(start, root = ROOT) {
   const date = new Date(start).toISOString().slice(0, 7);
-  return { published: path.join(root, 'blog', date.slice(0, 4), `${date}.md`), draft: path.join(root, '_drafts', `${date}.md`) };
+  return { published: path.join(root, '_posts', date.slice(0, 4), `${date}.md`), draft: path.join(root, '_drafts', `${date}.md`) };
 }
 
-function readMonth(start, root = '.') {
+function readMonth(start, root = ROOT) {
   const { published, draft } = monthPaths(start, root);
   const date = new Date(start).toISOString().slice(0, 7);
   if (fs.existsSync(published) && fs.existsSync(draft)) throw new Error(`Both draft and post exist for ${date}`);
@@ -93,7 +94,7 @@ function withActivity(text, data) {
     : text.replace(/^(---\r?\n)/, match => `${match}${line}${match.endsWith('\r\n') ? '\r\n' : '\n'}`);
 }
 
-function saveMonth(start, data, root = '.') {
+function saveMonth(start, data, root = ROOT) {
   const { file, text } = readMonth(start, root);
   writeFile(file, withActivity(text, data));
 }
@@ -102,7 +103,7 @@ function bodyHash(body) {
   return createHash('sha256').update(body.replace(/\r\n/g, '\n')).digest('hex');
 }
 
-function publishMonth(start, text, root = '.') {
+function publishMonth(start, text, root = ROOT) {
   const { published, draft } = monthPaths(start, root);
   const current = readMonth(start, root);
   const { data } = current;
@@ -142,7 +143,7 @@ function publishMonth(start, text, root = '.') {
   return published;
 }
 
-function archiveEvents(events, start, end, truncated, root = '.') {
+function archiveEvents(events, start, end, truncated, root = ROOT) {
   const { data } = readMonth(start, root);
   const saved = data.events || { truncated: false, entries: [] };
   if (!Array.isArray(saved.entries)) throw new Error('Invalid event metadata');
@@ -153,7 +154,7 @@ function archiveEvents(events, start, end, truncated, root = '.') {
   saveMonth(start, data, root);
 }
 
-function archiveAllEvents(events, truncated, root = '.') {
+function archiveAllEvents(events, truncated, root = ROOT) {
   const months = new Map();
   for (const event of events) {
     if (event.public !== true) continue;
@@ -262,7 +263,7 @@ function illustrate(paragraphs) {
     for (const link of links) {
       const repo = link[1].toLowerCase();
       if (Object.hasOwn(images, repo)) {
-        if (!fs.existsSync(path.join(__dirname, '..', 'img', images[repo]))) throw new Error(`Missing illustration: ${images[repo]}`);
+        if (!fs.existsSync(path.join(__dirname, '..', 'static', 'img', images[repo]))) throw new Error(`Missing illustration: ${images[repo]}`);
         return [...paragraphs.slice(0, i + 1), `![Illustration of ${repo}](../img/${images[repo]})\n\n*A current illustration of ${repo}.*`, ...paragraphs.slice(i + 1)];
       }
     }
@@ -345,7 +346,7 @@ ${report}`;
   }
 }
 
-function updateMonths(start, end, token, root = '.', makeSummary = summarize) {
+function updateMonths(start, end, token, root = ROOT, makeSummary = summarize) {
   for (const month of monthsBetween(start, end)) {
     const { data } = readMonth(month, root);
     const cutoff = Math.min(end, nextMonth(month));

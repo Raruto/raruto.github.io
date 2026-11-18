@@ -1,5 +1,7 @@
 const fs = require('node:fs');
+const path = require('node:path');
 const { SummaryValidationError, previousWeek, monthStart, nextMonth, monthsBetween, publicEvents, summarize, render, resolveTokens, escapeText, monthPaths, readMonth, saveMonth, publishMonth, monthEntries, archiveAllEvents } = require('./devlog');
+const ROOT = path.join(__dirname, '..');
 const query = `
 query($login: String!, $from: DateTime!, $to: DateTime!, $commits: Boolean!,
       $issues: Boolean!, $prs: Boolean!, $reviews: Boolean!,
@@ -96,7 +98,7 @@ async function contributions(user, token, start, end, request = fetch) {
   return entries;
 }
 
-async function cachedContributions(user, token, start, end, request = fetch, root = '.') {
+async function cachedContributions(user, token, start, end, request = fetch, root = ROOT) {
   const month = monthStart(start);
   if (start < month || end <= start || end > nextMonth(month)) throw new Error('Invalid contribution interval');
   const { data, file } = readMonth(month, root);
@@ -173,22 +175,22 @@ async function main(args = process.argv.slice(2)) {
   const tokens = resolveTokens();
   const { events, truncated } = await publicEvents('Raruto', tokens.github);
   if (truncated) console.warn('GitHub public events are truncated; historical contributions omit some activity types.');
-  archiveAllEvents(events, truncated);
+  archiveAllEvents(events, truncated, ROOT);
   const months = [];
   for (const start of monthsBetween(first, last)) {
     const end = Math.min(nextMonth(start), last);
-    const entries = await cachedContributions('Raruto', tokens.github, start, end);
+    const entries = await cachedContributions('Raruto', tokens.github, start, end, fetch, ROOT);
     months.push({ start, end });
     console.log(`Saved ${new Date(start).toISOString().slice(0, 7)}: ${entries.length} public contributions`);
   }
   let generated = 0;
   for (const { start, end } of months) {
     if (generated >= limit) break;
-    if (fs.existsSync(monthPaths(start).published)) continue;
-    const { data } = readMonth(start);
+    if (fs.existsSync(monthPaths(start, ROOT).published)) continue;
+    const { data } = readMonth(start, ROOT);
     const allEntries = monthEntries(data, start, end);
     if (!allEntries.length) continue;
-    const file = publishMonth(start, renderMonth(allEntries, start, end, tokens.copilot));
+    const file = publishMonth(start, renderMonth(allEntries, start, end, tokens.copilot), ROOT);
     generated++;
     console.log(`Wrote ${file}`);
   }
