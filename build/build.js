@@ -75,14 +75,9 @@ function escapeHtml(value) {
   })[character]);
 }
 
-function replaceLiquidUrls(source) {
-  const rendered = source.replace(/\{\{\s*(['"])(\/[^'"]*)\1\s*\|\s*relative_url\s*\}\}/g, (match, quote, url) => url);
-  if (/\{%|\{\{/.test(rendered)) throw new Error('Unsupported Liquid syntax in Markdown content');
-  return rendered;
-}
-
 function renderMarkdown(source) {
-  return markdown.render(replaceLiquidUrls(source), { headingIds: new Map() });
+  if (/\{%|\{\{/.test(source)) throw new Error('Unsupported Liquid syntax in Markdown content');
+  return markdown.render(source, { headingIds: new Map() });
 }
 
 function articleTitle(source, file) {
@@ -257,6 +252,63 @@ function clearGeneratedFiles(outputDir) {
   }
 }
 
+function isGeneratedPath(pathname) {
+  const segments = pathname.split('/').filter(Boolean);
+  return pathname === '/' || pathname === '/README.md' || pathname === '/thank-you.html' ||
+    (segments.length === 1 && Boolean(path.extname(pathname))) ||
+    ['/assets', '/blog', '/cdn', '/examples', '/img'].some(root =>
+      pathname === root || pathname.startsWith(`${root}/`));
+}
+
+function validateLocalLinks(outputDir, pages, siteUrl) {
+  const site = new URL(siteUrl);
+  const issues = [];
+
+  for (const page of pages) {
+    const source = path.join(outputDir, page);
+    const pageUrl = new URL(`/${page.split(path.sep).join('/')}`, site.origin);
+    const html = fs.readFileSync(source, 'utf8');
+    const attributes = html.matchAll(/\b(?:href|src)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/gi);
+
+    for (const match of attributes) {
+      const link = (match[1] || match[2] || match[3]).replace(/&amp;/g, '&');
+      if (!link) continue;
+
+      let url;
+      try {
+        url = new URL(link, pageUrl);
+      } catch {
+        issues.push(`${page}: invalid URL "${link}"`);
+        continue;
+      }
+
+      if (!['http:', 'https:'].includes(url.protocol) || url.host !== site.host) continue;
+      const absolute = /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link);
+      if (absolute && !isGeneratedPath(url.pathname)) continue;
+
+      let target;
+      try {
+        target = path.resolve(outputDir, `.${decodeURIComponent(url.pathname).replace(/\//g, path.sep)}`);
+      } catch {
+        issues.push(`${page}: invalid URL path "${link}"`);
+        continue;
+      }
+      const relativeTarget = path.relative(outputDir, target);
+      if (relativeTarget === '..' || relativeTarget.startsWith(`..${path.sep}`) || path.isAbsolute(relativeTarget)) {
+        issues.push(`${page}: URL escapes the build output "${link}"`);
+        continue;
+      }
+
+      const candidates = [target, path.join(target, 'index.html')];
+      if (!candidates.some(candidate => fs.existsSync(candidate) && fs.statSync(candidate).isFile())) {
+        issues.push(`${page}: "${link}" resolves to missing "${url.pathname}"`);
+      }
+    }
+  }
+
+  if (issues.length) throw new Error(`Broken local URLs:\n- ${issues.join('\n- ')}`);
+}
+
 function buildSite({ outputDir = DEFAULT_OUTPUT, siteUrl = process.env.SITE_URL || 'https://raruto.github.io' } = {}) {
   const destination = path.resolve(outputDir);
   if (destination === ROOT || destination === path.parse(destination).root) {
@@ -273,6 +325,7 @@ function buildSite({ outputDir = DEFAULT_OUTPUT, siteUrl = process.env.SITE_URL 
   const cssHash = createHash('sha1').update(css).digest('hex').slice(0, 12);
   const entries = readBlogEntries();
   fs.writeFileSync(path.join(destination, 'index.html'), renderHomepage(entries, siteUrl, cssHash));
+  const generatedPages = ['index.html'];
 
   const archiveSource = matter(fs.readFileSync(path.join(ROOT, '_posts', 'index.md'), 'utf8'));
   const archiveMarker = '<!-- blog:archive -->';
@@ -282,10 +335,12 @@ function buildSite({ outputDir = DEFAULT_OUTPUT, siteUrl = process.env.SITE_URL 
   const archiveFile = path.join(destination, 'blog', 'index.html');
   fs.mkdirSync(path.dirname(archiveFile), { recursive: true });
   fs.writeFileSync(archiveFile, renderLayout(archive, archiveSource.data.title || 'Blog', archiveUrl, siteUrl, cssHash));
+  generatedPages.push('blog/index.html');
 
   for (const entry of entries) {
     const article = `${breadcrumbs(entry.title, false)}${renderMarkdown(entry.content)}`;
     fs.writeFileSync(path.join(destination, 'blog', `${entry.name}.html`), renderLayout(article, entry.title, `/blog/${entry.name}.html`, siteUrl, cssHash));
+    generatedPages.push(`blog/${entry.name}.html`);
   }
 
   const rootPage = 'thank-you.md';
@@ -295,6 +350,8 @@ function buildSite({ outputDir = DEFAULT_OUTPUT, siteUrl = process.env.SITE_URL 
   const title = page.data.title || TITLE;
   const url = `/${rootPage.replace(/\.md$/, '.html')}`;
   fs.writeFileSync(path.join(destination, rootPage.replace(/\.md$/, '.html')), renderLayout(renderMarkdown(page.content), title, url, siteUrl, cssHash));
+  generatedPages.push(rootPage.replace(/\.md$/, '.html'));
+  validateLocalLinks(destination, generatedPages, siteUrl);
 
   return { articles: entries.length, rootPages: 1, outputDir: destination };
 }
@@ -309,4 +366,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildSite, readBlogEntries, renderArchive, renderMarkdown, renderLayout, replaceLiquidUrls };
+module.exports = { buildSite, readBlogEntries, renderArchive, renderMarkdown, renderLayout, validateLocalLinks };

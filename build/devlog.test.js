@@ -125,7 +125,7 @@ test('illustrates only a cited project with an existing local image', () => {
   const entries = [{ base, url: `${base}/issues/1` }];
   const output = render(entries, start, start + 86400000, `# Mapping the city\n\n[The project](${base}/issues/1) explores maps.`);
   assert.match(output, /!\[Illustration of leaflet-city-mapper\]\(\.\.\/img\/leaflet-city-mapper\.png\)/);
-  assert.match(output, /current illustration/);
+  assert.match(output, /An illustration of leaflet-city-mapper/);
   const other = 'https://github.com/other/leaflet-city-mapper';
   assert.doesNotMatch(render([{ base: other, url: other }], start, start + 86400000, `# Another project\n\n[Project](${other})`), /!\[/);
 });
