@@ -8,7 +8,7 @@ category: Playground
 
 *Playground · Retired from the homepage on August 20, 2026*
 
-Back in November 2021, I added a [Tripetto](https://tripetto.com/) contact form to the homepage. Tripetto gave my static site an embeddable form: the Classic runner displayed it, while Tripetto Services supplied the form definition and handled submissions. A little contact form without a home-grown backend.
+Back in November, I added a [Tripetto](https://tripetto.com/) contact form to the homepage. Tripetto gave my static site an embeddable form: the Classic runner displayed it, while Tripetto Services supplied the form definition and handled submissions. A little contact form without a home-grown backend.
 
 I removed it from the homepage on August 20, 2026. That July, [Tripetto had announced](https://tripetto.com/blog/phasing-out-free-studio-accounts/) it was phasing out free Studio accounts, citing the cost of running the service and abuse prevention. According to the announcement, active forms on free accounts that were not upgraded would stop working on November 1, 2026.
 

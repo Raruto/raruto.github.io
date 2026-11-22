@@ -9,7 +9,7 @@ activity: {"source":"GitHub","entries":[{"date":"2019-06-20T20:33:24Z","type":"r
 
 *Projects: 2019-06*
 
-Scrolling a page shouldn't have to mean accidentally zooming its map. My [leaflet-gesture-handling](https://github.com/Raruto/leaflet-gesture-handling) repository, created in June 2019, adjusts Leaflet's scroll and touch interactions to help the two coexist.
+Scrolling a page shouldn't have to mean accidentally zooming its map. My [leaflet-gesture-handling](https://github.com/Raruto/leaflet-gesture-handling) repository, created in June, adjusts Leaflet's scroll and touch interactions to help the two coexist.
 
 It was initially based on [Elmarquis's Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling). The [demo](https://raruto.github.io/leaflet-gesture-handling/examples/leaflet-gesture-handling.html) shows the prompt for using a modifier key to zoom the map.
 

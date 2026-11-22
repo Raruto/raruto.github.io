@@ -9,7 +9,7 @@ activity: {"source":"GitHub","entries":[{"date":"2018-11-12T20:51:34Z","type":"r
 
 *Projects: 2018-11*
 
-Where am I on this map? My [google-geolocate](https://github.com/Raruto/google-geolocate) repository, created in November 2018, adds a control for finding the user's position instead of navigating there manually.
+Where am I on this map? My [google-geolocate](https://github.com/Raruto/google-geolocate) repository, created in November, adds a control for finding the user's position instead of navigating there manually.
 
 The [example](https://raruto.github.io/examples/google-geolocate/google-geolocate.html) shows the control in context. The project documentation notes that geolocation requires a secure site and that Google Maps needs an API key; browser permission is also part of the experience.
 

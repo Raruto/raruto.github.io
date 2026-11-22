@@ -9,7 +9,7 @@ activity: {"source":"GitHub","entries":[{"date":"2019-06-07T20:48:09Z","type":"r
 
 *Projects: 2019-06*
 
-My [leaflet-trails](https://github.com/Raruto/leaflet-trails) repository dates back to June 2019. It connects Leaflet maps with [Waymarked Trails](https://waymarkedtrails.org/), putting route overlays into a map.
+My [leaflet-trails](https://github.com/Raruto/leaflet-trails) repository dates back to June. It connects Leaflet maps with [Waymarked Trails](https://waymarkedtrails.org/), putting route overlays into a map.
 
 The project's examples include [different overlay arrangements](https://raruto.github.io/leaflet-trails/examples/leaflet-trails_overlays.html) and an integration with Leaflet UI. The README also uses [leaflet-pointable]({{ '/blog/2019-06-07-leaflet-pointable-project.html' | relative_url }}) in its example, connecting route imagery with map interaction.
 

@@ -9,7 +9,7 @@ activity: {"source":"Packagist","entries":[{"date":"2021-01-29T18:03:00Z","type"
 
 *Contributions: 2021-01*
 
-Looking back to January 29, 2021, I published two Cockpit CMS add-ons on Packagist. [Extended Forms](https://packagist.org/packages/raruto/cockpit-extended-forms) adds handling for uploaded files and changes to the forms opening, closing and submission APIs. That work sits alongside the Cockpit forms contributions in my [January devlog]({{ '/blog/2021-01.html' | relative_url }}).
+Looking back to January 29, I published two Cockpit CMS add-ons on Packagist. [Extended Forms](https://packagist.org/packages/raruto/cockpit-extended-forms) adds handling for uploaded files and changes to the forms opening, closing and submission APIs. That work sits alongside the Cockpit forms contributions in my [January devlog]({{ '/blog/2021-01.html' | relative_url }}).
 
 [Honeypot](https://packagist.org/packages/raruto/cockpit-honeypot) adds a setting and a honeypot field to forms, validates the submitted field and excludes invalid submissions from saved entries. It's one technique for dealing with unwanted submissions, not a promise to catch every bot.
 

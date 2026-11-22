@@ -9,6 +9,6 @@ activity: {"source":"WordPress.org profile","entries":[{"date":"2016-12-29","typ
 
 *Contributions: 2016-12*
 
-Looking back to December 2016, I brought a small mapping question to the [Events Manager support forum](https://wordpress.org/support/topic/code-fix-locations-map-markers-array/). The plugin was collecting Google Maps markers, but its locations hook exposed the location data without passing along the marker array.
+Looking back to December, I brought a small mapping question to the [Events Manager support forum](https://wordpress.org/support/topic/code-fix-locations-map-markers-array/). The plugin was collecting Google Maps markers, but its locations hook exposed the location data without passing along the marker array.
 
 I proposed adding the markers to the hook arguments, alongside the existing location data. That would make it possible to work with the markers themselves, for example to show, hide or cluster them. A maintainer later agreed that the markers were meant to be supplied and said he would add them.

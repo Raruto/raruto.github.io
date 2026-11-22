@@ -9,6 +9,6 @@ activity: {"source":"WordPress.org profile","entries":[{"date":"2022-09-17","typ
 
 *Contributions: 2026-03*
 
-Looking back through my [WordPress.org activity feed](https://profiles.wordpress.org/raruto/feed/), I found translation entries from September 2022 through March 2026. The feed reports batches of translated strings, although it does not identify a project for each date.
+Looking back through my [WordPress.org activity feed](https://profiles.wordpress.org/raruto/feed/), I found translation entries from September through March. The feed reports batches of translated strings, although it does not identify a project for each date.
 
 WordPress's translation pages also list me among contributors to the Italian translations of [Events Manager](https://translate.wordpress.org/locale/it/default/wp-plugins/events-manager/) and [bbPress](https://translate.wordpress.org/projects/wp-plugins/bbpress/stable/it/default/?filters%5Buser_login%5D=Raruto). Different projects, a shared goal: making their interfaces easier to use in another language.

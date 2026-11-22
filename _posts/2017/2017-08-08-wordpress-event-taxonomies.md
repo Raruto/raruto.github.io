@@ -9,6 +9,6 @@ activity: {"source":"WordPress.org profile","entries":[{"date":"2017-08-08","typ
 
 *Contributions: 2017-08*
 
-Looking back to August 2017, I opened a [discussion about custom taxonomies](https://wordpress.org/support/topic/using-additional-custom-taxonomies/) in Events Manager. The question was whether WordPress's regular post categories could be used to filter events and locations in the same way as a custom taxonomy.
+Looking back to August, I opened a [discussion about custom taxonomies](https://wordpress.org/support/topic/using-additional-custom-taxonomies/) in Events Manager. The question was whether WordPress's regular post categories could be used to filter events and locations in the same way as a custom taxonomy.
 
 The replies led to some further testing: a custom category worked as an event-list filter, while a taxonomy named `post_category` behaved differently. I shared the test setup and repeated it on a fresh installation. The thread is still a useful snapshot of the question and the experiments, rather than a general recipe for today's versions.
