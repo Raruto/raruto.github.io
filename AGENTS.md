@@ -1,16 +1,19 @@
 # Repository guidance
 
-- `README.md` is the public site's homepage. Treat changes to it as public-facing content; do not add technical documentation or make incidental edits.
-- `cdn/`, `static/examples/`, and `static/img/` are used by external repositories. Do not modify, add, remove, or move their contents.
-- Blog articles live in `_posts/YYYY/`, with drafts in `_drafts/`. The homepage template `index.html` and `thank-you.md` stay at the repository root, and the build writes the published site to `static/`.
-- The devlog workflow updates monthly articles in `_posts/` every week, and requires GitHub Pages to use GitHub Actions as its source and Actions to have contents write access.
-- The JavaScript builder keeps blog URLs at `/blog/<filename>.html`; leave the archive at `_posts/index.md`.
-- The blog archive labels articles without a `category` as `Devlog`; set `category: Playground` or another appropriate category in front matter for other kinds of articles.
-- Run `npm ci` and `npm test` to check the site builder and devlog generator. `npm run build` generates the static site in `static/`; locally, `npm run dev` serves it at `http://127.0.0.1:4000/` and rebuilds when source files change. `npm run devlog` uses `GITHUB_TOKEN` and `COPILOT_GITHUB_TOKEN` when set, otherwise it gets the missing tokens from an authenticated `gh` CLI. The Copilot token must have Copilot access. For Actions, add a fine-grained token with Copilot Requests permission as the `COPILOT_GITHUB_TOKEN` secret. Copilot requests may incur charges.
-- The GitHub public events feed contains at most 300 events; the workflow logs a warning if activity may be incomplete.
-- Public activity is saved in each monthly post's `activity` front matter; months without posts are stored in `_drafts/`. Drafts are excluded from site builds, but both drafts and metadata are public in this repository. Weekly updates regenerate the monthly text and refuse to overwrite manually edited articles or drafts.
-- Run `npm run devlog:backfill -- 2026 3` to cache activity through the previous complete week and generate up to three missing monthly articles, or omit `3` to generate all missing articles for the year. Existing article text is not overwritten by backfill. Historical GitHub contributions cover commits, opened issues and pull requests, and reviews; they do not include every activity type. Event metadata records normalized activity rather than raw event payloads.
-- Historical months containing only commit counts use a short factual summary; other months use Copilot and retry invalid source links up to three times.
-- Monthly posts start with a descriptive title and a dated `Devlog: YYYY-MM` opening. The generator may illustrate repositories mentioned in the text using existing images from `static/img/`, without modifying those shared files.
-- Follow `.github/instructions/blog.instructions.md` when writing or editing blog articles. The devlog generator also reads these shared guidelines.
-- The JavaScript build renders the Slate theme shell and adds breadcrumbs to the archive and articles; keep navigation independent of generated post bodies. Slate styles and images are vendored under `static/assets/`; keep this directory versioned and preserve it during builds.
+## Protected files & structure
+- **`README.md`:** Public homepage. Edit only what is explicitly requested; never alter formatting, links, or add technical docs.
+- **Read-only directories:** Never modify, add, remove, or move files in `cdn/`, `static/examples/` or `static/img/`.
+- **Editable sources:** Only edit `_posts/`, `index.html` and `thank-you.md`. Builds output to `static/` while preserving the read-only directories above.
+
+## Commands
+- `npm ci` — Install dependencies.
+- `npm test` — Run tests for the site builder and devlog generator.
+- `npm run build` — Build static site into `static/`.
+- `npm run dev` — Serve locally at `http://127.0.0` with auto-rebuild.
+- `npm run devlog` — Update monthly devlogs (requires `GITHUB_TOKEN` and `COPILOT_GITHUB_TOKEN` with Copilot access, or an authenticated `gh` CLI; abort without writing if missing).
+
+## Blog & devlog rules
+- **Guidelines:** Follow `.github/instructions/blog.instructions.md` for all articles.
+- **Routing & metadata:** Keep URLs at `/blog/<filename>.html` and archive at `_posts/index.md`. Keep navigation/breadcrumbs independent of post bodies.
+- **Monthly devlogs:** Start with a descriptive title and `Devlog: YYYY-MM`. You may reference existing `static/img/` files.
+- **Privacy & safety:** Store normalized public activity in `activity` front matter. Strip private repo names, secrets, tokens, and non-public personal data before saving.

@@ -79,7 +79,7 @@ function rebuild() {
   }, 150);
 }
 
-const watchers = ['_posts', '_drafts', 'index.html', 'thank-you.md', 'README.md', 'AGENTS.md', 'cdn', 'static/assets', 'static/examples', 'static/img']
+const watchers = ['_posts', 'index.html', 'thank-you.md', 'README.md', 'AGENTS.md', 'cdn', 'static/assets', 'static/examples', 'static/img']
   .map(target => {
     const directory = path.join(ROOT, target);
     return fs.watch(directory, { recursive: fs.statSync(directory).isDirectory() }, rebuild);

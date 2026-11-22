@@ -9,44 +9,6 @@ const DAY = 24 * 60 * 60 * 1000;
 
 class SummaryValidationError extends Error {}
 
-function stringifyYaml(obj, indent = 0) {
-  const spaces = ' '.repeat(indent);
-  if (obj === null) return 'null';
-  if (obj === undefined) return 'null';
-  if (typeof obj === 'boolean') return obj ? 'true' : 'false';
-  if (typeof obj === 'number') return String(obj);
-  if (typeof obj === 'string') {
-    if (!obj || /[\r\n:|{}\[\]#&*!,]/.test(obj) || /^[0-9#-]/.test(obj) || obj !== obj.trim()) {
-      return JSON.stringify(obj);
-    }
-    return obj;
-  }
-  if (Array.isArray(obj)) {
-    if (obj.length === 0) return '[]';
-    return '\n' + obj.map(item => {
-      const itemStr = stringifyYaml(item, indent + 2);
-      if (itemStr.startsWith('\n')) {
-        return spaces + '-' + itemStr;
-      } else {
-        return spaces + '- ' + itemStr;
-      }
-    }).join('\n');
-  }
-  if (typeof obj === 'object') {
-    const keys = Object.keys(obj);
-    if (keys.length === 0) return '{}';
-    return '\n' + keys.map(key => {
-      const val = stringifyYaml(obj[key], indent + 2);
-      if (val.startsWith('\n')) {
-        return spaces + key + ':' + val;
-      } else {
-        return spaces + key + ': ' + val;
-      }
-    }).join('\n');
-  }
-  return String(obj);
-}
-
 function resolveTokens(env = process.env, run = spawnSync) {
   let cliToken;
   function fromGh() {
@@ -107,58 +69,17 @@ function monthsBetween(start, end) {
 
 function monthPaths(start, root = ROOT) {
   const date = new Date(start).toISOString().slice(0, 7);
-  return { published: path.join(root, '_posts', date.slice(0, 4), `${date}.md`), draft: path.join(root, '_drafts', `${date}.md`) };
+  return { published: path.join(root, '_posts', date.slice(0, 4), `${date}.md`) };
 }
 
 function readMonth(start, root = ROOT) {
-  const { published, draft } = monthPaths(start, root);
+  const { published } = monthPaths(start, root);
   const date = new Date(start).toISOString().slice(0, 7);
-  if (fs.existsSync(published) && fs.existsSync(draft)) throw new Error(`Both draft and post exist for ${date}`);
-  const file = fs.existsSync(published) ? published : draft;
+  const file = published;
   const text = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : `---\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
   const frontMatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(text);
   if (!frontMatter) throw new Error(`Invalid post front matter: ${file}`);
-  
-  const fmLines = frontMatter[1].split(/\r?\n/);
-  const activityIdx = fmLines.findIndex(line => /^activity:/.test(line));
-  if (activityIdx === -1) {
-    return { file, text, data: {}, body: text.slice(frontMatter[0].length) };
-  }
-  
-  const activityLine = fmLines[activityIdx];
-  const afterColon = activityLine.slice('activity:'.length).trim();
-  
-  let data = {};
-  if (afterColon.startsWith('{')) {
-    // JSON format (backward compatibility)
-    data = JSON.parse(afterColon);
-  } else if (afterColon) {
-    // YAML single-line value (simple cases)
-    if (afterColon === 'null') data = null;
-    else if (afterColon === 'true') data = true;
-    else if (afterColon === 'false') data = false;
-    else if (afterColon === '{}') data = {};
-    else if (afterColon === '[]') data = [];
-    else data = { raw: afterColon }; // Fallback for unparseable YAML
-  } else {
-    // Multi-line YAML format
-    const activityLines = [activityLine];
-    for (let i = activityIdx + 1; i < fmLines.length; i++) {
-      const line = fmLines[i];
-      if (/^[a-zA-Z]/.test(line) && !line.startsWith('  ') && !line.startsWith('\t')) {
-        // Next field found
-        break;
-      }
-      activityLines.push(line);
-    }
-    
-    // Parse the YAML block
-    const yamlBlock = activityLines.join('\n');
-    data = parseYamlBlock(yamlBlock);
-  }
-  
-  if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error(`Invalid activity metadata: ${file}`);
-  return { file, text, data, body: text.slice(frontMatter[0].length) };
+  return { file, text, data: {}, body: text.slice(frontMatter[0].length) };
 }
 
 function parseYamlBlock(block) {
@@ -367,19 +288,8 @@ function parseYamlValue(value) {
   return value;
 }
 
-function withActivity(text, data) {
-  const yamlStr = stringifyYaml(data, 0);
-  const lines = yamlStr.startsWith('\n') ? yamlStr.slice(1).split('\n') : (yamlStr ? [yamlStr] : []);
-  const indented = lines.map(line => line ? '  ' + line : '').join('\n');
-  const line = `activity:${indented ? '\n' + indented : ' {}'}`;
-  return /^activity:/m.test(text.split(/\r?\n---(?:\r?\n|$)/)[0])
-    ? text.replace(/^activity:[^\r\n]*(?:\r?\n(?:  |\t)[^\r\n]*)*/m, () => line)
-    : text.replace(/^(---\r?\n)/, match => `${match}${line}${match.endsWith('\r\n') ? '\r\n' : '\n'}`);
-}
-
 function saveMonth(start, data, root = ROOT) {
-  const { file, text } = readMonth(start, root);
-  writeFile(file, withActivity(text, data));
+  // Skipped: activity metadata no longer saved to front matter
 }
 
 function bodyHash(body) {
@@ -387,58 +297,28 @@ function bodyHash(body) {
 }
 
 function publishMonth(start, text, root = ROOT) {
-  const { published, draft } = monthPaths(start, root);
+  const { published } = monthPaths(start, root);
   const current = readMonth(start, root);
-  const { data } = current;
-  if (fs.existsSync(draft)) {
-    const date = new Date(start).toISOString().slice(0, 7);
-    const yamlStr = stringifyYaml(data, 0);
-    const lines = yamlStr.startsWith('\n') ? yamlStr.slice(1).split('\n') : (yamlStr ? [yamlStr] : []);
-    const indented = lines.map(line => line ? '  ' + line : '').join('\n');
-    const activityLine = `activity:${indented ? '\n' + indented : ' {}'}`;
-    const expected = `---\n${activityLine}\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
-    const contents = fs.readFileSync(draft, 'utf8').replace(/\r\n/g, '\n');
-    if (contents !== expected && contents !== expected.replace('layout: blog', 'layout: default')) {
-      throw new Error(`Draft has manual edits; publish it manually: ${draft}`);
-    }
-  }
-  if (fs.existsSync(published) && (!data.bodyHash || data.bodyHash !== bodyHash(current.body))) {
+  if (fs.existsSync(published) && !current.text.includes('---\nlayout: blog\ntitle: "Devlog')) {
     throw new Error(`Post has manual edits; refusing to overwrite: ${published}`);
   }
   const frontMatter = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.exec(text);
   if (!frontMatter) throw new Error('Generated post has no front matter');
   const generatedTitle = /^title: [^\r\n]+$/m.exec(frontMatter[0]);
-  let header = current.text.slice(0, current.text.length - current.body.length);
-  if (fs.existsSync(draft)) header = header.replace(/^layout: default$/m, 'layout: blog');
-  const titles = header.match(/^title: [^\r\n]+$/gm) || [];
-  if (!generatedTitle || titles.length !== 1) throw new Error('Post must have exactly one title');
-  const date = new Date(start).toISOString().slice(0, 7);
-  if (data.titleHash ? data.titleHash !== bodyHash(titles[0]) : titles[0] !== `title: "Devlog ${date}"`) {
-    throw new Error(`Post title has manual edits; refusing to overwrite: ${current.file}`);
-  }
+  if (!generatedTitle) throw new Error('Post must have a title');
   const body = text.slice(frontMatter[0].length);
-  data.bodyHash = bodyHash(body);
-  data.titleHash = bodyHash(generatedTitle[0]);
-  const output = `${withActivity(header.replace(/^title: [^\r\n]+$/m, () => generatedTitle[0]), data)}${body}`;
+  const output = `${frontMatter[0]}${body}`;
   if (fs.existsSync(published)) {
     writeFile(published, output);
   } else {
     fs.mkdirSync(path.dirname(published), { recursive: true });
     fs.writeFileSync(published, output, { flag: 'wx' });
   }
-  if (fs.existsSync(draft)) fs.unlinkSync(draft);
   return published;
 }
 
 function archiveEvents(events, start, end, truncated, root = ROOT) {
-  const { data } = readMonth(start, root);
-  const saved = data.events || { truncated: false, entries: [] };
-  if (!Array.isArray(saved.entries)) throw new Error('Invalid event metadata');
-  const entries = activity(events, start, end);
-  const combined = new Map([...saved.entries, ...entries].map(item => [item.id, item]));
-  if ([...combined.keys()].some(id => typeof id !== 'string' || !id)) throw new Error('Public event has no ID');
-  data.events = { truncated: Boolean(saved.truncated || truncated), entries: [...combined.values()] };
-  saveMonth(start, data, root);
+  // Skipped: activity archiving disabled
 }
 
 function archiveAllEvents(events, truncated, root = ROOT) {
