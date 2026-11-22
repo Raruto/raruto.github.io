@@ -27,7 +27,7 @@ Peace, love, and lean code. ✌️
 
 <hr style="background: #ccc;">
 
-<p align="right">Software Engineer @ <a href="https://github.com/g3w-suite">G3W-SUITE</a></p>
+<p align="right">Software Engineer @ <a href="https://github.com/g3w-suite">g3w-suite</a></p>
 
 <hr style="background: #ccc;">
 
