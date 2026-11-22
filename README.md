@@ -87,8 +87,8 @@ TripettoClassic.run({
     <dt>As hobbyist</dt>
     <dd>
       <ul>
-        <li><a href="https://raruto.github.io/blog/2019-09-06-3d-playground.html">3D playground</a></li>
-        <li><a href="https://raruto.github.io/blog/2018-10-25-maps-playground.html">Maps playground</a></li>
+        <li><a href="https://github.com/Raruto/raruto.github.io/blob/b12f669fee4c729cc39043857c6abf4ccf87bca6/blog/2019-09-06-3d-playground.md">3D playground</a></li>
+        <li><a href="https://github.com/Raruto/raruto.github.io/blob/b12f669fee4c729cc39043857c6abf4ccf87bca6/blog/2018-10-25-maps-playground.md">Maps playground</a></li>
       </ul>
 
     </dd>

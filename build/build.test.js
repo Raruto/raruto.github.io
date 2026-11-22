@@ -60,14 +60,14 @@ test('reports broken local URLs and ignores external project URLs', () => {
   try {
     fs.mkdirSync(path.join(output, 'blog'), { recursive: true });
     fs.mkdirSync(path.join(output, 'img'), { recursive: true });
-    fs.writeFileSync(path.join(output, 'index.html'), '<a href="/blog/">Archive</a><a href="https://example.test/leaflet-project/">Demo</a><a href="https://example.test/missing.html">Missing</a>');
+    fs.writeFileSync(path.join(output, 'index.html'), '<a href="/blog/">Archive</a><a href="https://raruto.github.io/leaflet-project/">Demo</a><a href="https://raruto.github.io/missing.html">Missing</a>');
     fs.writeFileSync(path.join(output, 'blog', 'index.html'), '<a href="./missing.html">Missing</a><img src="../img/present.png">');
     fs.writeFileSync(path.join(output, 'img', 'present.png'), '');
 
     assert.throws(
-      () => validateLocalLinks(output, ['index.html', 'blog/index.html'], 'https://example.test'),
+      () => validateLocalLinks(output, ['index.html', 'blog/index.html'], 'https://raruto.github.io'),
       error => {
-        assert.match(error.message, /index\.html: "https:\/\/example\.test\/missing\.html" resolves to missing "\/missing\.html"/);
+        assert.match(error.message, /index\.html: "https:\/\/raruto\.github\.io\/missing\.html" resolves to missing "\/missing\.html"/);
         assert.match(error.message, /blog\/index\.html: "\.\/missing\.html" resolves to missing "\/blog\/missing\.html"/);
         return true;
       }
