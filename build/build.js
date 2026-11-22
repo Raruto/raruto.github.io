@@ -62,6 +62,7 @@ markdown.renderer.rules.fence = (tokens, index) => {
   const token = tokens[index];
   const requestedLanguage = token.info.trim().split(/\s+/)[0];
   const language = /^[\w+-]+$/.test(requestedLanguage) ? requestedLanguage : '';
+  if (language === 'mermaid') return `<pre class="mermaid">${token.content}</pre>\n`;
   const highlighted = language && hljs.getLanguage(language)
     ? mapHighlightClasses(hljs.highlight(token.content, { language }).value)
     : markdown.utils.escapeHtml(token.content);
@@ -159,6 +160,15 @@ function renderLayout(content, pageTitle, pageUrl, siteUrl, cssHash, isHome = fa
   const canonical = new URL(pageUrl, `${siteUrl.replace(/\/+$/, '')}/`).href;
   const fullTitle = isHome ? `${TITLE} | ${TAGLINE}` : `${pageTitle} | ${TITLE}`;
   const seoTitle = isHome ? TITLE : pageTitle;
+  const hasMermaid = content.includes('class="mermaid"');
+  const hasMermaidLoader = content.includes("import mermaid from 'https://unpkg.com/mermaid@11.17.2/dist/mermaid.esm.min.mjs'")
+    && content.includes('mermaid.initialize(');
+  const mermaidScript = hasMermaid && !hasMermaidLoader
+    ? `<script type="module">
+import mermaid from 'https://unpkg.com/mermaid@11.17.2/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true, securityLevel: 'strict' });
+</script>`
+    : '';
   const schema = {
     '@context': 'https://schema.org',
     '@type': isHome ? 'WebSite' : 'WebPage',
@@ -205,6 +215,7 @@ function renderLayout(content, pageTitle, pageUrl, siteUrl, cssHash, isHome = fa
         <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
+    ${mermaidScript}
   </body>
 </html>
 `;

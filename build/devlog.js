@@ -223,7 +223,7 @@ function render(entries, start, end, summary) {
   let diagram = '';
   if (releases.length >= 2 && releases.length <= 10) {
     const timeline = releases.map(entry => `    ${entry.date} : ${entry.repo} ${entry.tag}`).join('\n');
-    diagram = `\n\n<pre class="mermaid" aria-label="Timeline of releases">\ntimeline\n    title Releases this month\n${timeline}\n</pre>\n\n<script type="module">\nimport mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';\nmermaid.initialize({ startOnLoad: true, securityLevel: 'strict' });\n</script>`;
+    diagram = `\n\n<pre class="mermaid" aria-label="Timeline of releases">\ntimeline\n    title Releases this month\n${timeline}\n</pre>\n\n<script type="module">\nimport mermaid from 'https://unpkg.com/mermaid@11.17.2/dist/mermaid.esm.min.mjs';\nmermaid.initialize({ startOnLoad: true, securityLevel: 'strict' });\n</script>`;
   }
   return `# ${escapeText(title)}\n\n*Devlog: ${date(start).slice(0, 7)}*\n\n${illustrate(paragraphs).join('\n\n')}${diagram}\n`;
 }
