@@ -3,7 +3,7 @@
 ## Protected files & structure
 - **`README.md`:** Public homepage. Edit only what is explicitly requested; never alter formatting, links, or add technical docs.
 - **Read-only directories:** Never modify, add, remove, or move files in `cdn/`, `static/examples/` or `static/img/`.
-- **Editable sources:** Only edit `_posts/`, `index.html` and `thank-you.md`. Builds output to `static/` while preserving the read-only directories above.
+- **Editable sources:** Only edit `_posts/` and `index.html`. Builds output to `static/` while preserving the read-only directories above.
 
 ## Commands
 - `npm ci` — Install dependencies.

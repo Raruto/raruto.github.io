@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { previousWeek, monthsBetween, monthPaths, publicEvents, activity, render, summarize, resolveTokens, readMonth, saveMonth, publishMonth, updateMonths, archiveEvents, archiveAllEvents } = require('./devlog');
+const { previousWeek, monthsBetween, monthPaths, publicEvents, activity, render, summarize, resolveTokens, readMonth, publishMonth, updateMonths } = require('./devlog');
 
 test('uses explicit tokens or the GitHub CLI locally', () => {
   let calls = 0;
@@ -44,11 +44,11 @@ test('previous complete UTC week, including boundaries and unsorted events', () 
   assert.match(entries[1].line, /&lt;script&gt;&#123;% raw %&#125;&lt;\/script&gt;/);
 });
 
-test('stores monthly posts and drafts in the repository root', () => {
-  const { published, draft } = monthPaths(Date.parse('2026-10-01T00:00:00Z'));
+test('stores monthly posts in the repository root without a draft path', () => {
+  const { published } = monthPaths(Date.parse('2026-10-01T00:00:00Z'));
   const root = path.join(__dirname, '..');
   assert.equal(published, path.join(root, '_posts', '2026', '2026-10.md'));
-  assert.equal(draft, path.join(root, '_drafts', '2026-10.md'));
+  assert.equal(Object.hasOwn(monthPaths(Date.parse('2026-10-01T00:00:00Z')), 'draft'), false);
 });
 
 test('fetches all pages despite unsorted events and flags truncated weeks', async () => {
@@ -98,7 +98,8 @@ test('publishes linked prose and a factual release timeline without internal det
     return { status: 0, stdout: '# A pair of releases\n\nI shipped [v1](https://github.com/owner/repo/releases/tag/v1).\n\n<script>{% raw %}</script>' };
   });
   const output = render(entries, start, start + 7 * 86400000, summary);
-  assert.match(output, /layout: blog\ntitle: "A pair of releases"[\s\S]*# A pair of releases\n\n\*Devlog: 2026-11\*/);
+  assert.match(output, /^# A pair of releases\n\n\*Devlog: 2026-11\*/);
+  assert.doesNotMatch(output, /^(?:layout|title|activity):/m);
   assert.match(output, /\[v1\]\(https:\/\/github.com\/owner\/repo\/releases\/tag\/v1\)/);
   assert.match(output, /&lt;script&gt;&#123;% raw %&#125;&lt;\/script&gt;/);
   assert.match(output, /<pre class="mermaid"[\s\S]*2026-11-09 : owner\/repo v1[\s\S]*2026-11-10 : owner\/repo v2/);
@@ -129,98 +130,39 @@ test('illustrates only a cited project with an existing local image', () => {
   assert.doesNotMatch(render([{ base: other, url: other }], start, start + 86400000, `# Another project\n\n[Project](${other})`), /!\[/);
 });
 
-test('stores only public events in monthly metadata and retains earlier observations', () => {
+test('writes monthly posts without layout/title/activity metadata and protects manual edits', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
   try {
     const start = Date.parse('2026-10-01T00:00:00Z');
-    const end = Date.parse('2026-11-01T00:00:00Z');
-    const event = (id, isPublic = true) => ({
-      id, public: isPublic, created_at: '2026-10-20T00:00:00Z', type: 'WatchEvent',
-      repo: { name: 'owner/repo' }, payload: { action: 'started', secret: 'not stored' }
-    });
-    archiveEvents([event('1'), event('private', false)], start, end, true, dir);
-    archiveEvents([event('2')], start, end, false, dir);
-    const { file, data } = readMonth(start, dir);
-    assert.equal(file, path.join(dir, '_drafts', '2026-10.md'));
-    assert.deepEqual(data.events.entries.map(item => item.id), ['1', '2']);
-    assert.equal(data.events.truncated, true);
-    assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /not stored/);
-    assert.throws(() => archiveEvents([event(undefined)], start, end, false, dir), /no ID/);
-  } finally {
-    fs.rmSync(dir, { recursive: true, force: true });
-  }
-});
-
-test('stores every retrieved public event in its UTC month', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
-  try {
-    const event = (id, created_at, isPublic = true) => ({
-      id, created_at, public: isPublic, type: 'WatchEvent',
-      repo: { name: 'owner/repo' }, payload: {}
-    });
-    archiveAllEvents([event('1', '2026-10-31T23:59:59Z'), event('2', '2026-11-01T00:00:00Z'),
-      event('3', '2026-11-02T00:00:00Z', false)], false, dir);
-    assert.deepEqual(fs.readdirSync(path.join(dir, '_drafts')).sort(), ['2026-10.md', '2026-11.md']);
-    assert.deepEqual(readMonth(Date.parse('2026-11-01T00:00:00Z'), dir).data.events.entries.map(item => item.id), ['2']);
-  } finally {
-    fs.rmSync(dir, { recursive: true, force: true });
-  }
-});
-
-test('rewrites generated monthly posts but protects edited posts and drafts', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
-  try {
-    const start = Date.parse('2026-10-01T00:00:00Z');
-    const post = '---\nlayout: blog\ntitle: "Example"\n---\n\nPost body\n';
-    const metadata = { contributions: { entries: [{ line: 'Literal $& and $1' }] } };
-    saveMonth(start, metadata, dir);
-    const draft = path.join(dir, '_drafts', '2026-10.md');
-    fs.writeFileSync(draft, fs.readFileSync(draft, 'utf8').replace('layout: blog', 'layout: default').replace(/\n/g, '\r\n'));
-    saveMonth(start, metadata, dir);
+    const post = '# Example\n\nPost body\n';
     const file = publishMonth(start, post, dir);
     assert.equal(file, path.join(dir, '_posts', '2026', '2026-10.md'));
-    assert.equal(fs.existsSync(draft), false);
-    assert.deepEqual(readMonth(start, dir).data.contributions, metadata.contributions);
-    assert.match(fs.readFileSync(file, 'utf8'), /^layout: blog$/m);
-    assert.match(fs.readFileSync(file, 'utf8'), /Post body/);
-    const saved = readMonth(start, dir).data;
-    saveMonth(start, { ...saved, other: 'new' }, dir);
-    assert.match(fs.readFileSync(file, 'utf8'), /Post body/);
+    assert.match(fs.readFileSync(file, 'utf8'), /^---\nbodyHash: [a-f\d]{64}\n---$/m);
+    assert.match(fs.readFileSync(file, 'utf8'), /^bodyHash: [a-f\d]{64}$/m);
+    assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /^(?:layout|title|activity):/m);
     publishMonth(start, post.replace('Post body', 'Updated body'), dir);
     assert.match(fs.readFileSync(file, 'utf8'), /Updated body/);
-    const generated = fs.readFileSync(file, 'utf8');
-    fs.writeFileSync(file, generated.replace('title: "Example"', 'title: "Manual title"'));
-    assert.throws(() => publishMonth(start, post, dir), /title has manual edits/);
-    fs.writeFileSync(file, generated);
     fs.appendFileSync(file, 'Manual edit\n');
     assert.throws(() => publishMonth(start, post, dir), /manual edits/);
     assert.match(fs.readFileSync(file, 'utf8'), /Manual edit/);
-
-    const next = Date.parse('2026-11-01T00:00:00Z');
-    saveMonth(next, metadata, dir);
-    const edited = path.join(dir, '_drafts', '2026-11.md');
-    fs.appendFileSync(edited, '\nMy own article\n');
-    assert.throws(() => publishMonth(next, post, dir), /manual edits/);
-    assert.match(fs.readFileSync(edited, 'utf8'), /My own article/);
-    assert.equal(fs.existsSync(path.join(dir, '_posts', '2026', '2026-11.md')), false);
+    assert.equal(fs.existsSync(path.join(dir, '_drafts')), false);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
 
-test('weekly update splits month boundaries and uses only completed activity', () => {
+test('weekly update summarizes the available feed by month without storing events', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'devlog-test-'));
   try {
-    const event = (id, created_at) => ({
-      id, created_at, public: true, type: 'WatchEvent',
+    const event = (created_at) => ({
+      created_at, public: true, type: 'WatchEvent',
       repo: { name: 'owner/repo' }, payload: {}
     });
-    archiveAllEvents([event('1', '2026-12-01T00:00:00Z'), event('2', '2027-01-01T00:00:00Z'),
-      event('3', '2027-01-04T00:00:00Z')], false, dir);
+    const events = [event('2026-12-01T00:00:00Z'), event('2027-01-01T00:00:00Z'), event('2027-01-04T00:00:00Z')];
     const start = Date.parse('2026-12-28T00:00:00Z'), end = Date.parse('2027-01-04T00:00:00Z');
     assert.deepEqual(monthsBetween(start, end).map(time => new Date(time).toISOString().slice(0, 7)), ['2026-12', '2027-01']);
     const reports = [];
-    updateMonths(start, end, 'token', dir, report => {
+    updateMonths(start, end, events, 'token', dir, report => {
       reports.push(report);
       return '# A month of work\n\n[repo](https://github.com/owner/repo)';
     });
@@ -230,10 +172,11 @@ test('weekly update splits month boundaries and uses only completed activity', (
     assert.deepEqual(fs.readdirSync(path.join(dir, '_posts')).sort(), ['2026', '2027']);
     assert.deepEqual(fs.readdirSync(path.join(dir, '_posts', '2026')), ['2026-12.md']);
     assert.deepEqual(fs.readdirSync(path.join(dir, '_posts', '2027')), ['2027-01.md']);
-    updateMonths(start, end, 'token', dir, () => '# Updated title\n\n[updated](https://github.com/owner/repo)');
+    updateMonths(start, end, events, 'token', dir, () => '# Updated title\n\n[updated](https://github.com/owner/repo)');
     assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /\[updated\]/);
-    assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /title: "Updated title"/);
-    assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /^layout: blog$/m);
+    assert.doesNotMatch(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /^(?:layout|title|activity):/m);
+    assert.match(fs.readFileSync(path.join(dir, '_posts', '2027', '2027-01.md'), 'utf8'), /^bodyHash: [a-f\d]{64}$/m);
+    assert.deepEqual(Object.keys(readMonth(Date.parse('2027-01-01T00:00:00Z'), dir).data), ['bodyHash']);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }

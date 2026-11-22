@@ -74,222 +74,16 @@ function monthPaths(start, root = ROOT) {
 
 function readMonth(start, root = ROOT) {
   const { published } = monthPaths(start, root);
-  const date = new Date(start).toISOString().slice(0, 7);
   const file = published;
-  const text = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : `---\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
+  const text = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
   const frontMatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(text);
-  if (!frontMatter) throw new Error(`Invalid post front matter: ${file}`);
-  return { file, text, data: {}, body: text.slice(frontMatter[0].length) };
-}
-
-function parseYamlBlock(block) {
-  const lines = block.split(/\r?\n/);
-  // Skip the "activity:" line and start parsing the content
-  const parsed = parseYamlLines(lines, 0, 0).value;
-  // Extract the value of the "activity" key
-  if (parsed.activity !== undefined) {
-    return parsed.activity;
-  }
-  return parsed;
-}
-
-function parseYamlLines(lines, startIdx, minIndent) {
-  const result = {};
-  let i = startIdx;
-  
-  while (i < lines.length) {
-    const line = lines[i];
-    if (!line.trim()) { i++; continue; }
-    
-    const indentMatch = /^(\s*)/.exec(line);
-    const indent = indentMatch[1].length;
-    
-    if (indent < minIndent) break;
-    if (indent > minIndent && i === startIdx) { i++; continue; }
-    
-    const contentMatch = /^(\s*)(\w+):\s*(.*)$/.exec(line);
-    if (!contentMatch) { i++; continue; }
-    
-    const [, spaces, key, value] = contentMatch;
-    const keyIndent = spaces.length;
-    
-    if (keyIndent < minIndent) break;
-    if (keyIndent > minIndent) { i++; continue; }
-    
-    if (value === '{' || value === '[') {
-      // JSON structure embedded in YAML - read until closing bracket
-      let jsonStr = value;
-      i++;
-      let depth = 1;
-      while (i < lines.length && depth > 0) {
-        const nextLine = lines[i];
-        const nextContent = nextLine.trim();
-        jsonStr += '\n' + nextContent;
-        depth += (nextContent.match(/{/g) || []).length;
-        depth -= (nextContent.match(/}/g) || []).length;
-        depth += (nextContent.match(/\[/g) || []).length;
-        depth -= (nextContent.match(/\]/g) || []).length;
-        if (depth === 0) break;
-        i++;
-      }
-      try {
-        result[key] = JSON.parse(jsonStr);
-      } catch (e) {
-        result[key] = jsonStr;
-      }
-      i++;
-    } else if (value.startsWith('{') || value.startsWith('[')) {
-      // Single-line JSON
-      try {
-        result[key] = JSON.parse(value);
-      } catch (e) {
-        result[key] = value;
-      }
-      i++;
-    } else if (value.startsWith('-')) {
-      // Array with value on same line
-      result[key] = [parseYamlValue(value.slice(1).trim())];
-      i++;
-      const arrayMinIndent = keyIndent + 2;
-      while (i < lines.length) {
-        const arrayLine = lines[i];
-        if (!arrayLine.trim()) { i++; continue; }
-        
-        const arrayIndentMatch = /^(\s*)/.exec(arrayLine);
-        const arrayIndent = arrayIndentMatch[1].length;
-        
-        if (arrayIndent < arrayMinIndent) break;
-        
-        const itemMatch = /^(\s*)-\s*(.*)$/.exec(arrayLine);
-        if (!itemMatch || itemMatch[1].length !== keyIndent + 2) break;
-        
-        const itemValue = itemMatch[2];
-        if (itemValue.startsWith('{')) {
-          // JSON object in array
-          let jsonStr = itemValue;
-          i++;
-          let depth = 1;
-          while (i < lines.length && depth > 0) {
-            const nextLine = lines[i];
-            const nextContent = nextLine.trim();
-            jsonStr += '\n' + nextContent;
-            depth += (nextContent.match(/{/g) || []).length;
-            depth -= (nextContent.match(/}/g) || []).length;
-            if (depth === 0) break;
-            i++;
-          }
-          try {
-            result[key].push(JSON.parse(jsonStr));
-          } catch (e) {
-            result[key].push(itemValue);
-          }
-        } else if (itemValue) {
-          result[key].push(parseYamlValue(itemValue));
-          i++;
-        } else {
-          // Object in array (item starts with -, content on next lines)
-          i++;
-          const nested = parseYamlLines(lines, i, keyIndent + 4);
-          result[key].push(nested.value);
-          i = nested.index;
-        }
-      }
-    } else if (!value) {
-      // Check if next line is an array item
-      if (i + 1 < lines.length) {
-        const nextLine = lines[i + 1];
-        const nextIndentMatch = /^(\s*)/.exec(nextLine);
-        const nextIndent = nextIndentMatch[1].length;
-        const isArrayItem = /^(\s*)-/.exec(nextLine) && nextIndent === keyIndent + 2;
-        
-        if (isArrayItem) {
-          // Array
-          result[key] = [];
-          i++;
-          const arrayMinIndent = keyIndent + 2;
-          while (i < lines.length) {
-            const arrayLine = lines[i];
-            if (!arrayLine.trim()) { i++; continue; }
-            
-            const arrayIndentMatch = /^(\s*)/.exec(arrayLine);
-            const arrayIndent = arrayIndentMatch[1].length;
-            
-            if (arrayIndent < arrayMinIndent) break;
-            
-            const itemMatch = /^(\s*)-\s*(.*)$/.exec(arrayLine);
-            if (!itemMatch || itemMatch[1].length !== keyIndent + 2) break;
-            
-            const itemValue = itemMatch[2];
-            if (itemValue.startsWith('{')) {
-              // JSON object in array
-              let jsonStr = itemValue;
-              i++;
-              let depth = 1;
-              while (i < lines.length && depth > 0) {
-                const nextLine = lines[i];
-                const nextContent = nextLine.trim();
-                jsonStr += '\n' + nextContent;
-                depth += (nextContent.match(/{/g) || []).length;
-                depth -= (nextContent.match(/}/g) || []).length;
-                if (depth === 0) break;
-                i++;
-              }
-              try {
-                result[key].push(JSON.parse(jsonStr));
-              } catch (e) {
-                result[key].push(itemValue);
-              }
-            } else if (itemValue) {
-              result[key].push(parseYamlValue(itemValue));
-              i++;
-            } else {
-              // Object in array (item starts with -, content on next lines)
-              i++;
-              const nested = parseYamlLines(lines, i, keyIndent + 4);
-              result[key].push(nested.value);
-              i = nested.index;
-            }
-          }
-        } else {
-          // Nested object
-          i++;
-          const nested = parseYamlLines(lines, i, keyIndent + 2);
-          result[key] = nested.value;
-          i = nested.index;
-        }
-      } else {
-        // Empty value
-        result[key] = {};
-        i++;
-      }
-    } else {
-      // Simple value
-      result[key] = parseYamlValue(value);
-      i++;
-    }
-  }
-  
-  return { value: result, index: i };
-}
-
-function parseYamlValue(value) {
-  if (value === 'null') return null;
-  if (value === 'true') return true;
-  if (value === 'false') return false;
-  if (/^"/.test(value)) {
-    try {
-      return JSON.parse(value);
-    } catch (e) {
-      return value;
-    }
-  }
-  if (/^-?\d+$/.test(value)) return parseInt(value, 10);
-  if (/^-?\d+\.\d+$/.test(value)) return parseFloat(value);
-  return value;
-}
-
-function saveMonth(start, data, root = ROOT) {
-  // Skipped: activity metadata no longer saved to front matter
+  const hash = frontMatter && /^bodyHash: ([a-f\d]{64})$/m.exec(frontMatter[1]);
+  return {
+    file,
+    text,
+    data: { bodyHash: hash && hash[1] },
+    body: frontMatter ? text.slice(frontMatter[0].length) : text
+  };
 }
 
 function bodyHash(body) {
@@ -299,52 +93,19 @@ function bodyHash(body) {
 function publishMonth(start, text, root = ROOT) {
   const { published } = monthPaths(start, root);
   const current = readMonth(start, root);
-  if (fs.existsSync(published) && !current.text.includes('---\nlayout: blog\ntitle: "Devlog')) {
+  const exists = fs.existsSync(published);
+  if (exists && (!current.data.bodyHash || current.data.bodyHash !== bodyHash(current.body))) {
     throw new Error(`Post has manual edits; refusing to overwrite: ${published}`);
   }
-  const frontMatter = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.exec(text);
-  if (!frontMatter) throw new Error('Generated post has no front matter');
-  const generatedTitle = /^title: [^\r\n]+$/m.exec(frontMatter[0]);
-  if (!generatedTitle) throw new Error('Post must have a title');
-  const body = text.slice(frontMatter[0].length);
-  const output = `${frontMatter[0]}${body}`;
-  if (fs.existsSync(published)) {
-    writeFile(published, output);
-  } else {
+  const body = text;
+  if (!/^#\s+\S/.test(body)) throw new Error('Generated post must have an H1 title');
+  const output = `---\nbodyHash: ${bodyHash(body)}\n---\n${body}`;
+  if (exists) writeFile(published, output);
+  else {
     fs.mkdirSync(path.dirname(published), { recursive: true });
     fs.writeFileSync(published, output, { flag: 'wx' });
   }
   return published;
-}
-
-function archiveEvents(events, start, end, truncated, root = ROOT) {
-  // Skipped: activity archiving disabled
-}
-
-function archiveAllEvents(events, truncated, root = ROOT) {
-  const months = new Map();
-  for (const event of events) {
-    if (event.public !== true) continue;
-    const time = new Date(event.created_at);
-    if (!Number.isFinite(time.getTime())) throw new Error('Public event has an invalid date');
-    const start = monthStart(time);
-    if (!months.has(start)) months.set(start, []);
-    months.get(start).push(event);
-  }
-  for (const [start, items] of months) {
-    archiveEvents(items, start, nextMonth(start), truncated, root);
-  }
-}
-
-function monthEntries(data, start, end) {
-  const events = data.events ? data.events.entries : [];
-  const contributions = data.contributions ? data.contributions.entries : [];
-  if (!Array.isArray(events) || !Array.isArray(contributions)) throw new Error('Invalid activity metadata');
-  return [...events, ...contributions].filter(entry => {
-    const time = Date.parse(entry.occurredAt || entry.date);
-    if (!Number.isFinite(time)) throw new Error('Activity metadata has an invalid date');
-    return time >= start && time < end;
-  }).sort((a, b) => Date.parse(b.occurredAt || b.date) - Date.parse(a.occurredAt || a.date));
 }
 
 async function publicEvents(user, token, request = fetch) {
@@ -431,7 +192,7 @@ function illustrate(paragraphs) {
       const repo = link[1].toLowerCase();
       if (Object.hasOwn(images, repo)) {
         if (!fs.existsSync(path.join(__dirname, '..', 'static', 'img', images[repo]))) throw new Error(`Missing illustration: ${images[repo]}`);
-        return [...paragraphs.slice(0, i + 1), `![Illustration of ${repo}](../img/${images[repo]})\n\n*A current illustration of ${repo}.*`, ...paragraphs.slice(i + 1)];
+        return [...paragraphs.slice(0, i + 1), `![Illustration of ${repo}](../img/${images[repo]})\n\n*An illustration of ${repo}.*`, ...paragraphs.slice(i + 1)];
       }
     }
   }
@@ -464,7 +225,7 @@ function render(entries, start, end, summary) {
     const timeline = releases.map(entry => `    ${entry.date} : ${entry.repo} ${entry.tag}`).join('\n');
     diagram = `\n\n<pre class="mermaid" aria-label="Timeline of releases">\ntimeline\n    title Releases this month\n${timeline}\n</pre>\n\n<script type="module">\nimport mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';\nmermaid.initialize({ startOnLoad: true, securityLevel: 'strict' });\n</script>`;
   }
-  return `---\nlayout: blog\ntitle: ${JSON.stringify(title)}\n---\n\n# ${escapeText(title)}\n\n*Devlog: ${date(start).slice(0, 7)}*\n\n${illustrate(paragraphs).join('\n\n')}${diagram}\n`;
+  return `# ${escapeText(title)}\n\n*Devlog: ${date(start).slice(0, 7)}*\n\n${illustrate(paragraphs).join('\n\n')}${diagram}\n`;
 }
 
 function summarize(report, token, run = spawnSync) {
@@ -513,13 +274,18 @@ ${report}`;
   }
 }
 
-function updateMonths(start, end, token, root = ROOT, makeSummary = summarize) {
+function updateMonths(start, end, events, token, root = ROOT, makeSummary = summarize) {
   for (const month of monthsBetween(start, end)) {
-    const { data } = readMonth(month, root);
     const cutoff = Math.min(end, nextMonth(month));
-    const entries = monthEntries(data, month, cutoff);
+    const entries = activity(events, month, cutoff);
     if (!entries.length) {
       console.log(`No public activity found for ${new Date(month).toISOString().slice(0, 7)}.`);
+      continue;
+    }
+    const current = readMonth(month, root);
+    if (fs.existsSync(current.file)
+      && (!current.data.bodyHash || current.data.bodyHash !== bodyHash(current.body))) {
+      console.warn(`Skipping manually maintained post: ${current.file}`);
       continue;
     }
     const summary = makeSummary(entries.map(entry => entry.line).join('\n'), token);
@@ -533,8 +299,7 @@ async function main() {
   const tokens = resolveTokens();
   const { events, truncated } = await publicEvents('Raruto', tokens.github);
   if (truncated) console.warn('::warning::GitHub Events API limit reached; the devlog may be incomplete');
-  archiveAllEvents(events, truncated);
-  updateMonths(start, end, tokens.copilot);
+  updateMonths(start, end, events, tokens.copilot);
 }
 
 if (require.main === module) {
@@ -544,4 +309,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { SummaryValidationError, previousWeek, monthStart, nextMonth, monthsBetween, publicEvents, activity, render, summarize, resolveTokens, escapeText, illustrate, monthPaths, readMonth, saveMonth, publishMonth, monthEntries, updateMonths, archiveEvents, archiveAllEvents };
+module.exports = { SummaryValidationError, previousWeek, monthStart, nextMonth, monthsBetween, publicEvents, activity, render, summarize, resolveTokens, escapeText, illustrate, monthPaths, readMonth, publishMonth, updateMonths };

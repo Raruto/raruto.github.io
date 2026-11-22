@@ -39,12 +39,16 @@ const markdown = new MarkdownIt({
   }
 });
 
-markdown.renderer.rules.heading_open = (tokens, index, options, env, renderer) => {
-  const inline = tokens[index + 1];
-  const text = (inline.children || []).map(token =>
+function inlineText(inline) {
+  return (inline.children || []).map(token =>
     ['text', 'code_inline', 'image'].includes(token.type) ? token.content :
       ['softbreak', 'hardbreak'].includes(token.type) ? ' ' : ''
   ).join('');
+}
+
+markdown.renderer.rules.heading_open = (tokens, index, options, env, renderer) => {
+  const inline = tokens[index + 1];
+  const text = inlineText(inline);
   const base = text.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-') || 'section';
   const ids = env.headingIds || (env.headingIds = new Map());
@@ -81,6 +85,14 @@ function renderMarkdown(source) {
   return markdown.render(replaceLiquidUrls(source), { headingIds: new Map() });
 }
 
+function articleTitle(source, file) {
+  const tokens = markdown.parse(source, { headingIds: new Map() });
+  const index = tokens.findIndex(token => token.type === 'heading_open' && token.tag === 'h1');
+  const title = index === -1 ? '' : inlineText(tokens[index + 1]).trim();
+  if (!title) throw new Error(`Missing H1 in ${path.relative(ROOT, file)}`);
+  return title;
+}
+
 function readBlogEntries() {
   const root = path.join(ROOT, '_posts');
   const files = [];
@@ -95,13 +107,10 @@ function readBlogEntries() {
   return files.map(file => {
     const parsed = matter(fs.readFileSync(file, 'utf8'));
     const name = path.basename(file, '.md');
-    if (typeof parsed.data.title !== 'string' || !parsed.data.title.trim()) {
-      throw new Error(`Missing title in ${path.relative(ROOT, file)}`);
-    }
     return {
       name,
       filename: path.basename(file),
-      title: parsed.data.title,
+      title: articleTitle(parsed.content, file),
       category: typeof parsed.data.category === 'string' ? parsed.data.category : 'Devlog',
       content: parsed.content
     };
