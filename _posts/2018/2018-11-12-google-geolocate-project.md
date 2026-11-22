@@ -2,7 +2,13 @@
 layout: blog
 title: "Finding My Place on a Google Map"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-11-12T20:51:34Z","type":"repository created","url":"https://github.com/Raruto/google-geolocate"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-11-12T20:51:34Z"
+      type: repository created
+      url: "https://github.com/Raruto/google-geolocate"
 ---
 
 # Finding My Place on a Google Map

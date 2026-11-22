@@ -2,7 +2,34 @@
 layout: blog
 title: "A Few More Strings in Italian"
 category: Contributions
-activity: {"source":"WordPress.org profile","entries":[{"date":"2022-09-17","type":"translation activity","strings":1,"url":"https://profiles.wordpress.org/raruto/feed/"},{"date":"2023-07-12","type":"translation activity","strings":7,"url":"https://profiles.wordpress.org/raruto/feed/"},{"date":"2024-02-25","type":"translation activity","strings":11,"url":"https://profiles.wordpress.org/raruto/feed/"},{"date":"2025-08-08","type":"translation activity","strings":4,"url":"https://profiles.wordpress.org/raruto/feed/"},{"date":"2026-03-14","type":"translation activity","strings":6,"url":"https://profiles.wordpress.org/raruto/feed/"}]}
+activity:
+  source: WordPress.org profile
+  entries:
+    -
+      date: "2022-09-17"
+      type: translation activity
+      strings: 1
+      url: "https://profiles.wordpress.org/raruto/feed/"
+    -
+      date: "2023-07-12"
+      type: translation activity
+      strings: 7
+      url: "https://profiles.wordpress.org/raruto/feed/"
+    -
+      date: "2024-02-25"
+      type: translation activity
+      strings: 11
+      url: "https://profiles.wordpress.org/raruto/feed/"
+    -
+      date: "2025-08-08"
+      type: translation activity
+      strings: 4
+      url: "https://profiles.wordpress.org/raruto/feed/"
+    -
+      date: "2026-03-14"
+      type: translation activity
+      strings: 6
+      url: "https://profiles.wordpress.org/raruto/feed/"
 ---
 
 # A Few More Strings in Italian

@@ -2,7 +2,13 @@
 layout: blog
 title: "A Hook, a Map, and the Missing Markers"
 category: Contributions
-activity: {"source":"WordPress.org profile","entries":[{"date":"2016-12-29","type":"forum topic","url":"https://wordpress.org/support/topic/code-fix-locations-map-markers-array/"}]}
+activity:
+  source: WordPress.org profile
+  entries:
+    -
+      date: "2016-12-29"
+      type: forum topic
+      url: "https://wordpress.org/support/topic/code-fix-locations-map-markers-array/"
 ---
 
 # A Hook, a Map, and the Missing Markers

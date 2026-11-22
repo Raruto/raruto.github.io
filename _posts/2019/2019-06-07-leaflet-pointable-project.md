@@ -2,7 +2,13 @@
 layout: blog
 title: "Making a Tiled Overlay Pointable"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-06-07T20:09:24Z","type":"repository created","url":"https://github.com/Raruto/leaflet-pointable"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-06-07T20:09:24Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-pointable"
 ---
 
 # Making a Tiled Overlay Pointable

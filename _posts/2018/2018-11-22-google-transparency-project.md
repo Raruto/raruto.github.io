@@ -2,7 +2,13 @@
 layout: blog
 title: "A Slider Between Two Maps"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-11-22T22:12:30Z","type":"repository created","url":"https://github.com/Raruto/google-transparency"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-11-22T22:12:30Z"
+      type: repository created
+      url: "https://github.com/Raruto/google-transparency"
 ---
 
 # A Slider Between Two Maps

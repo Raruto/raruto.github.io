@@ -2,7 +2,21 @@
 layout: blog
 title: "Translations and Windows Paths in CpMultiplane"
 category: Contributions
-activity: {"source":"GitHub","entries":[{"date":"2020-11-27T16:03:45Z","type":"pull request","url":"https://github.com/raffaelj/CpMultiplane-i18n/pull/1"},{"date":"2020-11-29T14:38:13Z","type":"pull request","url":"https://github.com/raffaelj/cpmp-lib-skeleton/pull/2"},{"date":"2020-12-01T00:35:18Z","type":"pull request","url":"https://github.com/raffaelj/CpMultiplane/pull/30"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2020-11-27T16:03:45Z"
+      type: pull request
+      url: "https://github.com/raffaelj/CpMultiplane-i18n/pull/1"
+    -
+      date: "2020-11-29T14:38:13Z"
+      type: pull request
+      url: "https://github.com/raffaelj/cpmp-lib-skeleton/pull/2"
+    -
+      date: "2020-12-01T00:35:18Z"
+      type: pull request
+      url: "https://github.com/raffaelj/CpMultiplane/pull/30"
 ---
 
 # Translations and Windows Paths in CpMultiplane

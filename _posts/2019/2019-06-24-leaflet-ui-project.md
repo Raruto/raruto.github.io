@@ -2,7 +2,13 @@
 layout: blog
 title: "A Ready-to-Use Interface for Leaflet"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-06-24T22:50:05Z","type":"repository created","url":"https://github.com/Raruto/leaflet-ui"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-06-24T22:50:05Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-ui"
 ---
 
 # A Ready-to-Use Interface for Leaflet

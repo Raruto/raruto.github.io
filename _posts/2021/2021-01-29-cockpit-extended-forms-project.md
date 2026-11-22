@@ -2,7 +2,17 @@
 layout: blog
 title: "Giving Cockpit Forms More Room to Grow"
 category: Projects
-activity: {"source":"GitHub and Packagist","entries":[{"date":"2021-01-29T10:49:05Z","type":"repository created","url":"https://github.com/Raruto/cockpit-extended-forms"},{"date":"2021-01-29T18:08:00Z","type":"package publication","url":"https://packagist.org/packages/raruto/cockpit-extended-forms"}]}
+activity:
+  source: GitHub and Packagist
+  entries:
+    -
+      date: "2021-01-29T10:49:05Z"
+      type: repository created
+      url: "https://github.com/Raruto/cockpit-extended-forms"
+    -
+      date: "2021-01-29T18:08:00Z"
+      type: package publication
+      url: "https://packagist.org/packages/raruto/cockpit-extended-forms"
 ---
 
 # Giving Cockpit Forms More Room to Grow

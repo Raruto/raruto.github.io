@@ -2,7 +2,17 @@
 layout: blog
 title: "A Honeypot for Cockpit Forms"
 category: Projects
-activity: {"source":"GitHub and Packagist","entries":[{"date":"2021-01-29T17:58:29Z","type":"repository created","url":"https://github.com/Raruto/cockpit-honeypot"},{"date":"2021-01-29T18:03:00Z","type":"package publication","url":"https://packagist.org/packages/raruto/cockpit-honeypot"}]}
+activity:
+  source: GitHub and Packagist
+  entries:
+    -
+      date: "2021-01-29T17:58:29Z"
+      type: repository created
+      url: "https://github.com/Raruto/cockpit-honeypot"
+    -
+      date: "2021-01-29T18:03:00Z"
+      type: package publication
+      url: "https://packagist.org/packages/raruto/cockpit-honeypot"
 ---
 
 # A Honeypot for Cockpit Forms

@@ -2,7 +2,17 @@
 layout: blog
 title: "A Shortcode for an Iubenda Policy"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2020-02-17T20:09:47Z","type":"repository forked","url":"https://github.com/Raruto/iubenda-for-wp"},{"date":"2020-02-17T20:58:20Z","type":"pull request","url":"https://github.com/injms/iubenda-for-wp/pull/1"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2020-02-17T20:09:47Z"
+      type: repository forked
+      url: "https://github.com/Raruto/iubenda-for-wp"
+    -
+      date: "2020-02-17T20:58:20Z"
+      type: pull request
+      url: "https://github.com/injms/iubenda-for-wp/pull/1"
 ---
 
 # A Shortcode for an Iubenda Policy

@@ -2,7 +2,13 @@
 layout: blog
 title: "A Layer Switcher, Laid Out Inline"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-06-23T19:56:58Z","type":"repository created","url":"https://github.com/Raruto/leaflet-control-layers-inline"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-06-23T19:56:58Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-control-layers-inline"
 ---
 
 # A Layer Switcher, Laid Out Inline

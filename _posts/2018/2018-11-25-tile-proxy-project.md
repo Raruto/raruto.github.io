@@ -2,7 +2,13 @@
 layout: blog
 title: "A Cache Between the Map and the Tile Server"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-11-25T15:09:16Z","type":"repository created","url":"https://github.com/Raruto/tile-proxy-php"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-11-25T15:09:16Z"
+      type: repository created
+      url: "https://github.com/Raruto/tile-proxy-php"
 ---
 
 # A Cache Between the Map and the Tile Server

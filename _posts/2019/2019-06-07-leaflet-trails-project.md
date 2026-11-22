@@ -2,7 +2,13 @@
 layout: blog
 title: "Following Waymarked Trails in Leaflet"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-06-07T20:48:09Z","type":"repository created","url":"https://github.com/Raruto/leaflet-trails"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-06-07T20:48:09Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-trails"
 ---
 
 # Following Waymarked Trails in Leaflet

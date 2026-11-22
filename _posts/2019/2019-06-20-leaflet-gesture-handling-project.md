@@ -2,7 +2,13 @@
 layout: blog
 title: "Let the Page Scroll, Not Just the Map"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-06-20T20:33:24Z","type":"repository created","url":"https://github.com/Raruto/leaflet-gesture-handling"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-06-20T20:33:24Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-gesture-handling"
 ---
 
 # Let the Page Scroll, Not Just the Map

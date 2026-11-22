@@ -2,7 +2,13 @@
 layout: blog
 title: "A Few Ways to Bundle a Leaflet Map"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-06-19T15:55:15Z","type":"repository created","url":"https://github.com/Raruto/leaflet-npm"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-06-19T15:55:15Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-npm"
 ---
 
 # A Few Ways to Bundle a Leaflet Map

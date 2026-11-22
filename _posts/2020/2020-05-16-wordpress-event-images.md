@@ -2,7 +2,14 @@
 layout: blog
 title: "An Alt Attribute for Event Images"
 category: Contributions
-activity: {"source":"WordPress.org profile","entries":[{"date":"2020-05-16","type":"Plugins Trac ticket","url":"https://plugins.trac.wordpress.org/ticket/2874","title":"Missing #_EVENTIMAGE{x,y} alt tag"}]}
+activity:
+  source: WordPress.org profile
+  entries:
+    -
+      date: "2020-05-16"
+      type: Plugins Trac ticket
+      url: "https://plugins.trac.wordpress.org/ticket/2874"
+      title: "Missing #_EVENTIMAGE{x,y} alt tag"
 ---
 
 # An Alt Attribute for Event Images

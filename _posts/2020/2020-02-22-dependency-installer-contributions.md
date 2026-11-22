@@ -2,7 +2,29 @@
 layout: blog
 title: "Untangling WordPress Plugin Dependencies"
 category: Contributions
-activity: {"source":"GitHub","entries":[{"date":"2020-01-23T22:36:35Z","type":"pull request","url":"https://github.com/afragen/wp-dependency-installer/pull/35"},{"date":"2020-01-27T21:27:47Z","type":"pull request","url":"https://github.com/afragen/wp-dependency-installer/pull/37"},{"date":"2020-02-10T11:15:22Z","type":"pull request","url":"https://github.com/afragen/wp-dependency-installer/pull/44"},{"date":"2020-02-15T23:25:03Z","type":"pull request","url":"https://github.com/afragen/wp-dependency-installer/pull/48"},{"date":"2020-02-22T17:47:29Z","type":"pull request","url":"https://github.com/afragen/wp-dependency-installer/pull/59"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2020-01-23T22:36:35Z"
+      type: pull request
+      url: "https://github.com/afragen/wp-dependency-installer/pull/35"
+    -
+      date: "2020-01-27T21:27:47Z"
+      type: pull request
+      url: "https://github.com/afragen/wp-dependency-installer/pull/37"
+    -
+      date: "2020-02-10T11:15:22Z"
+      type: pull request
+      url: "https://github.com/afragen/wp-dependency-installer/pull/44"
+    -
+      date: "2020-02-15T23:25:03Z"
+      type: pull request
+      url: "https://github.com/afragen/wp-dependency-installer/pull/48"
+    -
+      date: "2020-02-22T17:47:29Z"
+      type: pull request
+      url: "https://github.com/afragen/wp-dependency-installer/pull/59"
 ---
 
 # Untangling WordPress Plugin Dependencies

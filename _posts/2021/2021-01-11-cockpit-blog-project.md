@@ -2,7 +2,13 @@
 layout: blog
 title: "Building a Blog Around Cockpit"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2021-01-11T00:55:51Z","type":"repository created","url":"https://github.com/Raruto/cockpit-blog"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2021-01-11T00:55:51Z"
+      type: repository created
+      url: "https://github.com/Raruto/cockpit-blog"
 ---
 
 # Building a Blog Around Cockpit

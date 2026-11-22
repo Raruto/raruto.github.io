@@ -2,7 +2,17 @@
 layout: blog
 title: "My First Pull Request, With a Side of Composer"
 category: Contributions
-activity: {"source":"GitHub","entries":[{"date":"2018-04-05T09:55:06Z","type":"pull request","url":"https://github.com/tomjn/composerpress/pull/9"},{"date":"2018-04-12T18:42:32Z","type":"pull request","url":"https://github.com/tomjn/composerpress/pull/10"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-04-05T09:55:06Z"
+      type: pull request
+      url: "https://github.com/tomjn/composerpress/pull/9"
+    -
+      date: "2018-04-12T18:42:32Z"
+      type: pull request
+      url: "https://github.com/tomjn/composerpress/pull/10"
 ---
 
 # My First Pull Request, With a Side of Composer

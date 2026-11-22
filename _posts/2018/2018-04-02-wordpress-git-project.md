@@ -2,7 +2,13 @@
 layout: blog
 title: "A WordPress Site, Kept in Git"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-04-02T14:30:43Z","type":"repository created","url":"https://github.com/Raruto/wordpress-git"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-04-02T14:30:43Z"
+      type: repository created
+      url: "https://github.com/Raruto/wordpress-git"
 ---
 
 # A WordPress Site, Kept in Git

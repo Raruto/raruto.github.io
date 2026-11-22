@@ -9,6 +9,44 @@ const DAY = 24 * 60 * 60 * 1000;
 
 class SummaryValidationError extends Error {}
 
+function stringifyYaml(obj, indent = 0) {
+  const spaces = ' '.repeat(indent);
+  if (obj === null) return 'null';
+  if (obj === undefined) return 'null';
+  if (typeof obj === 'boolean') return obj ? 'true' : 'false';
+  if (typeof obj === 'number') return String(obj);
+  if (typeof obj === 'string') {
+    if (!obj || /[\r\n:|{}\[\]#&*!,]/.test(obj) || /^[0-9#-]/.test(obj) || obj !== obj.trim()) {
+      return JSON.stringify(obj);
+    }
+    return obj;
+  }
+  if (Array.isArray(obj)) {
+    if (obj.length === 0) return '[]';
+    return '\n' + obj.map(item => {
+      const itemStr = stringifyYaml(item, indent + 2);
+      if (itemStr.startsWith('\n')) {
+        return spaces + '-' + itemStr;
+      } else {
+        return spaces + '- ' + itemStr;
+      }
+    }).join('\n');
+  }
+  if (typeof obj === 'object') {
+    const keys = Object.keys(obj);
+    if (keys.length === 0) return '{}';
+    return '\n' + keys.map(key => {
+      const val = stringifyYaml(obj[key], indent + 2);
+      if (val.startsWith('\n')) {
+        return spaces + key + ':' + val;
+      } else {
+        return spaces + key + ': ' + val;
+      }
+    }).join('\n');
+  }
+  return String(obj);
+}
+
 function resolveTokens(env = process.env, run = spawnSync) {
   let cliToken;
   function fromGh() {
@@ -80,17 +118,262 @@ function readMonth(start, root = ROOT) {
   const text = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : `---\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
   const frontMatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(text);
   if (!frontMatter) throw new Error(`Invalid post front matter: ${file}`);
-  const lines = frontMatter[1].split(/\r?\n/).filter(line => /^activity:/.test(line));
-  if (lines.length > 1) throw new Error(`Duplicate activity metadata: ${file}`);
-  const data = lines.length ? JSON.parse(lines[0].slice('activity:'.length).trim()) : {};
+  
+  const fmLines = frontMatter[1].split(/\r?\n/);
+  const activityIdx = fmLines.findIndex(line => /^activity:/.test(line));
+  if (activityIdx === -1) {
+    return { file, text, data: {}, body: text.slice(frontMatter[0].length) };
+  }
+  
+  const activityLine = fmLines[activityIdx];
+  const afterColon = activityLine.slice('activity:'.length).trim();
+  
+  let data = {};
+  if (afterColon.startsWith('{')) {
+    // JSON format (backward compatibility)
+    data = JSON.parse(afterColon);
+  } else if (afterColon) {
+    // YAML single-line value (simple cases)
+    if (afterColon === 'null') data = null;
+    else if (afterColon === 'true') data = true;
+    else if (afterColon === 'false') data = false;
+    else if (afterColon === '{}') data = {};
+    else if (afterColon === '[]') data = [];
+    else data = { raw: afterColon }; // Fallback for unparseable YAML
+  } else {
+    // Multi-line YAML format
+    const activityLines = [activityLine];
+    for (let i = activityIdx + 1; i < fmLines.length; i++) {
+      const line = fmLines[i];
+      if (/^[a-zA-Z]/.test(line) && !line.startsWith('  ') && !line.startsWith('\t')) {
+        // Next field found
+        break;
+      }
+      activityLines.push(line);
+    }
+    
+    // Parse the YAML block
+    const yamlBlock = activityLines.join('\n');
+    data = parseYamlBlock(yamlBlock);
+  }
+  
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error(`Invalid activity metadata: ${file}`);
   return { file, text, data, body: text.slice(frontMatter[0].length) };
 }
 
+function parseYamlBlock(block) {
+  const lines = block.split(/\r?\n/);
+  // Skip the "activity:" line and start parsing the content
+  const parsed = parseYamlLines(lines, 0, 0).value;
+  // Extract the value of the "activity" key
+  if (parsed.activity !== undefined) {
+    return parsed.activity;
+  }
+  return parsed;
+}
+
+function parseYamlLines(lines, startIdx, minIndent) {
+  const result = {};
+  let i = startIdx;
+  
+  while (i < lines.length) {
+    const line = lines[i];
+    if (!line.trim()) { i++; continue; }
+    
+    const indentMatch = /^(\s*)/.exec(line);
+    const indent = indentMatch[1].length;
+    
+    if (indent < minIndent) break;
+    if (indent > minIndent && i === startIdx) { i++; continue; }
+    
+    const contentMatch = /^(\s*)(\w+):\s*(.*)$/.exec(line);
+    if (!contentMatch) { i++; continue; }
+    
+    const [, spaces, key, value] = contentMatch;
+    const keyIndent = spaces.length;
+    
+    if (keyIndent < minIndent) break;
+    if (keyIndent > minIndent) { i++; continue; }
+    
+    if (value === '{' || value === '[') {
+      // JSON structure embedded in YAML - read until closing bracket
+      let jsonStr = value;
+      i++;
+      let depth = 1;
+      while (i < lines.length && depth > 0) {
+        const nextLine = lines[i];
+        const nextContent = nextLine.trim();
+        jsonStr += '\n' + nextContent;
+        depth += (nextContent.match(/{/g) || []).length;
+        depth -= (nextContent.match(/}/g) || []).length;
+        depth += (nextContent.match(/\[/g) || []).length;
+        depth -= (nextContent.match(/\]/g) || []).length;
+        if (depth === 0) break;
+        i++;
+      }
+      try {
+        result[key] = JSON.parse(jsonStr);
+      } catch (e) {
+        result[key] = jsonStr;
+      }
+      i++;
+    } else if (value.startsWith('{') || value.startsWith('[')) {
+      // Single-line JSON
+      try {
+        result[key] = JSON.parse(value);
+      } catch (e) {
+        result[key] = value;
+      }
+      i++;
+    } else if (value.startsWith('-')) {
+      // Array with value on same line
+      result[key] = [parseYamlValue(value.slice(1).trim())];
+      i++;
+      const arrayMinIndent = keyIndent + 2;
+      while (i < lines.length) {
+        const arrayLine = lines[i];
+        if (!arrayLine.trim()) { i++; continue; }
+        
+        const arrayIndentMatch = /^(\s*)/.exec(arrayLine);
+        const arrayIndent = arrayIndentMatch[1].length;
+        
+        if (arrayIndent < arrayMinIndent) break;
+        
+        const itemMatch = /^(\s*)-\s*(.*)$/.exec(arrayLine);
+        if (!itemMatch || itemMatch[1].length !== keyIndent + 2) break;
+        
+        const itemValue = itemMatch[2];
+        if (itemValue.startsWith('{')) {
+          // JSON object in array
+          let jsonStr = itemValue;
+          i++;
+          let depth = 1;
+          while (i < lines.length && depth > 0) {
+            const nextLine = lines[i];
+            const nextContent = nextLine.trim();
+            jsonStr += '\n' + nextContent;
+            depth += (nextContent.match(/{/g) || []).length;
+            depth -= (nextContent.match(/}/g) || []).length;
+            if (depth === 0) break;
+            i++;
+          }
+          try {
+            result[key].push(JSON.parse(jsonStr));
+          } catch (e) {
+            result[key].push(itemValue);
+          }
+        } else if (itemValue) {
+          result[key].push(parseYamlValue(itemValue));
+          i++;
+        } else {
+          // Object in array (item starts with -, content on next lines)
+          i++;
+          const nested = parseYamlLines(lines, i, keyIndent + 4);
+          result[key].push(nested.value);
+          i = nested.index;
+        }
+      }
+    } else if (!value) {
+      // Check if next line is an array item
+      if (i + 1 < lines.length) {
+        const nextLine = lines[i + 1];
+        const nextIndentMatch = /^(\s*)/.exec(nextLine);
+        const nextIndent = nextIndentMatch[1].length;
+        const isArrayItem = /^(\s*)-/.exec(nextLine) && nextIndent === keyIndent + 2;
+        
+        if (isArrayItem) {
+          // Array
+          result[key] = [];
+          i++;
+          const arrayMinIndent = keyIndent + 2;
+          while (i < lines.length) {
+            const arrayLine = lines[i];
+            if (!arrayLine.trim()) { i++; continue; }
+            
+            const arrayIndentMatch = /^(\s*)/.exec(arrayLine);
+            const arrayIndent = arrayIndentMatch[1].length;
+            
+            if (arrayIndent < arrayMinIndent) break;
+            
+            const itemMatch = /^(\s*)-\s*(.*)$/.exec(arrayLine);
+            if (!itemMatch || itemMatch[1].length !== keyIndent + 2) break;
+            
+            const itemValue = itemMatch[2];
+            if (itemValue.startsWith('{')) {
+              // JSON object in array
+              let jsonStr = itemValue;
+              i++;
+              let depth = 1;
+              while (i < lines.length && depth > 0) {
+                const nextLine = lines[i];
+                const nextContent = nextLine.trim();
+                jsonStr += '\n' + nextContent;
+                depth += (nextContent.match(/{/g) || []).length;
+                depth -= (nextContent.match(/}/g) || []).length;
+                if (depth === 0) break;
+                i++;
+              }
+              try {
+                result[key].push(JSON.parse(jsonStr));
+              } catch (e) {
+                result[key].push(itemValue);
+              }
+            } else if (itemValue) {
+              result[key].push(parseYamlValue(itemValue));
+              i++;
+            } else {
+              // Object in array (item starts with -, content on next lines)
+              i++;
+              const nested = parseYamlLines(lines, i, keyIndent + 4);
+              result[key].push(nested.value);
+              i = nested.index;
+            }
+          }
+        } else {
+          // Nested object
+          i++;
+          const nested = parseYamlLines(lines, i, keyIndent + 2);
+          result[key] = nested.value;
+          i = nested.index;
+        }
+      } else {
+        // Empty value
+        result[key] = {};
+        i++;
+      }
+    } else {
+      // Simple value
+      result[key] = parseYamlValue(value);
+      i++;
+    }
+  }
+  
+  return { value: result, index: i };
+}
+
+function parseYamlValue(value) {
+  if (value === 'null') return null;
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  if (/^"/.test(value)) {
+    try {
+      return JSON.parse(value);
+    } catch (e) {
+      return value;
+    }
+  }
+  if (/^-?\d+$/.test(value)) return parseInt(value, 10);
+  if (/^-?\d+\.\d+$/.test(value)) return parseFloat(value);
+  return value;
+}
+
 function withActivity(text, data) {
-  const line = `activity: ${JSON.stringify(data)}`;
+  const yamlStr = stringifyYaml(data, 0);
+  const lines = yamlStr.startsWith('\n') ? yamlStr.slice(1).split('\n') : (yamlStr ? [yamlStr] : []);
+  const indented = lines.map(line => line ? '  ' + line : '').join('\n');
+  const line = `activity:${indented ? '\n' + indented : ' {}'}`;
   return /^activity:/m.test(text.split(/\r?\n---(?:\r?\n|$)/)[0])
-    ? text.replace(/^activity:[^\r\n]*/m, () => line)
+    ? text.replace(/^activity:[^\r\n]*(?:\r?\n(?:  |\t)[^\r\n]*)*/m, () => line)
     : text.replace(/^(---\r?\n)/, match => `${match}${line}${match.endsWith('\r\n') ? '\r\n' : '\n'}`);
 }
 
@@ -109,7 +392,11 @@ function publishMonth(start, text, root = ROOT) {
   const { data } = current;
   if (fs.existsSync(draft)) {
     const date = new Date(start).toISOString().slice(0, 7);
-    const expected = `---\nactivity: ${JSON.stringify(data)}\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
+    const yamlStr = stringifyYaml(data, 0);
+    const lines = yamlStr.startsWith('\n') ? yamlStr.slice(1).split('\n') : (yamlStr ? [yamlStr] : []);
+    const indented = lines.map(line => line ? '  ' + line : '').join('\n');
+    const activityLine = `activity:${indented ? '\n' + indented : ' {}'}`;
+    const expected = `---\n${activityLine}\nlayout: blog\ntitle: "Devlog ${date}"\n---\n`;
     const contents = fs.readFileSync(draft, 'utf8').replace(/\r\n/g, '\n');
     if (contents !== expected && contents !== expected.replace('layout: blog', 'layout: default')) {
       throw new Error(`Draft has manual edits; publish it manually: ${draft}`);

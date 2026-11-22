@@ -2,7 +2,13 @@
 layout: blog
 title: "From Looking at a Map to Editing It"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-11-09T14:09:08Z","type":"repository created","url":"https://github.com/Raruto/leaflet-edit-osm"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-11-09T14:09:08Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-edit-osm"
 ---
 
 # From Looking at a Map to Editing It

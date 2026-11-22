@@ -2,7 +2,19 @@
 layout: blog
 title: "A Starting Point for Cockpit Experiments"
 category: Contributions
-activity: {"source":"Packagist","entries":[{"date":"2021-02-15T15:05:00Z","type":"package publication","package":"raruto/cockpit-sample-addon","url":"https://packagist.org/packages/raruto/cockpit-sample-addon"},{"date":"2021-02-15T15:31:00Z","type":"package publication","package":"raruto/cockpit-sample-data","url":"https://packagist.org/packages/raruto/cockpit-sample-data"}]}
+activity:
+  source: Packagist
+  entries:
+    -
+      date: "2021-02-15T15:05:00Z"
+      type: package publication
+      package: raruto/cockpit-sample-addon
+      url: "https://packagist.org/packages/raruto/cockpit-sample-addon"
+    -
+      date: "2021-02-15T15:31:00Z"
+      type: package publication
+      package: raruto/cockpit-sample-data
+      url: "https://packagist.org/packages/raruto/cockpit-sample-data"
 ---
 
 # A Starting Point for Cockpit Experiments

@@ -2,7 +2,25 @@
 layout: blog
 title: "Following the Trail of Event Categories"
 category: Contributions
-activity: {"source":"WordPress.org profile","entries":[{"date":"2017-08-08","type":"forum topic","url":"https://wordpress.org/support/topic/using-additional-custom-taxonomies/"},{"date":"2017-08-09","type":"forum reply","url":"https://wordpress.org/support/topic/using-additional-custom-taxonomies/#post-9394523"},{"date":"2017-08-11","type":"forum reply","url":"https://wordpress.org/support/topic/using-additional-custom-taxonomies/#post-9403154"},{"date":"2017-08-17","type":"forum reply","url":"https://wordpress.org/support/topic/using-additional-custom-taxonomies/#post-9418131"}]}
+activity:
+  source: WordPress.org profile
+  entries:
+    -
+      date: "2017-08-08"
+      type: forum topic
+      url: "https://wordpress.org/support/topic/using-additional-custom-taxonomies/"
+    -
+      date: "2017-08-09"
+      type: forum reply
+      url: "https://wordpress.org/support/topic/using-additional-custom-taxonomies/#post-9394523"
+    -
+      date: "2017-08-11"
+      type: forum reply
+      url: "https://wordpress.org/support/topic/using-additional-custom-taxonomies/#post-9403154"
+    -
+      date: "2017-08-17"
+      type: forum reply
+      url: "https://wordpress.org/support/topic/using-additional-custom-taxonomies/#post-9418131"
 ---
 
 # Following the Trail of Event Categories

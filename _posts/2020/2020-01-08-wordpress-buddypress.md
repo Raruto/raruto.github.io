@@ -2,7 +2,29 @@
 layout: blog
 title: "A Few Loose Ends in BuddyPress Events"
 category: Contributions
-activity: {"source":"WordPress.org profile","entries":[{"date":"2020-01-08","type":"forum topic","url":"https://wordpress.org/support/topic/code-fix-buddypress-tab-title-invalid-string/"},{"date":"2020-01-08","type":"forum topic","url":"https://wordpress.org/support/topic/patch-custom-buddypress-navigation-slugs/"},{"date":"2020-01-08","type":"forum topic and reply","url":"https://wordpress.org/support/topic/code-fix-buddypress-attending-tab-conditional-loading/"},{"date":"2020-01-08","type":"forum reply","url":"https://wordpress.org/support/topic/event-duration/#post-12305927"},{"date":"2020-01-09","type":"forum reply","url":"https://wordpress.org/support/topic/parent-events-2/#post-12310035"}]}
+activity:
+  source: WordPress.org profile
+  entries:
+    -
+      date: "2020-01-08"
+      type: forum topic
+      url: "https://wordpress.org/support/topic/code-fix-buddypress-tab-title-invalid-string/"
+    -
+      date: "2020-01-08"
+      type: forum topic
+      url: "https://wordpress.org/support/topic/patch-custom-buddypress-navigation-slugs/"
+    -
+      date: "2020-01-08"
+      type: forum topic and reply
+      url: "https://wordpress.org/support/topic/code-fix-buddypress-attending-tab-conditional-loading/"
+    -
+      date: "2020-01-08"
+      type: forum reply
+      url: "https://wordpress.org/support/topic/event-duration/#post-12305927"
+    -
+      date: "2020-01-09"
+      type: forum reply
+      url: "https://wordpress.org/support/topic/parent-events-2/#post-12310035"
 ---
 
 # A Few Loose Ends in BuddyPress Events

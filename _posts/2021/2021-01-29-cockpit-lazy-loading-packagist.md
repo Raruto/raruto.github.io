@@ -2,7 +2,14 @@
 layout: blog
 title: "Let the Browser Load Images Lazily"
 category: Contributions
-activity: {"source":"Packagist","entries":[{"date":"2021-01-29T10:52:00Z","type":"package publication","package":"raruto/cockpit-native-lazy-loading","url":"https://packagist.org/packages/raruto/cockpit-native-lazy-loading"}]}
+activity:
+  source: Packagist
+  entries:
+    -
+      date: "2021-01-29T10:52:00Z"
+      type: package publication
+      package: raruto/cockpit-native-lazy-loading
+      url: "https://packagist.org/packages/raruto/cockpit-native-lazy-loading"
 ---
 
 # Let the Browser Load Images Lazily

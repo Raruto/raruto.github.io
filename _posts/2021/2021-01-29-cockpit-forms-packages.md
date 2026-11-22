@@ -2,7 +2,19 @@
 layout: blog
 title: "Forms, Files, and a Little Honeypot"
 category: Contributions
-activity: {"source":"Packagist","entries":[{"date":"2021-01-29T18:03:00Z","type":"package publication","package":"raruto/cockpit-honeypot","url":"https://packagist.org/packages/raruto/cockpit-honeypot"},{"date":"2021-01-29T18:08:00Z","type":"package publication","package":"raruto/cockpit-extended-forms","url":"https://packagist.org/packages/raruto/cockpit-extended-forms"}]}
+activity:
+  source: Packagist
+  entries:
+    -
+      date: "2021-01-29T18:03:00Z"
+      type: package publication
+      package: raruto/cockpit-honeypot
+      url: "https://packagist.org/packages/raruto/cockpit-honeypot"
+    -
+      date: "2021-01-29T18:08:00Z"
+      type: package publication
+      package: raruto/cockpit-extended-forms
+      url: "https://packagist.org/packages/raruto/cockpit-extended-forms"
 ---
 
 # Forms, Files, and a Little Honeypot

@@ -2,7 +2,13 @@
 layout: blog
 title: "A Little Street View Companion for Leaflet"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-11-19T01:02:59Z","type":"repository created","url":"https://github.com/Raruto/leaflet-pegman"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-11-19T01:02:59Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-pegman"
 ---
 
 # A Little Street View Companion for Leaflet

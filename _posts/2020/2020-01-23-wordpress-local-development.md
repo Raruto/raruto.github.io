@@ -2,7 +2,14 @@
 layout: blog
 title: "Keeping Local Checkouts Local"
 category: Contributions
-activity: {"source":"WordPress.org plugin changelog","entries":[{"date":"2020-01-23","type":"credited plugin contribution","url":"https://wordpress.org/plugins/local-development/#developers","release":"2.5.0"}]}
+activity:
+  source: WordPress.org plugin changelog
+  entries:
+    -
+      date: "2020-01-23"
+      type: credited plugin contribution
+      url: "https://wordpress.org/plugins/local-development/#developers"
+      release: "2.5.0"
 ---
 
 # Keeping Local Checkouts Local

@@ -2,7 +2,13 @@
 layout: blog
 title: "A Toolbox for the WordPress Workbench"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-12-13T15:09:58Z","type":"repository created","url":"https://github.com/Raruto/wp-devops"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-12-13T15:09:58Z"
+      type: repository created
+      url: "https://github.com/Raruto/wp-devops"
 ---
 
 # A Toolbox for the WordPress Workbench

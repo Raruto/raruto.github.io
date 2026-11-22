@@ -2,7 +2,13 @@
 layout: blog
 title: "A Renaissance Board Game in Java"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2017-05-09T19:56:33Z","type":"repository created","url":"https://github.com/Raruto/IlMagnifico"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2017-05-09T19:56:33Z"
+      type: repository created
+      url: "https://github.com/Raruto/IlMagnifico"
 ---
 
 # A Renaissance Board Game in Java

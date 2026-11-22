@@ -2,7 +2,13 @@
 layout: blog
 title: "The Ups and Downs of a Track"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-11-02T21:02:46Z","type":"repository created","url":"https://github.com/Raruto/leaflet-elevation"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-11-02T21:02:46Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-elevation"
 ---
 
 # The Ups and Downs of a Track

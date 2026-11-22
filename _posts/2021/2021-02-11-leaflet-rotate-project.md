@@ -2,7 +2,13 @@
 layout: blog
 title: "A Map That Doesn't Have to Point North"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2021-02-11T23:04:39Z","type":"repository created","url":"https://github.com/Raruto/leaflet-rotate"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2021-02-11T23:04:39Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-rotate"
 ---
 
 # A Map That Doesn't Have to Point North

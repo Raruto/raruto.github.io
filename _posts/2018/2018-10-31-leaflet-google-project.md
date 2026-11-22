@@ -2,7 +2,13 @@
 layout: blog
 title: "Bringing Google Maps into Leaflet"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2018-10-31T14:04:07Z","type":"repository created","url":"https://github.com/Raruto/leaflet-google"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-10-31T14:04:07Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-google"
 ---
 
 # Bringing Google Maps into Leaflet

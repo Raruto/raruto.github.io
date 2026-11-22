@@ -2,7 +2,25 @@
 layout: blog
 title: "Making Git Updater a Little Easier to Debug"
 category: Contributions
-activity: {"source":"GitHub","entries":[{"date":"2018-03-30T23:33:18Z","type":"issue","url":"https://github.com/afragen/git-updater/issues/663"},{"date":"2018-04-06T21:49:39Z","type":"pull request","url":"https://github.com/afragen/git-updater/pull/666"},{"date":"2018-04-10T08:47:49Z","type":"pull request","url":"https://github.com/afragen/git-updater/pull/668"},{"date":"2018-05-12T21:54:59Z","type":"pull request","url":"https://github.com/afragen/git-updater/pull/680"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2018-03-30T23:33:18Z"
+      type: issue
+      url: "https://github.com/afragen/git-updater/issues/663"
+    -
+      date: "2018-04-06T21:49:39Z"
+      type: pull request
+      url: "https://github.com/afragen/git-updater/pull/666"
+    -
+      date: "2018-04-10T08:47:49Z"
+      type: pull request
+      url: "https://github.com/afragen/git-updater/pull/668"
+    -
+      date: "2018-05-12T21:54:59Z"
+      type: pull request
+      url: "https://github.com/afragen/git-updater/pull/680"
 ---
 
 # Making Git Updater a Little Easier to Debug

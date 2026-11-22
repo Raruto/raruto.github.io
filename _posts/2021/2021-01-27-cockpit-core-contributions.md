@@ -2,7 +2,25 @@
 layout: blog
 title: "Inside Cockpit: Routes, Forms, and Tests"
 category: Contributions
-activity: {"source":"GitHub","entries":[{"date":"2021-01-20T22:22:21Z","type":"pull request","url":"https://github.com/agentejo/cockpit/pull/1395"},{"date":"2021-01-22T18:13:27Z","type":"pull request","url":"https://github.com/agentejo/cockpit/pull/1399"},{"date":"2021-01-25T11:34:22Z","type":"pull request","url":"https://github.com/agentejo/cockpit/pull/1406"},{"date":"2021-01-27T16:47:25Z","type":"pull request","url":"https://github.com/agentejo/cockpit/pull/1411"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2021-01-20T22:22:21Z"
+      type: pull request
+      url: "https://github.com/agentejo/cockpit/pull/1395"
+    -
+      date: "2021-01-22T18:13:27Z"
+      type: pull request
+      url: "https://github.com/agentejo/cockpit/pull/1399"
+    -
+      date: "2021-01-25T11:34:22Z"
+      type: pull request
+      url: "https://github.com/agentejo/cockpit/pull/1406"
+    -
+      date: "2021-01-27T16:47:25Z"
+      type: pull request
+      url: "https://github.com/agentejo/cockpit/pull/1411"
 ---
 
 # Inside Cockpit: Routes, Forms, and Tests

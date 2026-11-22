@@ -2,7 +2,13 @@
 layout: blog
 title: "Turning Down the Opacity"
 category: Projects
-activity: {"source":"GitHub","entries":[{"date":"2019-05-22T21:11:15Z","type":"repository created","url":"https://github.com/Raruto/leaflet-transparency"}]}
+activity:
+  source: GitHub
+  entries:
+    -
+      date: "2019-05-22T21:11:15Z"
+      type: repository created
+      url: "https://github.com/Raruto/leaflet-transparency"
 ---
 
 # Turning Down the Opacity
