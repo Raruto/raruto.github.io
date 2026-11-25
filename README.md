@@ -24,6 +24,7 @@ Peace, love, and lean code. ✌️
 - npm: [https://www.npmjs.com/~raruto](https://www.npmjs.com/~raruto)
 - wordpress: [https://profiles.wordpress.org/raruto](https://profiles.wordpress.org/raruto)
 - packagist: [https://packagist.org/packages/raruto](https://packagist.org/packages/raruto)
+- pypi: [https://pypi.org/user/Raruto/](https://pypi.org/user/Raruto/)
 
 <hr style="background: #ccc;">
 
