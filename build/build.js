@@ -120,7 +120,7 @@ function renderArchive(entries) {
     const posts = entries.filter(entry => entry.name.startsWith(year)).map(entry => {
       const month = entry.name.slice(0, 7);
       return `          <li>
-            <a href="/blog/${escapeHtml(entry.name)}.html">${escapeHtml(entry.title)}</a>
+            <a href="/blog/${escapeHtml(entry.name)}/">${escapeHtml(entry.title)}</a>
             <div class="blog-archive__meta">
               <span>${escapeHtml(entry.category)}: <time datetime="${escapeHtml(month)}">${escapeHtml(month)}</time></span>
             </div>
@@ -236,7 +236,7 @@ function renderHomepage(entries, siteUrl, cssHash) {
   if (contactsIndex < 0) throw new Error('README.md is missing the Contacts section');
   const homepage = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   const latest = entries.slice(0, 5).map(entry =>
-    `<li><a href="/blog/${escapeHtml(entry.name)}.html">${escapeHtml(entry.title)} <span aria-hidden="true">&rarr;</span></a></li>`
+    `<li><a href="/blog/${escapeHtml(entry.name)}/">${escapeHtml(entry.title)} <span aria-hidden="true">&rarr;</span></a></li>`
   ).join('\n  ');
   let content = replaceMarker(homepage, '<!-- homepage:readme-intro -->', renderMarkdown(readme.slice(0, contactsIndex)));
   content = replaceMarker(content, '<!-- homepage:latest-posts -->', `<ul class="latest-posts__list">\n  ${latest}\n</ul>`);
@@ -349,9 +349,12 @@ function buildSite({ outputDir = DEFAULT_OUTPUT, siteUrl = process.env.SITE_URL 
   generatedPages.push('blog/index.html');
 
   for (const entry of entries) {
-    const article = `${breadcrumbs(entry.title, false)}${renderMarkdown(entry.content)}`;
-    fs.writeFileSync(path.join(destination, 'blog', `${entry.name}.html`), renderLayout(article, entry.title, `/blog/${entry.name}.html`, siteUrl, cssHash));
-    generatedPages.push(`blog/${entry.name}.html`);
+    const content = renderMarkdown(entry.content).replace(/\b(src|href)="\.\.\/img\//g, '$1="/img/');
+    const article = `${breadcrumbs(entry.title, false)}${content}`;
+    const articleFile = path.join(destination, 'blog', entry.name, 'index.html');
+    fs.mkdirSync(path.dirname(articleFile), { recursive: true });
+    fs.writeFileSync(articleFile, renderLayout(article, entry.title, `/blog/${entry.name}/`, siteUrl, cssHash));
+    generatedPages.push(`blog/${entry.name}/index.html`);
   }
 
   const rootPage = 'thank-you.md';
